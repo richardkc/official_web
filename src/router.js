@@ -1,26 +1,17 @@
-// import { createRouter, createWebHashHistory } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-
-// const router = createRouter({
-// 	history: createWebHashHistory(),
-// 	routes: [
-// 		{
-// 			path: "/",
-// 			name: "HelloWorld",
-// 			component: HelloWorld,
-// 		},
-// 	],
-// });
-
-// export default router;
-
 import { createRouter, createWebHashHistory } from "vue-router";
+import FirstPage from "@/modules/firstPage.vue";
+import Other from "@/modules/other.vue";
 
 const routes = [
 	{
 		path: "/",
-		name: "HelloWorld",
-		component: HelloWorld,
+		name: "FirstPage",
+		component: FirstPage,
+	},
+	{
+		path: "/other",
+		name: "Other",
+		component: Other,
 	},
 ];
 

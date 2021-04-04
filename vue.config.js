@@ -53,12 +53,16 @@ module.exports = {
 		// 开启 CSS source maps?
 		sourceMap: false,
 		// css预设器配置项
-		loaderOptions: {},
+		loaderOptions: {
+			less: {
+				globalVars: {
+					primary: "#fff",
+				},
+			},
+		},
 		// 启用 CSS modules for all css / pre-processor files.
-		modules: false,
+		requireModuleExtension: false,
 	},
-	// use thread-loader for babel & TS in production build
-	// enabled by default if the machine has more than 1 cores
 	parallel: require("os").cpus().length > 1,
 	// 是否启用dll
 	// See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
