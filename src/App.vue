@@ -59,4 +59,13 @@ button {
 	flex-direction: column;
 	position: relative;
 }
+
+.btn-primary {
+	font-size: 16px;
+	color: white;
+	width: 108px;
+	border-radius: 18px;
+	height: 36px;
+	background-color: rgb(203, 74, 64);
+}
 </style>

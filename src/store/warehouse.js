@@ -208,7 +208,46 @@ const transport = [
 	},
 ];
 
+const works = ["航空飞机", "轨道交通", "物流车队", "大型商超", "船舶标识"];
+
+const logosSize = [
+	{
+		width: "180px",
+		height: "72px",
+	},
+	{
+		width: "320px",
+		height: "170px",
+	},
+	{
+		width: "160px",
+		height: "72px",
+	},
+	{
+		width: "160px",
+		height: "72px",
+	},
+	{
+		width: "160px",
+		height: "72px",
+	},
+	{
+		width: "90px",
+		height: "90px",
+	},
+	{
+		width: "160px",
+		height: "72px",
+	},
+	{
+		width: "160px",
+		height: "72px",
+	},
+];
+
 export default {
 	tabs,
 	transport,
+	works,
+	logosSize,
 };

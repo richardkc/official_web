@@ -11,7 +11,10 @@
 				<div class="infoDetail">
 					<div class="title">“科技、灵感，一切皆可创新”</div>
 					<div class="content">
-						2005年，深圳市大昆仑数码科技有限公司成立，公司秉承特区精神，自觉担当时代赋予的使命，立足行业，不断创新，以推动中国绿色环保事业前行为己任。公司自创建以来，一路积累了大量丰富的行业管理经验和服务经营理念。通过提供全线设计、策划、制作和标示材料，与国内众多品牌企业建立了长效稳固的合作关系，在包括但不限于飞机、轨道交通、公交车身广告、大型商超装饰的应用上一直提供一流国际化水准的科技应用和服务系统。
+						2005年，深圳市大昆仑数码科技有限公司成立，公司秉承特区精神，自觉担当时代赋予的使命，
+						立足行业，不断创新，以推动中国绿色环保事业前行为己任。公司自创建以来，一路积累了大量丰富的行业管理经验和服务经营理念。
+						通过提供全线设计、策划、制作和标示材料，与国内众多品牌企业建立了长效稳固的合作关系，在包括但不限于飞机、轨道交通、
+						公交车身广告、大型商超装饰的应用上一直提供一流国际化水准的科技应用和服务系统。
 					</div>
 					<button class="more">查看更多</button>
 				</div>
@@ -38,13 +41,14 @@
 			<div class="RDCenter" :style="{ height: RDcenterHeight + 'px' }">
 				<div class="title">
 					<div class="name">研发中心</div>
-					<button class="more">更多详情</button>
+					<button class="btn-primary">更多详情</button>
 				</div>
 				<div class="detail">
 					<img src="../assets/images/RDCenter.jpg" />
 					<div class="content">
 						<div>
-							大昆仑通过与沃尔玛中国、顺丰集团、深圳地铁、东航、南航、海航、3M等各大公司的业务合作及促进，近年来，公司不断加大投入，通过自主开发、设备改造、技术升级等方式，升级研发设备。
+							大昆仑通过与沃尔玛中国、顺丰集团、深圳地铁、东航、南航、海航、3M等各大公司的业务合作及促进，
+							近年来，公司不断加大投入，通过自主开发、设备改造、技术升级等方式，升级研发设备。
 						</div>
 						<div>
 							同时，为确保研发的投入规模、规范中心建设，特别制定了《研发中心管理制度》，从制度层面提升研发中心的管理水平和发展后劲。
@@ -58,15 +62,181 @@
 		</section>
 		<section class="section_4">
 			<img class="coverImg" src="../assets/images/firstPage_3.jpg" />
+			<div class="successWork">
+				<div class="works">
+					<div>
+						<div class="line"></div>
+						<ul>
+							<li v-for="(item, index) in works" :key="index">
+								<div></div>
+								{{ item }}
+							</li>
+						</ul>
+					</div>
+					<button class="btn-primary">更多案例</button>
+				</div>
+				<div class="carousel">
+					<div class="contents">
+						<img src="../assets/images/works_1.jpg" />
+					</div>
+					<div class="carouselFooter">
+						<Switch-button type="pre" />
+						<div class="footerContent">
+							<span>顺丰速运</span>
+							<span>跨越速运</span>
+							<span>德邦速运</span>
+						</div>
+						<Switch-button type="next" />
+					</div>
+				</div>
+			</div>
+			<div class="mediaAndDesign">
+				<div class="designs">
+					<img src="../assets/images/design/design_1.jpg" />
+					<div class="designName">
+						<div>品牌视觉包装解决方案</div>
+						<div>商业广告宣传设计</div>
+						<div>航空媒体资源广告投放洽谈</div>
+					</div>
+				</div>
+				<div class="designDetail">
+					<div>
+						作为一种新的图形技术，广告客户现在可以使用令人过目不忘的图形图像，在平均2.5小时的飞行时
+						间内，在机舱内外将品牌的关键信息，直接展示在大量具有较高消费能力的优质客户面前。没有其他
+						场地提供这种类型的环境。
+					</div>
+					<div>
+						研究表明，超过80%的乘客能够轻松地回忆起飞机旅途中富有创造性的品牌或产品广告;
+					</div>
+					<div>目标客户群体精准，可以帮助品牌客户在精准客户群体的品牌塑造;</div>
+				</div>
+			</div>
+			<div class="news">
+				<div class="left">
+					<div class="small">
+						<img src="../assets/images/news/news_1.jpg" />
+						<img src="../assets/images/news/news_2.jpg" />
+						<img src="../assets/images/news/news_3.jpg" />
+					</div>
+					<div class="big">
+						<img src="../assets/images/news/news_4.jpg" />
+						<img src="../assets/images/news/news_5.jpg" />
+					</div>
+				</div>
+				<div class="right">
+					<img src="../assets/images/news/news_6.jpg" />
+				</div>
+			</div>
+			<div class="partner">
+				<button class="btn-primary">更多伙伴</button>
+				<div class="partners">
+					<Switch-button type="pre" />
+					<div class="logos">
+						<div class="logoRow">
+							<img
+								:style="[logosSize[0]]"
+								src="../assets/images/logos/logos_1.jpg"
+							/>
+							<img
+								:style="[logosSize[1]]"
+								src="../assets/images/logos/logos_2.jpg"
+							/>
+						</div>
+						<div class="logoRow">
+							<img
+								:style="[logosSize[2]]"
+								src="../assets/images/logos/logos_3.jpg"
+							/>
+							<img
+								:style="[logosSize[3]]"
+								src="../assets/images/logos/logos_4.jpg"
+							/>
+							<img
+								:style="[logosSize[4]]"
+								src="../assets/images/logos/logos_5.jpg"
+							/>
+						</div>
+						<div class="logoRow">
+							<img
+								:style="[logosSize[5]]"
+								src="../assets/images/logos/logos_6.jpg"
+							/>
+							<img
+								:style="[logosSize[6]]"
+								src="../assets/images/logos/logos_7.jpg"
+							/>
+							<img
+								:style="[logosSize[7]]"
+								src="../assets/images/logos/logos_8.jpg"
+							/>
+						</div>
+					</div>
+					<Switch-button type="next" />
+				</div>
+			</div>
+			<div class="contact">
+				<div class="map">
+					<img src="../assets/images/map.jpg" />
+				</div>
+				<div class="contactForm">
+					<div class="detail">
+						<div class="title">
+							如需了解公司更多详情，请填写以下信息，方便与您联系
+						</div>
+						<div class="titleEn">
+							If you want to know more about the company, please fill in the
+							following information to facilitate contact with you
+						</div>
+						<div class="form">
+							<div class="formItem">
+								<div>
+									<label>名字</label>
+									<input placeholder="Name" />
+								</div>
+								<div>
+									<label>手机</label>
+									<input placeholder="Phone" />
+								</div>
+							</div>
+							<div class="formItem">
+								<label>邮箱</label>
+								<input placeholder="E-Mail" />
+							</div>
+							<div class="formItem">
+								<label>地址</label>
+								<input placeholder="Address" />
+							</div>
+							<div class="submit">
+								<button class="btn-primary">提交表格</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 		<section class="section_5">
 			<img class="coverImg" src="../assets/images/firstPage_4.jpg" />
+			<div class="companyInfo">
+				<div>
+					<div>深圳市大昆仑数码有限公司</div>
+					<div>深圳市龙岗区坂田街道布龙路227号格泰隆·智谷C栋4楼</div>
+				</div>
+				<div>
+					<div>0755-8322 6566</div>
+					<div>13509662539 / 13322991093</div>
+				</div>
+				<div>
+					<div>szdkl@foxmail.com</div>
+					<div>www.smdkl.cn</div>
+				</div>
+			</div>
 		</section>
 	</main>
 </template>
 
 <script>
 import store from "../store/warehouse";
+import SwitchButton from "../components/switchButton";
 
 export default {
 	name: "FirstPage",
@@ -76,10 +246,15 @@ export default {
 	data() {
 		return {
 			transport: store.transport,
+			works: store.works,
+			logosSize: store.logosSize,
 			coverWidth: document.body.clientWidth,
 			coverHeight: document.body.clientWidth * 0.6,
 			RDcenterHeight: document.body.clientWidth * 0.387,
 		};
+	},
+	components: {
+		"Switch-button": SwitchButton,
 	},
 };
 </script>
@@ -110,6 +285,8 @@ export default {
 .section_3,
 .section_4,
 .section_5 {
+	position: relative;
+
 	.coverImg {
 		display: block;
 		width: 100%;
@@ -284,15 +461,6 @@ export default {
 		.name {
 			font-size: 40px;
 		}
-
-		.more {
-			font-size: 16px;
-			color: white;
-			width: 108px;
-			border-radius: 18px;
-			height: 36px;
-			background-color: rgb(203, 74, 64);
-		}
 	}
 
 	.detail {
@@ -310,6 +478,349 @@ export default {
 			line-height: 20px;
 			margin-top: 66px;
 			color: rgb(153, 153, 153);
+		}
+	}
+}
+
+.section_4 {
+	.successWork {
+		position: absolute;
+		width: 80%;
+		height: 10%;
+		top: 4%;
+		left: 10%;
+		display: flex;
+		justify-content: center;
+
+		.works > div {
+			position: relative;
+		}
+
+		.works {
+			width: 30%;
+			height: 100%;
+
+			button {
+				margin-left: 20%;
+			}
+
+			.line {
+				width: 0;
+				height: 420px;
+				border: 1px solid rgb(212, 212, 212);
+				margin-left: 34%;
+				margin-bottom: 160px;
+			}
+
+			ul {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				color: rgb(102, 102, 102);
+				font-size: 16px;
+
+				li {
+					margin-bottom: 16px;
+				}
+			}
+		}
+
+		.carousel {
+			width: 70%;
+			height: 100%;
+
+			.contents {
+				width: 100%;
+				padding: 20% 6% 0 8%;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+
+		.carouselFooter {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 70%;
+			margin-left: 15%;
+			margin-top: 78px;
+		}
+
+		.footerContent {
+			width: 60%;
+			display: flex;
+			justify-content: space-around;
+			color: rgb(102, 102, 102);
+		}
+	}
+
+	.mediaAndDesign {
+		position: absolute;
+		width: 100%;
+		height: 15%;
+		top: 30%;
+		left: 0;
+		display: flex;
+		justify-content: flex-start;
+
+		.designs {
+			width: 70%;
+			height: 100%;
+			position: relative;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.designName {
+			position: absolute;
+			left: 100%;
+			top: 64px;
+
+			div {
+				height: 48px;
+				line-height: 48px;
+				background-color: rgb(153, 153, 153);
+				font-size: 18px;
+				padding: 0 8px;
+				color: white;
+			}
+
+			div:nth-child(1) {
+				width: 235px;
+			}
+
+			div:nth-child(2) {
+				width: 200px;
+				margin-top: -8px;
+				background-color: rgb(128, 128, 128);
+			}
+
+			div:nth-child(3) {
+				width: 270px;
+			}
+		}
+
+		.designDetail {
+			width: 24%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			color: rgb(102, 102, 102);
+			padding: 56px 64px;
+			line-height: 20px;
+
+			div {
+				margin-bottom: 14px;
+			}
+		}
+	}
+
+	.news {
+		position: absolute;
+		top: 54.2%;
+		left: 14%;
+		height: 10%;
+		width: 74%;
+		display: flex;
+		justify-content: center;
+
+		.left,
+		.right {
+			width: 50%;
+			height: 100%;
+			position: relative;
+		}
+
+		.left {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+
+		.small {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 8px;
+
+			img {
+				width: 32%;
+			}
+
+			img:last-child {
+				margin: 0 !important;
+			}
+		}
+
+		.big {
+			img {
+				width: 100%;
+				display: block;
+			}
+		}
+
+		.right {
+			display: flex;
+			align-items: flex-end;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.partner {
+		position: absolute;
+		top: 72%;
+		left: 15%;
+		width: 75%;
+		height: 10%;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+
+		.partners {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+			img {
+				display: block;
+				width: 166px;
+			}
+		}
+
+		.logos {
+			margin: 16px;
+		}
+
+		.logoRow {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 64px;
+			margin-top: 64px;
+		}
+	}
+
+	.contact {
+		position: absolute;
+		top: 89.5%;
+		left: 15%;
+		height: 9%;
+		width: 80%;
+		display: flex;
+		justify-content: space-between;
+
+		.map {
+			width: 45%;
+			height: 100%;
+
+			img {
+				width: 430px;
+				height: 350px;
+			}
+		}
+
+		.contactForm {
+			width: 55%;
+			height: 100%;
+		}
+
+		.title {
+			width: 100%;
+			text-align: center;
+			font-size: 15px;
+			font-weight: bold;
+			line-height: 24px;
+			margin-bottom: 8px;
+		}
+
+		.titleEn {
+			width: 80%;
+			margin: auto;
+			text-align: center;
+			line-height: 18px;
+		}
+
+		.form {
+			width: 100%;
+
+			.formItem {
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				margin-top: 12px;
+				border-bottom: 1px solid rgb(212, 212, 212);
+			}
+
+			.formItem:first-child {
+				display: flex;
+				justify-content: space-between;
+				border: none;
+
+				div {
+					border-bottom: 1px solid rgb(212, 212, 212);
+					width: 48%;
+				}
+			}
+
+			.formItem:last-child {
+				border: none;
+			}
+
+			label {
+				width: 40px;
+				display: inline-block;
+			}
+
+			.input {
+				display: inline-block;
+				width: calc(100% - 40px);
+				color: rgb(204, 204, 204);
+			}
+
+			.submit {
+				width: 100%;
+				height: 64px;
+				justify-content: center;
+				display: flex;
+				align-items: flex-end;
+			}
+		}
+	}
+}
+
+.section_5 {
+	position: relative;
+
+	.companyInfo {
+		position: absolute;
+		top: 50%;
+		left: 56%;
+		width: 80%;
+		color: white;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.companyInfo > div {
+		width: 25%;
+		line-height: 22px;
+	}
+
+	.companyInfo > div:first-child {
+		width: 35%;
+
+		div:first-child {
+			font-size: 16px;
+			letter-spacing: 2px;
 		}
 	}
 }
