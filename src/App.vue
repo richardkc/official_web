@@ -24,6 +24,9 @@ export default {
 			console.log("isScroll?", isScroll);
 		},
 	},
+	mounted() {
+		document.dispatchEvent(new Event("render-event"));
+	},
 };
 </script>
 
