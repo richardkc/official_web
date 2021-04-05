@@ -170,6 +170,45 @@ const tabs = [
 	},
 ];
 
+const transport = [
+	{
+		name: "航空标识",
+		English: "Airline",
+		key: 1,
+	},
+	{
+		name: "物流车队",
+		English: "Train",
+		key: 2,
+	},
+	{
+		name: "轨道交通",
+		English: "Truck",
+		key: 3,
+	},
+	{
+		name: "大型商超",
+		English: "Supermarket",
+		key: 4,
+	},
+	{
+		name: "船舶标识",
+		English: "Ship",
+		key: 5,
+	},
+	{
+		name: "建筑装饰",
+		English: "Building",
+		key: 6,
+	},
+	{
+		name: "3M全系列贴膜特约经销商",
+		English: "3m Film",
+		key: 7,
+	},
+];
+
 export default {
 	tabs,
+	transport,
 };

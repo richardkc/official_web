@@ -100,7 +100,8 @@ export default {
 
 	.logo {
 		display: block;
-		width: 10%;
+		width: 140px;
+		height: 78px;
 		z-index: 999;
 		margin: 12px;
 	}
