@@ -213,35 +213,27 @@ const works = ["航空飞机", "轨道交通", "物流车队", "大型商超", "
 const logosSize = [
 	{
 		width: "7.2rem",
-		height: "2.88rem",
 	},
 	{
 		width: "12.8rem",
-		height: "170px",
 	},
 	{
 		width: "6.4rem",
-		height: "2.88rem",
 	},
 	{
 		width: "6.4rem",
-		height: "2.88rem",
 	},
 	{
 		width: "6.4rem",
-		height: "2.88rem",
 	},
 	{
 		width: "3.6rem",
-		height: "3.6rem",
 	},
 	{
 		width: "6.4rem",
-		height: "2.88rem",
 	},
 	{
 		width: "6.4rem",
-		height: "2.88rem",
 	},
 ];
 
