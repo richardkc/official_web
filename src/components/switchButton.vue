@@ -15,9 +15,9 @@ export default {
 
 <style scoped>
 .switchButton {
-	width: 32px;
-	height: 32px;
-	border-radius: 16px;
+	width: 1.28rem;
+	height: 1.28rem;
+	border-radius: 0.64rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;

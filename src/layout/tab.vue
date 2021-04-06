@@ -81,7 +81,7 @@ export default {
 	left: 0;
 	right: 0;
 	width: 100%;
-	height: 100px;
+	height: 4rem;
 	display: flex;
 	justify-content: space-between;
 	z-index: 999;
@@ -100,10 +100,10 @@ export default {
 
 	.logo {
 		display: block;
-		width: 140px;
-		height: 78px;
+		width: 5.6rem;
+		height: 3.12rem;
 		z-index: 999;
-		margin: 12px;
+		margin: 0.5rem;
 	}
 
 	.navList {
@@ -117,7 +117,7 @@ export default {
 		width: 100%;
 		display: flex;
 		justify-content: flex-end;
-		margin-bottom: 12px;
+		margin-bottom: 0.5rem;
 	}
 
 	.navList > ul > li {
@@ -129,24 +129,24 @@ export default {
 	.tool {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 12px;
-		height: 26px;
+		margin-bottom: 0.5rem;
+		height: 1rem;
 		margin-right: 1.8%;
 	}
 
 	.login {
-		margin-right: 8px;
-		width: 54px;
-		line-height: 24px;
+		margin-right: 0.32rem;
+		width: 2.16rem;
+		line-height: 1rem;
 		text-align: center;
 		border: 1px solid white;
-		border-radius: 12px;
+		border-radius: 0.5rem;
 	}
 
 	.language {
 		height: 100%;
-		width: 26px;
-		line-height: 26px;
+		width: 1rem;
+		line-height: 1rem;
 		text-align: center;
 		border-radius: 50%;
 		color: black;
@@ -157,15 +157,15 @@ export default {
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		top: 20px;
+		top: 0.8rem;
 		left: 50%;
 		transform: translate(-50%, 0);
-		padding: 8px 16px;
+		padding: 0.32rem 0.64rem;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 1);
 
 		li {
-			margin-bottom: 8px;
+			margin-bottom: 0.32rem;
 		}
 	}
 }

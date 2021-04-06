@@ -212,36 +212,36 @@ const works = ["航空飞机", "轨道交通", "物流车队", "大型商超", "
 
 const logosSize = [
 	{
-		width: "180px",
-		height: "72px",
+		width: "7.2rem",
+		height: "2.88rem",
 	},
 	{
-		width: "320px",
+		width: "12.8rem",
 		height: "170px",
 	},
 	{
-		width: "160px",
-		height: "72px",
+		width: "6.4rem",
+		height: "2.88rem",
 	},
 	{
-		width: "160px",
-		height: "72px",
+		width: "6.4rem",
+		height: "2.88rem",
 	},
 	{
-		width: "160px",
-		height: "72px",
+		width: "6.4rem",
+		height: "2.88rem",
 	},
 	{
-		width: "90px",
-		height: "90px",
+		width: "3.6rem",
+		height: "3.6rem",
 	},
 	{
-		width: "160px",
-		height: "72px",
+		width: "6.4rem",
+		height: "2.88rem",
 	},
 	{
-		width: "160px",
-		height: "72px",
+		width: "6.4rem",
+		height: "2.88rem",
 	},
 ];
 

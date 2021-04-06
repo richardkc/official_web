@@ -7,6 +7,11 @@
 import Tab from "@/layout/tab";
 import store from "@/store/warehouse";
 
+const fontSizeChange = () => {
+	document.documentElement.style.fontSize =
+		12 * (document.documentElement.clientWidth / 640) + "px";
+};
+
 export default {
 	name: "App",
 	data() {
@@ -26,6 +31,14 @@ export default {
 	},
 	mounted() {
 		document.dispatchEvent(new Event("render-event"));
+
+		fontSizeChange();
+		window.addEventListener("resize", fontSizeChange, false);
+		window.addEventListener("orientationchange", fontSizeChange, false);
+	},
+	unmounted() {
+		window.removeEventListener("resize", fontSizeChange);
+		window.removeEventListener("orientationchange", fontSizeChange);
 	},
 };
 </script>
@@ -42,7 +55,7 @@ body {
 	text-rendering: geometricPrecision;
 	-webkit-font-smoothing: subpixel-antialiased;
 	min-height: 100vh;
-	font-size: 12px;
+	font-size: 0.5rem;
 	cursor: default;
 }
 
@@ -64,11 +77,11 @@ button {
 }
 
 .btn-primary {
-	font-size: 16px;
+	font-size: 0.6rem;
 	color: white;
-	width: 108px;
-	border-radius: 18px;
-	height: 36px;
+	width: 4.32rem;
+	border-radius: 0.72rem;
+	height: 1.44rem;
 	background-color: rgb(203, 74, 64);
 }
 </style>
