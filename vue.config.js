@@ -1,6 +1,7 @@
 const PrerenderSPAPlugin = require("prerender-spa-plugin");
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	// 基本路径 baseURL已经过时
@@ -37,6 +38,11 @@ module.exports = {
 						// 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
 						renderAfterDocumentEvent: "render-event",
 					}),
+				}),
+				new webpack.ProvidePlugin({
+					$: "jquery",
+					jQuery: "jquery",
+					"windows.jQuery": "jquery",
 				}),
 			],
 		};

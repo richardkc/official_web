@@ -39,7 +39,7 @@
 		</section>
 		<section class="section_3">
 			<div class="RDCenter" :style="{ height: RDcenterHeight + 'px' }">
-				<div class="title">
+				<div class="title" id="pageSize">
 					<div class="name">研发中心</div>
 					<button class="btn-primary">更多详情</button>
 				</div>
