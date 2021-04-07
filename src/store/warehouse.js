@@ -32,33 +32,34 @@ const tabs = [
 		key: "2",
 		children: [
 			{
-				name: "航空标识工程及贴膜工艺解决方案",
+				name: "航空标识贴膜工艺解决方案",
 				router: "/profile",
 				key: "2-1",
 			},
 			{
-				name: "物流车队标识及贴膜工艺解决方案",
-				router: "/culture",
+				name: "轨道交通标识贴膜工艺解决方案",
+				router: "/expirence",
 				key: "2-2",
 			},
 			{
-				name: "轨道交通标识工程及贴膜工艺解决方案",
-				router: "/expirence",
+				name: "物流车队标识贴膜工艺解决方案",
+				router: "/culture",
 				key: "2-3",
 			},
+			
 			{
-				name: "船舶标识工程及贴膜工艺解决方案",
+				name: "船舶标识贴膜工艺解决方案",
 				router: "/qualification",
 				key: "2-4",
 			},
 			{
-				name: "建筑装饰贴膜解决方案",
-				router: "/culture",
+				name: "大型商超标识系统解决方案",
+				router: "/expirence",
 				key: "2-5",
 			},
 			{
-				name: "大型商超标识系统解决方案",
-				router: "/expirence",
+				name: "建筑装饰贴膜解决方案",
+				router: "/culture",
 				key: "2-6",
 			},
 			{
@@ -80,27 +81,27 @@ const tabs = [
 		key: "4",
 		children: [
 			{
-				name: "航空飞机标识成功案例",
+				name: "航空飞机标识",
 				router: "/",
 				key: "4-1",
 			},
 			{
-				name: "轨道交通标识成功案例",
+				name: "轨道交通标识",
 				router: "/",
 				key: "4-2",
 			},
 			{
-				name: "物流车队标识成功案例",
+				name: "物流车队标识",
 				router: "/",
 				key: "4-3",
 			},
 			{
-				name: "大型商超标识系统案例",
+				name: "大型商超标识",
 				router: "/",
 				key: "4-4",
 			},
 			{
-				name: "船舶标识工程成功案例",
+				name: "船舶标识工程",
 				router: "/",
 				key: "4-5",
 			},

@@ -20,8 +20,8 @@
 				</div>
 			</div>
 			<div class="solution">
-				<div v-for="item in transport" :key="item.key">
-					<div class="imgWrap" :class="[`imgWrap_${item.key}`]">
+				<div v-for="(item,index) in transport" :key="item.key">
+					<div class="imgWrap" :class="[`imgWrap_${item.key}`,activeForSolution == index ? 'active':'']" @click="isActive('activeForSolution',index)" >
 						<div>
 							<img
 								:src="
@@ -65,13 +65,15 @@
 			<div class="successWork">
 				<div class="works">
 					<div>
-						<div class="line"></div>
+						<div class="line">
 						<ul>
-							<li v-for="(item, index) in works" :key="index">
-								<div></div>
+							<li :class="activeForSuccessWork == index ? 'active':''" @click="isActive('activeForSuccessWork',index)" v-for="(item, index) in works" :key="index">
 								{{ item }}
 							</li>
+							
 						</ul>
+						</div>
+						
 					</div>
 					<button class="btn-primary">更多案例</button>
 				</div>
@@ -245,6 +247,8 @@ export default {
 	},
 	data() {
 		return {
+			activeForSuccessWork: 0,
+			activeForSolution: 0,
 			transport: store.transport,
 			works: store.works,
 			logosSize: store.logosSize,
@@ -252,6 +256,11 @@ export default {
 			coverHeight: document.body.clientWidth * 0.6,
 			RDcenterHeight: document.body.clientWidth * 0.387,
 		};
+	},
+	methods:{
+		isActive(k,v) {
+        	this[k] = v;
+    	}
 	},
 	components: {
 		"Switch-button": SwitchButton,
@@ -340,7 +349,7 @@ export default {
 
 	.content {
 		width: 100%;
-		font-weight: lighter;
+		font-weight: bold;
 	}
 
 	.more {
@@ -368,6 +377,7 @@ export default {
 		display: flex;
 		justify-content: space-around;
 		color: rgb(102, 102, 102);
+		
 	}
 
 	.transDetail {
@@ -435,6 +445,9 @@ export default {
 		.imgWrap_7 {
 			padding: 0.68rem 1.12rem;
 		}
+		.active{
+			background-color: rgb(179,179,179);
+		}
 
 		img {
 			width: 1.92rem;
@@ -451,6 +464,10 @@ export default {
 		color: white;
 	}
 
+	.content{
+		font-weight:bold;
+	}
+
 	.title {
 		height: 100%;
 		width: 18%;
@@ -460,6 +477,7 @@ export default {
 
 		.name {
 			font-size: 1.6rem;
+			color: rgb(204,76,67);
 		}
 	}
 
@@ -510,6 +528,29 @@ export default {
 				border: 1px solid rgb(212, 212, 212);
 				margin-left: 34%;
 				margin-bottom: 6.4rem;
+				ul{
+					position: relative;
+					left: -0.325rem;
+					li:before{
+						display: inline-block;
+						background-color:rgba(255, 255, 255,0);
+						width: 0.65rem;
+						height: 0.65rem;
+						border-radius: 50%;
+						content:"";
+						margin-right: 0.2083rem;
+					}
+					.active:before{
+						background-color:red;
+					}
+					.active{
+						color: red;
+					}
+					li{
+						width: 4rem;
+					}
+				}
+				
 			}
 
 			ul {
