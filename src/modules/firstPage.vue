@@ -20,8 +20,15 @@
 				</div>
 			</div>
 			<div class="solution">
-				<div v-for="item in transport" :key="item.key">
-					<div class="imgWrap" :class="[`imgWrap_${item.key}`]">
+				<div v-for="(item, index) in transport" :key="item.key">
+					<div
+						class="imgWrap"
+						:class="[
+							`imgWrap_${item.key}`,
+							activeForSolution == index ? 'active' : '',
+						]"
+						@click="isActive('activeForSolution', index)"
+					>
 						<div>
 							<img
 								:src="
@@ -65,13 +72,18 @@
 			<div class="successWork">
 				<div class="works">
 					<div>
-						<div class="line"></div>
-						<ul>
-							<li v-for="(item, index) in works" :key="index">
-								<div></div>
-								{{ item }}
-							</li>
-						</ul>
+						<div class="line">
+							<ul>
+								<li
+									:class="activeForSuccessWork == index ? 'active' : ''"
+									@click="isActive('activeForSuccessWork', index)"
+									v-for="(item, index) in works"
+									:key="index"
+								>
+									{{ item }}
+								</li>
+							</ul>
+						</div>
 					</div>
 					<button class="btn-primary">更多案例</button>
 				</div>
@@ -245,6 +257,8 @@ export default {
 	},
 	data() {
 		return {
+			activeForSuccessWork: 0,
+			activeForSolution: 0,
 			transport: store.transport,
 			works: store.works,
 			logosSize: store.logosSize,
@@ -252,6 +266,11 @@ export default {
 			coverHeight: document.body.clientWidth * 0.6,
 			RDcenterHeight: document.body.clientWidth * 0.387,
 		};
+	},
+	methods: {
+		isActive(k, v) {
+			this[k] = v;
+		},
 	},
 	components: {
 		"Switch-button": SwitchButton,
@@ -340,7 +359,7 @@ export default {
 
 	.content {
 		width: 100%;
-		font-weight: lighter;
+		font-weight: bold;
 	}
 
 	.more {
@@ -435,6 +454,9 @@ export default {
 		.imgWrap_7 {
 			padding: 0.68rem 1.12rem;
 		}
+		.active {
+			background-color: rgb(179, 179, 179);
+		}
 
 		img {
 			width: 1.92rem;
@@ -451,6 +473,10 @@ export default {
 		color: white;
 	}
 
+	.content {
+		font-weight: bold;
+	}
+
 	.title {
 		height: 100%;
 		width: 18%;
@@ -460,6 +486,7 @@ export default {
 
 		.name {
 			font-size: 1.6rem;
+			color: rgb(203, 74, 64);
 		}
 	}
 
@@ -486,7 +513,6 @@ export default {
 	.successWork {
 		position: absolute;
 		width: 80%;
-		height: 10%;
 		top: 4%;
 		left: 10%;
 		display: flex;
@@ -494,6 +520,8 @@ export default {
 
 		.works > div {
 			position: relative;
+			margin-bottom: 6.4rem;
+			padding-left: 34%;
 		}
 
 		.works {
@@ -505,14 +533,14 @@ export default {
 			}
 
 			.line {
-				width: 0;
+				width: 100%;
 				height: 16.8rem;
-				border: 1px solid rgb(212, 212, 212);
-				margin-left: 34%;
-				margin-bottom: 6.4rem;
+				border-left: 2px solid rgb(212, 212, 212);
 			}
 
 			ul {
+				position: relative;
+				margin-left: calc(-0.325rem + 2px);
 				position: absolute;
 				top: 50%;
 				left: 50%;
@@ -520,7 +548,26 @@ export default {
 				color: rgb(102, 102, 102);
 				font-size: 0.65rem;
 
+				li:before {
+					display: inline-block;
+					background-color: rgba(255, 255, 255, 0);
+					width: 0.65rem;
+					height: 0.65rem;
+					border-radius: 50%;
+					content: "";
+					margin-right: 0.65rem;
+				}
+
+				.active:before {
+					background-color: rgba(203, 74, 64);
+				}
+
+				.active {
+					color: rgba(203, 74, 64);
+				}
+
 				li {
+					width: 4rem;
 					margin-bottom: 0.64rem;
 				}
 			}
