@@ -27,7 +27,10 @@
 						}
 					"
 				>
-					<div class="listName">
+					<div
+						class="listName"
+						:class="{ selected: selectedKey === listIndex }"
+					>
 						{{ list.name }}
 					</div>
 					<ul
@@ -195,6 +198,10 @@ export default {
 		li {
 		}
 	}
+}
+
+.selected {
+	color: rgb(203, 74, 64);
 }
 
 .navBtn {
