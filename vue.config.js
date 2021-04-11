@@ -77,15 +77,15 @@ module.exports = {
 	// see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
 	pwa: {},
 	// webpack-dev-server 相关配置
-	// devServer: {
-	// 	open: process.platform === "darwin",
-	// 	disableHostCheck: true,
-	// 	host: "www.test.com", //如果是真机测试，就使用这个IP
-	// 	port: 8080,
-	// 	https: false,
-	// 	hotOnly: false,
-	// 	before: () => {},
-	// },
+	devServer: {
+		// open: process.platform === "darwin",
+		// disableHostCheck: true,
+		// host: "192.168.31.157", //如果是真机测试，就使用这个IP
+		// port: 8080,
+		// https: false,
+		// hotOnly: false,
+		// before: () => {},
+	},
 	// 第三方插件配置
 	pluginOptions: {
 		// ...

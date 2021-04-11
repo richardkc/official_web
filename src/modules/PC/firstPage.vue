@@ -1,13 +1,13 @@
 <template>
 	<main class="firstPage" scroll>
 		<section class="section_1">
-			<img class="coverImg" src="../assets/images/firstPage_1.jpg" />
+			<img class="coverImg" src="../../assets/images/firstPage_1.jpg" />
 		</section>
 		<section class="section_2">
-			<img class="coverImg" src="../assets/images/firstPage_2.jpg" />
+			<img class="coverImg" src="../../assets/images/firstPage_2.jpg" />
 			<div class="companyInfo">
-				<img class="about_1" src="../assets/images/about_1.jpg" />
-				<img class="about_2" src="../assets/images/about_2.jpg" />
+				<img class="about_1" src="../../assets/images/about_1.jpg" />
+				<img class="about_2" src="../../assets/images/about_2.jpg" />
 				<div class="infoDetail">
 					<div class="title">“科技、灵感，一切皆可创新”</div>
 					<div class="content">
@@ -32,7 +32,7 @@
 						<div>
 							<img
 								:src="
-									require(`../assets/images/transport/trans_${item.key}.png`)
+									require(`../../assets/images/transport/trans_${item.key}.png`)
 								"
 							/>
 						</div>
@@ -51,7 +51,7 @@
 					<button class="btn-primary">更多详情</button>
 				</div>
 				<div class="detail">
-					<img src="../assets/images/RDCenter.jpg" />
+					<img src="../../assets/images/RDCenter.jpg" />
 					<div class="content">
 						<div>
 							大昆仑通过与沃尔玛中国、顺丰集团、深圳地铁、东航、南航、海航、3M等各大公司的业务合作及促进，
@@ -68,7 +68,7 @@
 			</div>
 		</section>
 		<section class="section_4">
-			<img class="coverImg" src="../assets/images/firstPage_3.jpg" />
+			<img class="coverImg" src="../../assets/images/firstPage_3.jpg" />
 			<div class="successWork">
 				<div class="works">
 					<div>
@@ -89,7 +89,7 @@
 				</div>
 				<div class="carousel">
 					<div class="contents">
-						<img src="../assets/images/works_1.jpg" />
+						<img src="../../assets/images/works_1.jpg" />
 					</div>
 					<div class="carouselFooter">
 						<Switch-button type="pre" />
@@ -104,7 +104,7 @@
 			</div>
 			<div class="mediaAndDesign">
 				<div class="designs">
-					<img src="../assets/images/design/design_1.jpg" />
+					<img src="../../assets/images/design/design_1.jpg" />
 					<div class="designName">
 						<div>品牌视觉包装解决方案</div>
 						<div>商业广告宣传设计</div>
@@ -126,17 +126,17 @@
 			<div class="news">
 				<div class="left">
 					<div class="small">
-						<img src="../assets/images/news/news_1.jpg" />
-						<img src="../assets/images/news/news_2.jpg" />
-						<img src="../assets/images/news/news_3.jpg" />
+						<img src="../../assets/images/news/news_1.jpg" />
+						<img src="../../assets/images/news/news_2.jpg" />
+						<img src="../../assets/images/news/news_3.jpg" />
 					</div>
 					<div class="big">
-						<img src="../assets/images/news/news_4.jpg" />
-						<img src="../assets/images/news/news_5.jpg" />
+						<img src="../../assets/images/news/news_4.jpg" />
+						<img src="../../assets/images/news/news_5.jpg" />
 					</div>
 				</div>
 				<div class="right">
-					<img src="../assets/images/news/news_6.jpg" />
+					<img src="../../assets/images/news/news_6.jpg" />
 				</div>
 			</div>
 			<div class="partner">
@@ -147,39 +147,39 @@
 						<div class="logoRow">
 							<img
 								:style="[logosSize[0]]"
-								src="../assets/images/logos/logos_1.jpg"
+								src="../../assets/images/logos/logos_1.jpg"
 							/>
 							<img
 								:style="[logosSize[1]]"
-								src="../assets/images/logos/logos_2.jpg"
+								src="../../assets/images/logos/logos_2.jpg"
 							/>
 						</div>
 						<div class="logoRow">
 							<img
 								:style="[logosSize[2]]"
-								src="../assets/images/logos/logos_3.jpg"
+								src="../../assets/images/logos/logos_3.jpg"
 							/>
 							<img
 								:style="[logosSize[3]]"
-								src="../assets/images/logos/logos_4.jpg"
+								src="../../assets/images/logos/logos_4.jpg"
 							/>
 							<img
 								:style="[logosSize[4]]"
-								src="../assets/images/logos/logos_5.jpg"
+								src="../../assets/images/logos/logos_5.jpg"
 							/>
 						</div>
 						<div class="logoRow">
 							<img
 								:style="[logosSize[5]]"
-								src="../assets/images/logos/logos_6.jpg"
+								src="../../assets/images/logos/logos_6.jpg"
 							/>
 							<img
 								:style="[logosSize[6]]"
-								src="../assets/images/logos/logos_7.jpg"
+								src="../../assets/images/logos/logos_7.jpg"
 							/>
 							<img
 								:style="[logosSize[7]]"
-								src="../assets/images/logos/logos_8.jpg"
+								src="../../assets/images/logos/logos_8.jpg"
 							/>
 						</div>
 					</div>
@@ -188,7 +188,7 @@
 			</div>
 			<div class="contact">
 				<div class="map">
-					<img src="../assets/images/map.jpg" />
+					<img src="../../assets/images/map.jpg" />
 				</div>
 				<div class="contactForm">
 					<div class="detail">
@@ -227,7 +227,7 @@
 			</div>
 		</section>
 		<section class="section_5">
-			<img class="coverImg" src="../assets/images/firstPage_4.jpg" />
+			<img class="coverImg" src="../../assets/images/firstPage_4.jpg" />
 			<div class="companyInfo">
 				<div>
 					<div>深圳市大昆仑数码有限公司</div>
@@ -247,8 +247,8 @@
 </template>
 
 <script>
-import store from "../store/warehouse";
-import SwitchButton from "../components/switchButton";
+import store from "../../store/warehouse";
+import SwitchButton from "../../components/switchButton";
 
 export default {
 	name: "FirstPage",
@@ -295,8 +295,21 @@ export default {
 		overflow: hidden;
 	}
 }
+
 .section_1 {
-	min-height: 100vh;
+	min-height: 31.8rem;
+}
+
+.section_2 {
+	min-height: 79.2rem;
+}
+
+.section_4 {
+	min-height: 158.66rem;
+}
+
+.section_5 {
+	min-height: 7.41rem;
 }
 
 .section_1,
@@ -486,7 +499,6 @@ export default {
 
 		.name {
 			font-size: 1.6rem;
-			color: rgb(203, 74, 64);
 		}
 	}
 

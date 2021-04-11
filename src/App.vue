@@ -1,11 +1,14 @@
 <template>
-	<Tab :tabInfo="tabInfo"></Tab>
-	<router-view></router-view>
+	<Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
+	<Tab v-if="isPC" :tabInfo="tabInfo"></Tab>
+	<router-view :isPC="isPC"></router-view>
 </template>
 
 <script>
 import Tab from "@/layout/tab";
+import MobileTab from "./layout/mobileTab";
 import store from "@/store/warehouse";
+import methods from "@/utils/basic";
 
 const fontSizeChange = () => {
 	document.documentElement.style.fontSize =
@@ -19,10 +22,12 @@ export default {
 			tabInfo: {
 				tabs: store.tabs,
 			},
+			isPC: methods.isPC(),
 		};
 	},
 	components: {
 		Tab: Tab,
+		MobileTab: MobileTab,
 	},
 	methods: {
 		documentScroll(isScroll) {
