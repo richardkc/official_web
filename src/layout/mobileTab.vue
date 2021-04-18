@@ -157,8 +157,8 @@ export default {
 
 	.navList > ul > li {
 		width: 100%;
-		min-height: 3rem;
-		line-height: 3rem;
+		min-height: 4rem;
+		line-height: 4rem;
 		white-space: nowrap;
 		position: relative;
 	}
