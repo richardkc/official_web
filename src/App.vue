@@ -56,17 +56,29 @@ export default {
 	box-sizing: border-box;
 }
 
+@font-face {
+	font-family: "pingfang";
+	src: url("./fonts/PingFangMedium.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	text-rendering: geometricPrecision;
 	-webkit-font-smoothing: subpixel-antialiased;
 	min-height: 100vh;
 	font-size: 0.5rem;
 	cursor: default;
+	font-family: "pingfang";
 }
 
 ul,
 li {
 	list-style: none;
+}
+
+input {
+	outline: none;
 }
 
 button {
