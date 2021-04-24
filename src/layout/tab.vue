@@ -168,6 +168,12 @@ export default {
 
 	.listName {
 		position: relative;
+
+		// &:hover {
+		// 	&::before {
+		// 		background-color: rgb(235, 74, 64);
+		// 	}
+		// }
 	}
 
 	.listName::before {

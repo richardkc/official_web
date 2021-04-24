@@ -10,10 +10,7 @@ import MobileTab from "./layout/mobileTab";
 import store from "@/store/warehouse";
 import methods from "@/utils/basic";
 
-const fontSizeChange = () => {
-	document.documentElement.style.fontSize =
-		12 * (document.documentElement.clientWidth / 640) + "px";
-};
+methods.fontSizeChange();
 
 export default {
 	name: "App",
@@ -37,13 +34,13 @@ export default {
 	mounted() {
 		document.dispatchEvent(new Event("render-event"));
 
-		fontSizeChange();
-		window.addEventListener("resize", fontSizeChange, false);
-		window.addEventListener("orientationchange", fontSizeChange, false);
+		methods.fontSizeChange();
+		window.addEventListener("resize", methods.fontSizeChange, false);
+		window.addEventListener("orientationchange", methods.fontSizeChange, false);
 	},
 	unmounted() {
-		window.removeEventListener("resize", fontSizeChange);
-		window.removeEventListener("orientationchange", fontSizeChange);
+		window.removeEventListener("resize", methods.fontSizeChange);
+		window.removeEventListener("orientationchange", methods.fontSizeChange);
 	},
 };
 </script>
@@ -57,7 +54,7 @@ export default {
 }
 
 @font-face {
-	font-family: "pingfang";
+	font-family: "PingFangMedium";
 	src: url("./fonts/PingFangMedium.ttf");
 	font-weight: normal;
 	font-style: normal;
@@ -69,7 +66,7 @@ body {
 	min-height: 100vh;
 	font-size: 0.5rem;
 	cursor: default;
-	font-family: "pingfang";
+	font-family: "PingFangMedium";
 }
 
 ul,

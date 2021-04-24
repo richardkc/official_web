@@ -20,6 +20,12 @@ const isPC = () => {
 	return flag;
 };
 
+const fontSizeChange = () => {
+	document.documentElement.style.fontSize =
+		12 * (document.documentElement.clientWidth / 640) + "px";
+};
+
 export default {
 	isPC,
+	fontSizeChange,
 };

@@ -4,7 +4,14 @@
 			<img class="coverImg" src="../../assets/images/firstPage_1.jpg" />
 		</section>
 		<section class="section_2">
-			<img class="coverImg" src="../../assets/images/firstPage_2.jpg" />
+			<!-- 关于我们 -->
+			<div class="companyInfo_name">
+				<img src="../../assets/images/companyInfo/info_name.png" />
+				<span class="title-span">关于我们</span>
+			</div>
+			<div class="companyInfo_background">
+				<img src="../../assets/images/companyInfo/info_background.png" />
+			</div>
 			<div class="companyInfo">
 				<img class="about_1" src="../../assets/images/about_1.jpg" />
 				<img class="about_2" src="../../assets/images/about_2.jpg" />
@@ -18,6 +25,14 @@
 					</div>
 					<button class="more">查看更多</button>
 				</div>
+			</div>
+			<!-- 行业解决方案 -->
+			<div class="solution_name">
+				<span class="title-span">行业解决方案</span>
+				<img src="../../assets/images/solution/solution_name.png" />
+			</div>
+			<div class="solution_background">
+				<img src="../../assets/images/solution/solution_background.png" />
 			</div>
 			<div class="solution">
 				<div v-for="(item, index) in transport" :key="item.key">
@@ -42,6 +57,10 @@
 						<div>{{ item.English }}</div>
 					</div>
 				</div>
+			</div>
+			<!-- 研发中心 -->
+			<div class="center_name">
+				<img src="../../assets/images/RDCenter/RDCenter_name.png" />
 			</div>
 		</section>
 		<section class="section_3">
@@ -68,7 +87,11 @@
 			</div>
 		</section>
 		<section class="section_4">
-			<img class="coverImg" src="../../assets/images/firstPage_3.jpg" />
+			<!-- 成功案例 -->
+			<div class="successWork_name">
+				<img src="../../assets/images/successWork/successWork_name.png" />
+				<span class="title-span">成功案例</span>
+			</div>
 			<div class="successWork">
 				<div class="works">
 					<div>
@@ -102,6 +125,11 @@
 					</div>
 				</div>
 			</div>
+			<!-- 媒体品牌设计 -->
+			<div class="mediaAndDesign_name">
+				<img src="../../assets/images/mediaAndDesign/mediaAndDesign_name.png" />
+				<span class="title-span">媒体、品牌设计</span>
+			</div>
 			<div class="mediaAndDesign">
 				<div class="designs">
 					<img src="../../assets/images/design/design_1.jpg" />
@@ -123,6 +151,14 @@
 					<div>目标客户群体精准，可以帮助品牌客户在精准客户群体的品牌塑造;</div>
 				</div>
 			</div>
+			<!-- 新闻中心 -->
+			<div class="news_name">
+				<span class="title-span">新闻公布中心</span>
+				<img src="../../assets/images/news/news_name.png" />
+			</div>
+			<div class="news_background">
+				<img src="../../assets/images/news/news_background.png" />
+			</div>
 			<div class="news">
 				<div class="left">
 					<div class="small">
@@ -138,6 +174,11 @@
 				<div class="right">
 					<img src="../../assets/images/news/news_6.jpg" />
 				</div>
+			</div>
+			<!-- 合作伙伴 -->
+			<div class="partner_name">
+				<img src="../../assets/images/partner/partner_name.png" />
+				<span class="title-span">合作伙伴</span>
 			</div>
 			<div class="partner">
 				<button class="btn-primary">更多伙伴</button>
@@ -185,6 +226,11 @@
 					</div>
 					<Switch-button type="next" />
 				</div>
+			</div>
+			<!-- 联系我们 -->
+			<div class="contact_name">
+				<img src="../../assets/images/contact/contact_name.png" />
+				<span class="title-span">联系我们</span>
 			</div>
 			<div class="contact">
 				<div class="map">
@@ -330,6 +376,33 @@ export default {
 .section_2 {
 	position: relative;
 
+	.companyInfo_name {
+		position: absolute;
+		top: 3.8%;
+		left: 11.5%;
+		color: rgba(203, 74, 64);
+		display: flex;
+		align-items: flex-start;
+
+		img {
+			width: 10.5rem;
+		}
+
+		span {
+			margin-left: 4rem;
+		}
+	}
+
+	.companyInfo_background {
+		position: absolute;
+		top: 12%;
+		left: 0;
+
+		img {
+			width: 100%;
+		}
+	}
+
 	.companyInfo {
 		position: absolute;
 		top: 14%;
@@ -389,6 +462,32 @@ export default {
 		cursor: pointer;
 	}
 
+	.solution_name {
+		position: absolute;
+		top: 49.7%;
+		right: 14.6%;
+		color: rgba(203, 74, 64);
+
+		img {
+			width: 17rem;
+		}
+
+		span {
+			margin-right: 10rem;
+		}
+	}
+
+	.solution_background {
+		position: absolute;
+		top: 61%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		img {
+			width: 52rem;
+		}
+	}
+
 	.solution {
 		position: absolute;
 		width: 74%;
@@ -433,6 +532,10 @@ export default {
 			background-color: rgba(203, 74, 64);
 			margin-bottom: 1rem;
 
+			&:hover {
+				background-color: #b3b3b3;
+			}
+
 			div {
 				height: 1.92rem;
 				display: flex;
@@ -473,6 +576,17 @@ export default {
 
 		img {
 			width: 1.92rem;
+		}
+	}
+
+	.center_name {
+		position: absolute;
+		bottom: 3%;
+		left: 15%;
+		color: rgba(203, 74, 64);
+
+		img {
+			width: 25rem;
 		}
 	}
 }
@@ -521,7 +635,112 @@ export default {
 	}
 }
 
+.title-span {
+	display: inline-block;
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: rgb(203, 74, 64);
+}
+
 .section_4 {
+	.successWork_name {
+		position: absolute;
+		top: 3.5%;
+		right: 15%;
+
+		img {
+			width: 19rem;
+		}
+
+		span {
+			font-size: 1.8rem !important;
+			position: absolute;
+			width: 8rem;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.mediaAndDesign_name {
+		position: absolute;
+		top: 24.2%;
+		left: 15%;
+
+		img {
+			width: 22rem;
+		}
+
+		span {
+			position: absolute;
+			white-space: nowrap;
+			top: 0;
+			right: 0;
+		}
+	}
+
+	.news_name {
+		position: absolute;
+		top: 48.5%;
+		right: 14%;
+
+		img {
+			width: 9.4rem;
+		}
+
+		span {
+			position: absolute;
+			width: 28rem;
+			bottom: 0.3rem;
+			right: 100%;
+		}
+	}
+
+	.news_background {
+		position: absolute;
+		top: 51.5%;
+		width: 100%;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.partner_name {
+		position: absolute;
+		top: 70%;
+		left: 15%;
+
+		img {
+			width: 13.6rem;
+		}
+
+		span {
+			position: absolute;
+			width: 20rem;
+			top: 100%;
+			left: 0;
+		}
+	}
+
+	.contact_name {
+		position: absolute;
+		top: 85.2%;
+		left: 15%;
+
+		img {
+			width: 18.4rem;
+		}
+
+		span {
+			font-size: 1.8rem;
+			width: 20rem;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			margin-left: 7rem;
+		}
+	}
+
 	.successWork {
 		position: absolute;
 		width: 80%;
