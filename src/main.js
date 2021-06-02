@@ -1,9 +1,17 @@
-import { createApp } from "vue";
+import Vue from "vue";
+import router from "./router";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 import App from "./App.vue";
-import router from "./router.js";
-import "@babel/polyfill";
 
-const app = createApp(App);
+// Vue.use(router);
+Vue.use(ElementUI);
 
-app.use(router);
-app.mount("#app");
+new Vue({
+  el: "#app",
+  router,
+  render: h => h(App),
+  mounted() {
+    document.dispatchEvent(new Event("render-event"));
+  }
+});
