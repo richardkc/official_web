@@ -293,7 +293,8 @@ export default {
       logosSize: store.logosSize,
       coverWidth: document.body.clientWidth,
       coverHeight: document.body.clientWidth * 0.6,
-      RDcenterHeight: document.body.clientWidth * 0.387
+      RDcenterHeight: document.body.clientWidth * 0.387,
+      homeImgUrls: [""]
     };
   },
   methods: {

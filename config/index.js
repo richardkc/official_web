@@ -31,7 +31,17 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: true,
+    proxyTable: {
+      "/api": {
+        target: "http://8.210.247.224:1337",
+        secure: false,
+        changeOrigin: false,
+        pathRewrite: {
+          "^/api": ""
+        }
+      }
+    }
   },
 
   build: {

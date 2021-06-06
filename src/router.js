@@ -1,6 +1,6 @@
 import Router from "vue-router";
 import Home from "@/modules/home";
-import Profile from "./modules/solution/profile";
+import Aviation from "@/modules/solution/aviation";
 import Vue from "vue";
 
 Vue.use(Router);
@@ -12,9 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile
+    path: "/aviation",
+    name: "Aviation",
+    component: Aviation
   }
 ];
 
