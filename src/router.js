@@ -1,6 +1,7 @@
 import Router from "vue-router";
 import Home from "@/modules/home";
 import Aviation from "@/modules/solution/aviation";
+import RailTransit from "@/modules/solution/railTransit";
 import Vue from "vue";
 
 Vue.use(Router);
@@ -15,6 +16,11 @@ const routes = [
     path: "/aviation",
     name: "Aviation",
     component: Aviation
+  },
+  {
+    path: "/railTransit",
+    name: "RailTransit",
+    component: RailTransit
   }
 ];
 

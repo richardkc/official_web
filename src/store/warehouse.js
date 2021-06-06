@@ -43,7 +43,7 @@ const tabs = [
       },
       {
         name: "物流车队标识贴膜工艺解决方案",
-        router: "/culture",
+        router: "/railTransit",
         key: "2-3"
       },
 

@@ -438,7 +438,7 @@ export default {
 @redColor: rgb(203, 74, 64);
 @blackColor: rgb(14, 14, 14);
 @subTitleFontColor: rgb(128, 128, 128);
-@contentFontColor: rgb(102, 102, 120);
+@contentFontColor: rgb(102, 102, 102);
 
 @fontSizeLg: 1.1rem;
 @fontSizeML: 0.65rem;
@@ -455,7 +455,7 @@ export default {
 
 .carousel {
   width: 90%;
-  margin: 5rem 5% 0;
+  margin: 2rem 5% 0;
   position: relative;
 
   /deep/ .el-carousel__indicators {
@@ -777,7 +777,7 @@ export default {
   .icons {
     display: flex;
     justify-content: space-between;
-    padding: 4rem 0 6rem;
+    padding: 2rem 0 4rem;
     margin-left: -5%;
   }
 
