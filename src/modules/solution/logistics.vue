@@ -1,7 +1,7 @@
 <template>
-  <div class="railTransit">
+  <div class="logistics">
     <section class="programmes">
-      <img src="../../assets/images/railTransit/railTransit_1.png" />
+      <img src="../../assets/images/logistics/logistics_1.png" />
     </section>
     <section class="programme">
       <div class="details">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <img src="../../assets/images/railTransit/railTransit_2.png" />
+      <img src="../../assets/images/logistics/logistics_2.png" />
       <div class="taleWrap">
         <el-table :data="characteristics" :style="{ width: '100%' }">
           <el-table-column
@@ -55,16 +55,16 @@
             为客户提供高品质、专业可靠的车队标识解决方案，深受国内众多客户的信赖。近年来，大昆仑已为国内众多物流巨头的车辆打造车身画面，
             创造品牌价值。
           </div>
-          <img src="../../assets/images/railTransit/railTransit_3.png" />
+          <img src="../../assets/images/logistics/logistics_3.png" />
         </div>
         <div class="right">
-          <img src="../../assets/images/railTransit/railTransit_4.png" />
+          <img src="../../assets/images/logistics/logistics_4.png" />
         </div>
       </div>
     </section>
     <section class="introduction">
       <div class="left">
-        <img src="../../assets/images/railTransit/railTransit_5.png" />
+        <img src="../../assets/images/logistics/logistics_5.png" />
       </div>
       <div class="right">
         <div class="header">
@@ -96,10 +96,10 @@
           认证施工团队均经过3M专业培训和测试，服务可靠，客户放心
           施工团队均配有专业施工工具，施工速度快，减少车辆占用时间，有效提升运营效率；
         </div>
-        <img src="../../assets/images/railTransit/railTransit_6.png" />
+        <img src="../../assets/images/logistics/logistics_6.png" />
       </div>
       <div class="right">
-        <img src="../../assets/images/railTransit/railTransit_7.png" />
+        <img src="../../assets/images/logistics/logistics_7.png" />
       </div>
     </section>
   </div>
@@ -249,7 +249,7 @@ export default {
   margin-bottom: 2rem;
 }
 
-.railTransit {
+.logistics {
   width: 100%;
   background-color: white;
   font-size: @fontSizeMd;

@@ -38,12 +38,12 @@ const tabs = [
       },
       {
         name: "轨道交通标识贴膜工艺解决方案",
-        router: "/expirence",
+        router: "/railTransit",
         key: "2-2"
       },
       {
         name: "物流车队标识贴膜工艺解决方案",
-        router: "/railTransit",
+        router: "/logistics",
         key: "2-3"
       },
 
