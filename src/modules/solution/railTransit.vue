@@ -1,37 +1,39 @@
 <template>
   <div class="railTransit">
-    <section class="images">
+    <section class="backgrounds">
       <img src="../../assets/images/railTransit/railTransit_1.png" />
       <img src="../../assets/images/railTransit/railTransit_2.png" />
-    </section>
-    <section class="exterior">
-      <div class="title">车辆外饰</div>
-      <div class="subTitle">OUTSIDE</div>
-      <div class="content">
-        <div class="subTitle">万众瞩目就是现在——沿途即是舞台</div>
-        <div class="content">
-          从此，您可以在车辆上创作令人惊叹的画面，更可以使您的车辆作为城市名片的一部分，助力当地城市文化宣传
-        </div>
-        <div
-          class="details"
-          v-for="(item, index) in exteriorDetails"
-          :key="index"
-        >
-          <div class="dot"></div>
-          <div>{{ item.text }}</div>
-        </div>
-        <div class="subTitle">
-          相关产品系列
-        </div>
-        <div
-          class="details"
-          v-for="(item, index) in exteriorSeries"
-          :key="index"
-        >
-          <div class="dot"></div>
-          <div class="text">
-            <div>{{ item.title }}</div>
-            <div>{{ item.text }}</div>
+      <div class="exteriorWrap">
+        <div class="exterior">
+          <div class="title">车辆外饰</div>
+          <div class="subTitle">OUTSIDE</div>
+          <div class="contents">
+            <div class="subTitle">万众瞩目就是现在——沿途即是舞台</div>
+            <div class="content">
+              从此，您可以在车辆上创作令人惊叹的画面，更可以使您的车辆作为城市名片的一部分，助力当地城市文化宣传
+            </div>
+            <div
+              class="details"
+              v-for="(item, index) in exteriorDetails"
+              :key="index"
+            >
+              <div class="dot"></div>
+              <div>{{ item.text }}</div>
+            </div>
+            <div class="subTitle">
+              相关产品系列
+            </div>
+            <div
+              class="details"
+              v-for="(item, index) in exteriorSeries"
+              :key="index"
+            >
+              <div class="dot"></div>
+              <div class="text">
+                <div>{{ item.title }}</div>
+                <div>{{ item.text }}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@
         <div class="subTitle">
           流动的3D立体舞台,带你到远方旅行, 从此不再枯燥
         </div>
-        <div class="text">
+        <div class="detailText">
           动手创造您想要的画面、纹理，甚至触感，使车厢瞬间化身为流动的3D立体舞台，引领乘客走向远方。
         </div>
         <div class="details">
@@ -64,14 +66,12 @@
         <div class="series">
           <div class="subTitle">相关产品系列</div>
           <div class="details">
-            <div class="dot"></div>
-            <div
-              class="text"
-              v-for="(item, index) in interiorSeries"
-              :key="index"
-            >
-              <div>{{ item.title }}</div>
-              <div>{{ item.text }}</div>
+            <div v-for="(item, index) in interiorSeries" :key="index">
+              <div class="dot"></div>
+              <div class="text">
+                <div>{{ item.title }}</div>
+                <div>{{ item.text }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -164,9 +164,9 @@
         </div>
         <div class="right">
           <div class="subTitle">
-            安全夺目——引领乘客的脚步
+            相关产品系列
           </div>
-          <div class="相关产品系列">
+          <div class="details">
             <div
               class="detail"
               v-for="(item, index) in groundSeries"
@@ -210,13 +210,13 @@
         法制造的皮膜，通常具有高达140%的延展率和小于0.4mm的收缩率，为施工于车身复杂表
         面提供了可能性。
       </div>
-      <div class="subTitle">
+      <div class="subTitle compare">
         传统喷漆工艺与贴膜工艺的对比
       </div>
       <div class="image">
         <img src="../../assets/images/railTransit/railTransit_12.png" />
       </div>
-      <div class="subTitle">
+      <div class="subTitle use">
         环保贴膜解决方案在地铁车辆车体翻新的应用
       </div>
       <div class="images">
@@ -233,22 +233,22 @@
       </div>
     </section>
     <section class="advantage">
-      <div class="title">使用贴膜替代传统喷漆的优势</div>
-      <div class="subTitle">
-        <div>Aircraft engineering</div>
-        <div>positioning map and screen design</div>
-      </div>
-      <div class="introduction">
-        相比于传统的喷漆工艺，车身外部使用贴膜进行车身全包具有如下优势
-      </div>
-      <div class="merits" v-for="(item, index) in advantages" :key="index">
-        <div class="title">
-          <div class="index">{{ index + 1 }}</div>
-          <div>{{ item.title }}：</div>
+      <div class="advantageInside">
+        <div class="title">使用贴膜替代传统喷漆的优势</div>
+        <div class="subTitle">
+          <div>Aircraft engineering</div>
+          <div>positioning map and screen design</div>
         </div>
-        <!-- <div class="content" v-for="(text, textIndex) in item.textChildren" :key="textIndex"> -->
-        <div class="text">{{ text.text }}</div>
-        <!-- </div> -->
+        <div class="introduction">
+          相比于传统的喷漆工艺，车身外部使用贴膜进行车身全包具有如下优势
+        </div>
+        <div class="merits" v-for="(item, index) in advantages" :key="index">
+          <div class="subTitle">
+            <div class="index">{{ index + 1 }}、</div>
+            <div>{{ item.title }}：</div>
+          </div>
+          <div class="text">{{ item.text }}</div>
+        </div>
       </div>
     </section>
   </div>
@@ -334,6 +334,26 @@ export default {
             "配套的画面保护膜能够保护车厢内画面的色泽持久、表面清洁及防刮擦，同时提供逼真的 纹理触感"
         }
       ],
+      windowDetails: [
+        {
+          text: "预防玻璃刮花不再是难题"
+        },
+        {
+          text: "烈日炎炎,小小车窗变空调,带来更多凉爽"
+        },
+        {
+          text: "阳光零刺眼,拥有更为舒适的车内光环境,保护视网膜,缓解眼疲劳"
+        },
+        {
+          text: "阻隔高达99.9%的紫外线,减缓车内物品和设备的老化速度"
+        },
+        {
+          text: "防止玻璃碎片飞溅,减少人身伤害"
+        },
+        {
+          text: "隐私装饰,提升驾驶质量"
+        }
+      ],
       windowSeries: [
         {
           title: "3M玻璃保护膜",
@@ -377,7 +397,7 @@ export default {
           title: "3M 700系列防滑贴",
           text:
             "表面含精炼钢砂，强力防滑，可进行表面涂色，耐用持久，适用于平坦，\
-      光滑表面，可用于 泥泞油污等极限环境下"
+      光滑表面，可用于泥泞油污等极限环境下"
         },
         {
           title: "3M 600系列防滑贴",
@@ -473,12 +493,460 @@ export default {
   color: @redColor;
   font-size: @fontSizeLg;
   font-weight: @titleFontWeight;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .subTitle {
   font-size: @fontSizeML;
   font-weight: @titleFontWeight;
   margin-bottom: 2rem;
+}
+
+.railTransit {
+  width: 100%;
+  background-color: white;
+  font-size: @fontSizeMd;
+  color: @contentFontColor;
+}
+
+.dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  margin: 0.3rem 0.4rem 0 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.3rem;
+    height: 0.3rem;
+    background-color: @contentFontColor;
+    border-radius: 0.3rem;
+  }
+}
+
+.backgrounds {
+  width: 100%;
+  padding-top: 4rem;
+  text-align: center;
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  img:first-child {
+    width: 90%;
+  }
+}
+
+.exteriorWrap {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.exterior {
+  width: 60%;
+  margin: 0 20% 6rem;
+  text-align: left;
+
+  .contents {
+    .subTitle {
+      color: black;
+      margin-bottom: 1rem;
+      font-weight: @titleFontWeight;
+    }
+
+    .content {
+      margin-bottom: 1rem;
+    }
+
+    .details {
+      line-height: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .subTitle {
+      color: black;
+      margin-top: 2rem;
+    }
+  }
+}
+
+.interior {
+  margin: 0 20%;
+  margin-top: 1rem;
+  width: 60%;
+
+  .dot {
+    margin-top: 0.4rem;
+  }
+
+  .details {
+    line-height: 1.2rem;
+    margin-bottom: 1.5rem;
+
+    & > div {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .content {
+    .subTitle {
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    .detailText {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 14rem;
+    margin-bottom: 1.5rem;
+
+    .left {
+      width: 60%;
+      height: 100%;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .right {
+      flex: 1;
+      padding-left: 0.5rem;
+      height: 100%;
+
+      img:nth-child(1) {
+        margin-bottom: 0.5rem;
+      }
+
+      img {
+        height: calc((100% - 0.5rem) / 2);
+      }
+    }
+
+    img {
+      width: 100%;
+      float: right;
+    }
+  }
+
+  .series {
+    .subTitle {
+      color: black;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.window {
+  margin: 0 20%;
+  margin-top: 8rem;
+  width: 60%;
+
+  .dot {
+    margin-top: 0.4rem;
+  }
+
+  .content {
+    .subTitle {
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    .text {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .details {
+    line-height: 1.2rem;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .top,
+  .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .top {
+    margin-bottom: 3rem;
+
+    .left {
+      width: 50%;
+      margin-right: 5%;
+    }
+
+    .right {
+      width: 45%;
+    }
+  }
+
+  .bottom {
+    position: relative;
+
+    .left {
+      width: 30%;
+    }
+
+    .right {
+      width: 90%;
+      position: absolute;
+      top: 0;
+      left: 35%;
+
+      .subTitle {
+        color: black;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.ground {
+  margin: 0 20%;
+  margin-top: 8rem;
+  width: 60%;
+  position: relative;
+
+  .dot {
+    margin-top: 0.4rem;
+  }
+
+  .content {
+    .subTitle {
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    .text {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .details {
+    line-height: 1.2rem;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .leftTitle {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+
+    .titles {
+      margin-right: 3rem;
+    }
+
+    .image {
+      width: 60%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .leftContent {
+    .subTitle {
+      color: black;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .top,
+  .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .top {
+    margin-bottom: 2rem;
+
+    .left {
+      width: 70%;
+      margin-right: 5%;
+      z-index: 100;
+    }
+
+    .right {
+      position: absolute;
+      top: -5%;
+      right: calc(-100% / 3);
+      height: 120%;
+      width: 100%;
+    }
+  }
+
+  .bottom {
+    position: relative;
+
+    .left {
+      width: 55%;
+    }
+
+    .right {
+      width: 75%;
+      position: absolute;
+      bottom: 0;
+      left: 40%;
+
+      .subTitle {
+        color: black;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.overview {
+  margin: 0 20%;
+  margin-top: 8rem;
+  width: 60%;
+
+  .dot {
+    margin-top: 0.4rem;
+  }
+
+  & > .image {
+    padding: 1rem 0;
+  }
+
+  .compare {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .use {
+    margin: 2rem 0;
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .imageWrap {
+      position: relative;
+      width: 31%;
+      margin-bottom: 3%;
+
+      .index {
+        position: absolute;
+        top: 0;
+        left: 0.5rem;
+        transform: translate(0, -50%);
+        width: 1rem;
+        height: 1rem;
+        background: @redColor;
+        color: white;
+        text-align: center;
+        line-height: 1rem;
+        font-weight: @titleFontWeight;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
+  .content {
+    .subTitle {
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    .text {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .content,
+  .details {
+    line-height: 1.2rem;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.advantage {
+  margin-top: 8rem;
+  width: 100%;
+  background-color: @redColor;
+  color: white;
+  padding: 4rem 0;
+
+  .title {
+    color: white;
+  }
+
+  .advantageInside {
+    width: 55%;
+    margin: 0 25% 0 20%;
+  }
+
+  .introduction {
+    display: inline-block;
+    margin-bottom: 3rem;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.5rem;
+  }
+
+  .merits {
+    margin-bottom: 2rem;
+
+    .subTitle {
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .text {
+      line-height: 1.2rem;
+    }
+  }
 }
 </style>
