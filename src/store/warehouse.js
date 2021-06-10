@@ -59,14 +59,14 @@ const tabs = [
       },
       {
         name: "建筑装饰贴膜解决方案",
-        router: "/culture",
+        router: "/building",
         key: "2-6"
-      },
-      {
-        name: "3M全系列贴膜产品经销商",
-        router: "/qualification",
-        key: "2-7"
       }
+      // {
+      //   name: "3M全系列贴膜产品经销商",
+      //   router: "/qualification",
+      //   key: "2-7"
+      // }
     ]
   },
   {
