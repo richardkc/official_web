@@ -42,10 +42,10 @@
               {{ item }}
             </div>
           </div>
-          <div class="imageWrap">
-            <img src="../../assets/images/building/building-4.png" />
-          </div>
         </div>
+      </div>
+      <div class="imageWrap">
+        <img src="../../assets/images/building/building-4.png" />
       </div>
     </section>
     <section class="application">
@@ -298,6 +298,12 @@ export default {
       margin-bottom: 3rem;
     }
   }
+
+  .imageWrap {
+    width: 55%;
+    margin-left: 45%;
+    margin-top: 0.5rem;
+  }
 }
 
 .application {
@@ -354,11 +360,20 @@ export default {
       width: 100%;
     }
   }
+
+  .subTitle {
+    margin: 1rem 0 0.5rem;
+  }
+
+  .text {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
 }
 
 .classification {
   width: 60%;
-  margin: 6rem 20% 0;
+  margin: 4rem 20% 0;
 
   .titles {
     width: 100%;
