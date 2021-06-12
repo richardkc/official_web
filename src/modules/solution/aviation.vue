@@ -441,7 +441,7 @@ export default {
 @contentFontColor: rgb(102, 102, 102);
 
 @fontSizeLg: 1.1rem;
-@fontSizeML: 0.65rem;
+@fontSizeML: 0.75rem;
 @fontSizeMd: 0.55rem;
 
 @titleFontWeight: 700;

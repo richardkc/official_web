@@ -5,6 +5,7 @@ import Logistics from "@/modules/solution/logistics";
 import RailTransit from "@/modules/solution/railTransit";
 import Building from "@/modules/solution/building";
 import SteamShip from "@/modules/solution/steamShip";
+import Supermarket from "@/modules/solution/supermarket";
 import Vue from "vue";
 
 Vue.use(Router);
@@ -39,6 +40,11 @@ const routes = [
     path: "/steamShip",
     name: "SteamShip",
     component: SteamShip
+  },
+  {
+    path: "/supermarket",
+    name: "Supermarket",
+    component: Supermarket
   }
 ];
 

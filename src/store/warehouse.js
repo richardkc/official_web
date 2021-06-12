@@ -46,7 +46,6 @@ const tabs = [
         router: "/logistics",
         key: "2-3"
       },
-
       {
         name: "船舶标识贴膜工艺解决方案",
         router: "/steamShip",
@@ -54,7 +53,7 @@ const tabs = [
       },
       {
         name: "大型商超标识系统解决方案",
-        router: "/expirence",
+        router: "/supermarket",
         key: "2-5"
       },
       {

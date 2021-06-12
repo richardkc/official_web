@@ -349,7 +349,7 @@ export default {
 
 @fontSizeXL: 1.25rem;
 @fontSizeLg: 1.1rem;
-@fontSizeML: 0.65rem;
+@fontSizeML: 0.75rem;
 @fontSizeMd: 0.55rem;
 
 @titleFontWeight: 700;
