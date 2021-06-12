@@ -49,7 +49,7 @@ const tabs = [
 
       {
         name: "船舶标识贴膜工艺解决方案",
-        router: "/qualification",
+        router: "/steamShip",
         key: "2-4"
       },
       {
