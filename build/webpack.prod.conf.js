@@ -133,7 +133,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         "/steamShip",
         "/supermarket",
         "/successfulCase",
-        "/successfulPlane"
+        "/successfulPlane",
+        "/successfulFleet",
+        "/successfulRailTransit",
+        "/successfulSteamShip",
+        "/successfulSupermarket"
       ],
 
       // 这个很重要，如果没有配置这段，也不会进行预编译

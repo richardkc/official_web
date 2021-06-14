@@ -1,6 +1,6 @@
 <template>
   <section class="footer">
-    <img class="coverImg" src="../assets/images/firstPage_4.jpg" />
+    <img class="coverImg" :src="imgUrls[0]" />
     <div class="companyInfo">
       <div>
         <div>深圳市大昆仑数码有限公司</div>
@@ -21,8 +21,13 @@
 <script>
 export default {
   name: "Footer",
+  props: {
+    urls: Object
+  },
   data() {
-    return {};
+    return {
+      imgUrls: this.urls ? this.urls.footer : []
+    };
   }
 };
 </script>

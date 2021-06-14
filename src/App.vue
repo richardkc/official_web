@@ -3,7 +3,7 @@
     <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
     <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab>
     <router-view :isPC="isPC" :urls="urls"></router-view>
-    <Footer></Footer>
+    <Footer :urls="urls"></Footer>
   </div>
 </template>
 

@@ -25,6 +25,7 @@
           class="carouselItem"
         >
           <img :src="item.url" style="width: 100%; height: 100%;" />
+          <span :class="{ covered: index > 0 }">{{ item.text }}</span>
         </div>
         <Switch-button type="next" />
       </div>
@@ -214,6 +215,16 @@ export default {
 
   .carouselItem {
     width: 30%;
+    position: relative;
+  }
+
+  .covered {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(153, 153, 153, 0.75);
   }
 }
 </style>
