@@ -1,7 +1,7 @@
 const tabs = [
   {
     name: "关于大昆仑",
-    router: "",
+    router: "/",
     key: 1,
     children: [
       {
@@ -76,32 +76,32 @@ const tabs = [
   },
   {
     name: "成功案例",
-    router: "",
+    router: "/successfulCase",
     key: "4",
     children: [
       {
         name: "航空飞机标识",
-        router: "/",
+        router: "/successfulPlane",
         key: "4-1"
       },
       {
         name: "轨道交通标识",
-        router: "/",
+        router: "/successfulRailTransit",
         key: "4-2"
       },
       {
         name: "物流车队标识",
-        router: "/",
+        router: "/successfulFleet",
         key: "4-3"
       },
       {
         name: "大型商超标识",
-        router: "/",
+        router: "/successfulSupermarket",
         key: "4-4"
       },
       {
         name: "船舶标识工程",
-        router: "/",
+        router: "/successfulSteamShip",
         key: "4-5"
       }
     ]

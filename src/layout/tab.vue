@@ -19,7 +19,10 @@
             class="listName"
             :class="{ selectedTab: selectedKey === listIndex }"
           >
-            {{ list.name }}
+            <router-link v-if="list.router" :to="list.router">{{
+              list.name
+            }}</router-link>
+            <span v-if="!list.router">{{ list.name }}</span>
           </div>
           <ul
             class="menuList"

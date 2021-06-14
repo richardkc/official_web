@@ -1,7 +1,7 @@
 <template>
   <div class="steamShip">
     <section class="banner">
-      <img src="../../assets/images/streamShip/ship-1.png" />
+      <img :src="imgUrls[0]" />
     </section>
     <section class="introduction">
       <div class="title">
@@ -36,7 +36,7 @@
         同时可以配套使用相对应的保护膜，可以提供更高的光泽度及易清洁性能等。
       </div>
       <div class="imageWrap">
-        <img src="../../assets/images/streamShip/ship-2.png" />
+        <img :src="imgUrls[1]" />
       </div>
       <div class="content">
         贴膜的主要结构由上到下依次为透明保护膜层、PVC贴膜
@@ -48,11 +48,11 @@
         的收缩率，为施工于车身复杂表面提供了可能性。
       </div>
       <div class="imageWrap">
-        <img src="../../assets/images/streamShip/ship-3.png" />
+        <img :src="imgUrls[2]" />
       </div>
       <div class="compare">
         <div class="subTitle">传统喷漆工艺与贴膜工艺的对比</div>
-        <img src="../../assets/images/streamShip/ship-4.png" />
+        <img :src="imgUrls[3]" />
       </div>
     </section>
     <section class="advantage">
@@ -70,7 +70,7 @@
     <section class="characteristic">
       <div class="first">
         <div class="left">
-          <img src="../../assets/images/streamShip/ship-5.png" />
+          <img :src="imgUrls[4]" />
         </div>
         <div class="right">
           <div class="content">
@@ -121,7 +121,7 @@
             从打印贴膜到彩色贴膜、反光膜、保护膜，不论您需要包覆
             的船体面积有多大，都可以轻松实现。
           </div>
-          <img src="../../assets/images/streamShip/ship-6.png" />
+          <img :src="imgUrls[5]" />
         </div>
       </div>
       <div class="third">
@@ -144,7 +144,7 @@
             </div>
           </div>
         </div>
-        <img src="../../assets/images/streamShip/ship-9.png" />
+        <img :src="imgUrls[8]" />
       </div>
       <div class="fourth">
         <div class="subTitle">任浪花飞溅，我自驰骋向前</div>
@@ -187,7 +187,7 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/streamShip/ship-14.png" />
+          <img :src="imgUrls[13]" />
         </div>
       </div>
       <div class="application">
@@ -198,11 +198,11 @@
           上述暴露因素会对保修期限造成影响。
         </div>
         <div class="imageWrap">
-          <img src="../../assets/images/streamShip/ship-15.png" />
+          <img :src="imgUrls[14]" />
         </div>
         <div class="spots">
           <div class="left">
-            <img src="../../assets/images/streamShip/ship-16.png" />
+            <img :src="imgUrls[15]" />
           </div>
           <div class="right">
             <div
@@ -223,8 +223,12 @@
 
 <script>
 export default {
+  props: {
+    urls: Object
+  },
   data() {
     return {
+      imgUrls: this.urls ? this.urls.solutionSteamShip : [],
       advantages: [
         {
           title: "绿色环保，无VOC排放：",
@@ -261,40 +265,40 @@ export default {
       ],
       characteristicsThird: [
         {
-          url: require("../../assets/images/streamShip/ship-7.png"),
+          url: this.urls ? this.urls.solutionSteamShip[6] : "",
           title: "垂直暴露面",
           text: "任何应用于90-75度倾角表面的画面"
         },
         {
-          url: require("../../assets/images/streamShip/ship-8.png"),
+          url: this.urls ? this.urls.solutionSteamShip[7] : "",
           title: "非垂直暴露面",
           text: "任何应用于75-0度倾角表面的画面"
         }
       ],
       characteristicsFourth: [
         {
-          url: require("../../assets/images/streamShip/ship-10.png"),
+          url: this.urls ? this.urls.solutionSteamShip[9] : "",
           title: "持久如新",
           text:
             "紫外线、高温、潮湿甚至酸露，用大自然中一切严苛的条件来考验 3M 产品，它都能通过测试。\
               并且画面不会被灼伤、不变色。无论应用于多么恶劣的环境，3M贴膜的表现都会达到或更可能超出您的预期。"
         },
         {
-          url: require("../../assets/images/streamShip/ship-11.png"),
+          url: this.urls ? this.urls.solutionSteamShip[10] : "",
           title: "超强的适应力",
           text:
             "3M贴膜在设计时就考虑到如何应对最为复杂的弯曲、轮廓、船脊或凹槽，它几乎能够环绕和粘附在任何位置。\
               同时 3M 贴膜还具 有易于操作和安装的特性，其抗揭性、抗裂性和抗剥落性极强，节省了无必要的修复和返工，缩短了靠岸时间。"
         },
         {
-          url: require("../../assets/images/streamShip/ship-12.png"),
+          url: this.urls ? this.urls.solutionSteamShip[11] : "",
           title: "更易于移除",
           text:
             "3M膜还具有易于移除和更换的特性，能确 保揭除后，没有或仅有少量的黏合剂残留，只需简单清理即可，\
               还您的船体一个完好无损的原始漆面。当您想去掉船身上的宣传标识时，不必在修复工作上浪费额外的时间或 金钱。"
         },
         {
-          url: require("../../assets/images/streamShip/ship-13.png"),
+          url: this.urls ? this.urls.solutionSteamShip[12] : "",
           title: "精妙的可打印性",
           text:
             "从细节到整体效果，3M贴膜为卓越的打印质量专门设计，我们可以根据您的想法为您私人订制。\

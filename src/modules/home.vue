@@ -1,7 +1,7 @@
 <template>
   <div>
-    <First-page v-if="isPC"></First-page>
-    <Mobile-first-page v-else-if="!isPC"></Mobile-first-page>
+    <First-page v-if="isPC" :urls="urls"></First-page>
+    <Mobile-first-page v-else-if="!isPC" :urls="urls"></Mobile-first-page>
   </div>
 </template>
 
@@ -12,7 +12,8 @@ import MobileFirstPage from "./mobile/mobileFirstPage";
 export default {
   name: "Home",
   props: {
-    isPC: Boolean
+    isPC: Boolean,
+    urls: Object
   },
   components: {
     FirstPage,

@@ -1,4 +1,5 @@
 import Router from "vue-router";
+import Vue from "vue";
 import Home from "@/modules/home";
 import Aviation from "@/modules/solution/aviation";
 import Logistics from "@/modules/solution/logistics";
@@ -6,7 +7,12 @@ import RailTransit from "@/modules/solution/railTransit";
 import Building from "@/modules/solution/building";
 import SteamShip from "@/modules/solution/steamShip";
 import Supermarket from "@/modules/solution/supermarket";
-import Vue from "vue";
+import SuccessfulCase from "@/modules/successfulCase/successfulCase";
+import SuccessfulFleet from "@/modules/successfulCase/successfulFleet";
+import SuccessfulPlane from "@/modules/successfulCase/successfulPlane";
+import SuccessfulRailTransit from "@/modules/successfulCase/successfulRailTransit";
+import SuccessfulSteamShip from "@/modules/successfulCase/successfulSteamShip";
+import SuccessfulSupermarket from "@/modules/successfulCase/successfulSupermarket";
 
 Vue.use(Router);
 
@@ -45,6 +51,36 @@ const routes = [
     path: "/supermarket",
     name: "Supermarket",
     component: Supermarket
+  },
+  {
+    path: "/successfulCase",
+    name: "SuccessfulCase",
+    component: SuccessfulCase
+  },
+  {
+    path: "/successfulFleet",
+    name: "SuccessfulFleet",
+    component: SuccessfulFleet
+  },
+  {
+    path: "/successfulPlane",
+    name: "SuccessfulPlane",
+    component: SuccessfulPlane
+  },
+  {
+    path: "/successfulRailTransit",
+    name: "SuccessfulRailTransit",
+    component: SuccessfulRailTransit
+  },
+  {
+    path: "/successfulSteamShip",
+    name: "SuccessfulSteamShip",
+    component: SuccessfulSteamShip
+  },
+  {
+    path: "/successfulSupermarket",
+    name: "SuccessfulSupermarket",
+    component: SuccessfulSupermarket
   }
 ];
 

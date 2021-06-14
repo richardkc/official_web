@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div v-if="showMain">
     <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
     <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab>
-    <router-view :isPC="isPC"></router-view>
+    <router-view :isPC="isPC" :urls="urls"></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -16,14 +16,70 @@ import Footer from "@/layout/footer";
 
 methods.fontSizeChange();
 
+function format(arr, key) {
+  const sortArr = arr.map(item => {
+    var regStr = new RegExp(`${key}-.+(?=\\.)`);
+    const matchItem = item.name.match(regStr);
+
+    return matchItem ? Number(matchItem[0].replace(`${key}-`, "")) : 999;
+  });
+
+  for (let j = 0; j < arr.length - 1; j++) {
+    for (let i = 0; i < arr.length - 1 - j; i++) {
+      if (sortArr[i] > sortArr[i + 1]) {
+        let temp = arr[i];
+        let tempSort = sortArr[i];
+
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+
+        sortArr[i] = sortArr[i + 1];
+        sortArr[i + 1] = tempSort;
+      }
+    }
+  }
+
+  arr = arr.map(item => {
+    // item.url = window.location.origin + item.url;
+    item.url = "http://8.210.247.224:1337" + item.url;
+
+    return item.url;
+  });
+
+  return arr;
+}
+
 export default {
   name: "App",
+  created() {
+    this.showMain = false;
+    this.$axios.get("/api/images").then(res => {
+      if (res && res.data && res.data.length > 0) {
+        const item = res.data[0];
+
+        if (typeof item === "object") {
+          for (const [key, value] of Object.entries(item)) {
+            if (value && typeof value === "object" && value.length > 0) {
+              this.urls = this.urls || {};
+              this.urls[key] = format(value, key);
+              this.showMain = true;
+              setTimeout(() => {
+                console.log(this.urls);
+              }, 1000);
+            }
+          }
+        }
+      }
+    });
+  },
   data() {
     return {
       tabInfo: {
         tabs: store.tabs
       },
-      isPC: methods.isPC()
+      isPC: methods.isPC(),
+      showMain: false,
+      urls: {}
     };
   },
   components: {

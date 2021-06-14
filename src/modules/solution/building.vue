@@ -1,7 +1,7 @@
 <template>
   <div class="building">
     <section class="banner">
-      <img src="../../assets/images/building/building-1.png" />
+      <img :src="imgUrls[0]" />
     </section>
     <section class="solution">
       <div class="top">
@@ -24,12 +24,12 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/building/building-2.png" />
+          <img :src="imgUrls[1]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img src="../../assets/images/building/building-3.png" />
+          <img :src="imgUrls[2]" />
         </div>
         <div class="right">
           <div class="subTitle">贴膜的应用优势</div>
@@ -45,12 +45,12 @@
         </div>
       </div>
       <div class="imageWrap">
-        <img src="../../assets/images/building/building-4.png" />
+        <img :src="imgUrls[3]" />
       </div>
     </section>
     <section class="application">
       <div class="top">
-        <img src="../../assets/images/building/building-5.png" />
+        <img :src="imgUrls[4]" />
       </div>
       <div class="bottom">
         <div class="left">
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/building/building-6.png" />
+          <img :src="imgUrls[5]" />
         </div>
       </div>
     </section>
@@ -94,17 +94,17 @@
         <div class="left">
           <div class="itemWrap">
             <div class="text">Smooth Stone</div>
-            <img src="../../assets/images/building/building-11.png" />
+            <img :src="imgUrls[10]" />
           </div>
           <div class="itemWrap">
             <div class="text">Textile</div>
-            <img src="../../assets/images/building/building-12.png" />
+            <img :src="imgUrls[11]" />
           </div>
         </div>
         <div class="right">
           <div class="itemWrap">
             <div class="text">Fine Wood</div>
-            <img src="../../assets/images/building/building-13.png" />
+            <img :src="imgUrls[12]" />
           </div>
         </div>
       </div>
@@ -118,12 +118,12 @@
             </div>
           </div>
           <div class="imgWrap">
-            <img src="../../assets/images/building/building-14.png" />
+            <img :src="imgUrls[13]" />
             <div class="remarks">玻璃粘贴工作可在专门的建筑商店中进行</div>
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/building/building-15.png" />
+          <img :src="imgUrls[14]" />
           <div class="remarks">DG-1528</div>
         </div>
       </div>
@@ -136,7 +136,7 @@
               您可以从100多种类型的图案中进行选择，并根据自己的想法进行设计，以充分利用玻璃材料。
             </div>
           </div>
-          <img src="../../assets/images/building/building-16.png" />
+          <img :src="imgUrls[15]" />
         </div>
         <div class="right">
           <div>
@@ -148,7 +148,7 @@
               例如在发生以下情况时防止散射、破损。
             </div>
           </div>
-          <img src="../../assets/images/building/building-17.png" />
+          <img :src="imgUrls[16]" />
         </div>
       </div>
     </section>
@@ -157,8 +157,12 @@
 
 <script>
 export default {
+  props: {
+    urls: Object
+  },
   data() {
     return {
+      imgUrls: this.urls ? this.urls.solutionBuilding : [],
       advantagesText: [
         "1、满足公共区域安全防火等，需求所有产品均通过防火安全认证，相较于传统木材等材质，能够充分匹配安全防火需求。",
         "2、可维护性，品质稳定，经久耐用，平均使用寿命超过10年，且日\
@@ -170,24 +174,24 @@ export default {
       ],
       advantages: [
         {
-          url: require("../../assets/images/building/building-7.png"),
+          url: this.urls ? this.urls.solutionBuilding[6] : "",
           title: "可维护性",
           text:
             "品质稳定，经久耐用，平均使用寿命超过10年，且日常维护成本低，若需更新设计，操作简单，不影响日常运营。"
         },
         {
-          url: require("../../assets/images/building/building-8.png"),
+          url: this.urls ? this.urls.solutionBuilding[7] : "",
           title: "满足公共区域安全防火等需求",
           text:
             "所有产品均通过防火安全认证相较于传统木材等材质，能够充分匹配安全防火需求。"
         },
         {
-          url: require("../../assets/images/building/building-9.png"),
+          url: this.urls ? this.urls.solutionBuilding[8] : "",
           title: "符合节能减排，环保实用的发展趋势",
           text: ""
         },
         {
-          url: require("../../assets/images/building/building-10.png"),
+          url: this.urls ? this.urls.solutionBuilding[9] : "",
           title: "设计性与功能性相互兼顾",
           text:
             "丰富多彩、轻薄柔软、易于3D和异型处理，突破了传统装饰材料的局限，\

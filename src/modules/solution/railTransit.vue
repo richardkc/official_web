@@ -1,8 +1,8 @@
 <template>
   <div class="railTransit">
     <section class="backgrounds">
-      <img src="../../assets/images/railTransit/railTransit_1.png" />
-      <img src="../../assets/images/railTransit/railTransit_2.png" />
+      <img :src="imgUrls[0]" />
+      <img :src="imgUrls[1]" />
       <div class="exteriorWrap">
         <div class="exterior">
           <div class="title">车辆外饰</div>
@@ -56,11 +56,11 @@
         </div>
         <div class="images">
           <div class="left">
-            <img src="../../assets/images/railTransit/railTransit_3.png" />
+            <img :src="imgUrls[2]" />
           </div>
           <div class="right">
-            <img src="../../assets/images/railTransit/railTransit_4.png" />
-            <img src="../../assets/images/railTransit/railTransit_5.png" />
+            <img :src="imgUrls[3]" />
+            <img :src="imgUrls[4]" />
           </div>
         </div>
         <div class="series">
@@ -101,12 +101,12 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/railTransit/railTransit_6.png" />
+          <img :src="imgUrls[5]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img src="../../assets/images/railTransit/railTransit_7.png" />
+          <img :src="imgUrls[6]" />
         </div>
         <div class="right">
           <div class="subTitle">相关产品系列</div>
@@ -135,7 +135,7 @@
               <div class="subTitle">GROUND</div>
             </div>
             <div class="image">
-              <img src="../../assets/images/railTransit/railTransit_8.png" />
+              <img :src="imgUrls[7]" />
             </div>
           </div>
           <div class="leftContent">
@@ -155,12 +155,12 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/railTransit/railTransit_9.png" />
+          <img :src="imgUrls[8]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img src="../../assets/images/railTransit/railTransit_10.png" />
+          <img :src="imgUrls[9]" />
         </div>
         <div class="right">
           <div class="subTitle">
@@ -200,7 +200,7 @@
         提供更高的光泽度及易清洁性能等。
       </div>
       <div class="image">
-        <img src="../../assets/images/railTransit/railTransit_11.png" />
+        <img :src="imgUrls[10]" />
       </div>
       <div class="content">
         贴膜的主要结构由上到下依次为透明保护膜层、PVC贴膜层、背胶层、衬纸层。
@@ -214,7 +214,7 @@
         传统喷漆工艺与贴膜工艺的对比
       </div>
       <div class="image">
-        <img src="../../assets/images/railTransit/railTransit_12.png" />
+        <img :src="imgUrls[11]" />
       </div>
       <div class="subTitle use">
         环保贴膜解决方案在地铁车辆车体翻新的应用
@@ -256,8 +256,12 @@
 
 <script>
 export default {
+  props: {
+    urls: Object
+  },
   data() {
     return {
+      imgUrls: this.urls ? this.urls.solutionRaiTransit : [],
       exteriorDetails: [
         {
           text: "一个优秀的画面解决方案，可以为您的车辆外饰带来精美的外观"
@@ -420,22 +424,22 @@ export default {
       ],
       overviewApplications: [
         {
-          url: require("../../assets/images/railTransit/railTransit_13.png")
+          url: this.urls ? this.urls.solutionRaiTransit[12] : ""
         },
         {
-          url: require("../../assets/images/railTransit/railTransit_14.png")
+          url: this.urls ? this.urls.solutionRaiTransit[13] : ""
         },
         {
-          url: require("../../assets/images/railTransit/railTransit_15.png")
+          url: this.urls ? this.urls.solutionRaiTransit[14] : ""
         },
         {
-          url: require("../../assets/images/railTransit/railTransit_16.png")
+          url: this.urls ? this.urls.solutionRaiTransit[15] : ""
         },
         {
-          url: require("../../assets/images/railTransit/railTransit_17.png")
+          url: this.urls ? this.urls.solutionRaiTransit[16] : ""
         },
         {
-          url: require("../../assets/images/railTransit/railTransit_18.png")
+          url: this.urls ? this.urls.solutionRaiTransit[17] : ""
         }
       ],
       advantages: [

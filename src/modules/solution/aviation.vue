@@ -57,7 +57,7 @@
         <div class="flrstWrap">
           <div class="first">
             <span>航空标识</span>
-            <img src="../../assets/images/transport/trans_1.png" />
+            <img :src="imgUrls[10]" />
           </div>
         </div>
         <div class="bottom">
@@ -74,12 +74,7 @@
             <div v-for="item in transport" :key="item.key">
               <div class="imgWrap">
                 <div>
-                  <img
-                    style="width: 50px;height: 50px;"
-                    :src="
-                      require(`../../assets/images/transport/trans_${item}.png`)
-                    "
-                  />
+                  <img style="width: 50px;height: 50px;" :src="imgUrls[item]" />
                 </div>
               </div>
             </div>
@@ -93,7 +88,7 @@
         <div>Aircraft engineering</div>
         <div>positioning map and screen design</div>
       </div>
-      <img src="../../assets/images/solution/solution_5.jpg" />
+      <img :src="imgUrls[17]" />
     </section>
     <section class="progress">
       <div class="title">飞机贴膜作业流程</div>
@@ -218,7 +213,7 @@
           <div>飞机图形业务流程图-亚太地区</div>
         </div>
         <div class="imgWrap">
-          <img src="../../assets/images/solution/solution_28.png" />
+          <img :src="imgUrls[40]" />
         </div>
       </div>
       <div class="right">
@@ -238,38 +233,29 @@
 <script>
 export default {
   name: "Aviation",
-  created() {
-    this.$axios
-      .get("/api/home-infos", {
-        params: {
-          username: "kaidong",
-          email: "kai@dong.com",
-          password: "Kaidong1234"
-        }
-      })
-      .then(res => {
-        console.log("ressssss", res);
-      });
+  props: {
+    urls: Object
   },
   data() {
     return {
+      imgUrls: this.urls ? this.urls.solutionAviation : [],
       currentCarouselIndex: 0,
       carouselMap: [
         {
           name: "profile_1",
-          url: require("../../assets/images/solution/solution_1.png")
+          url: `${this.urls ? this.urls.solutionAviation[0] : ""}`
         },
         {
           name: "profile_2",
-          url: require("../../assets/images/solution/solution_2.png")
+          url: `${this.urls ? this.urls.solutionAviation[1] : ""}`
         },
         {
           name: "profile_3",
-          url: require("../../assets/images/solution/solution_3.png")
+          url: `${this.urls ? this.urls.solutionAviation[2] : ""}`
         },
         {
           name: "profile_4",
-          url: require("../../assets/images/solution/solution_4.png")
+          url: `${this.urls ? this.urls.solutionAviation[3] : ""}`
         }
       ],
       carouselTabs: [
@@ -281,90 +267,90 @@ export default {
       aviationMap: [
         {
           name: "南方航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[4] : ""}`
         },
         {
           name: "山东航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[5] : ""}`
         },
         {
           name: "华夏航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[6] : ""}`
         },
         {
           name: "海南航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[7] : ""}`
         },
         {
           name: "东方航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[8] : ""}`
         },
         {
           name: "江西航空",
-          url: require("../../assets/images/about_1.jpg")
+          url: `${this.urls ? this.urls.solutionAviation[9] : ""}`
         }
       ],
-      transport: [8, 9, 10, 11, 12, 13],
+      transport: [11, 12, 13, 14, 15, 16],
       workProcess: [
         {
           text: "在相对无尘的环境，把画面摊开",
-          url: require("../../assets/images/solution/solution_6.png")
+          url: `${this.urls ? this.urls.solutionAviation[18] : ""}`
         },
         {
           text: "画面张贴",
-          url: require("../../assets/images/solution/solution_7.png")
+          url: `${this.urls ? this.urls.solutionAviation[19] : ""}`
         },
         {
           text: "完工",
-          url: require("../../assets/images/solution/solution_8.png")
+          url: `${this.urls ? this.urls.solutionAviation[20] : ""}`
         }
       ],
       advantages: [
         {
-          url: require("../../assets/images/solution/solution_9.png"),
+          url: `${this.urls ? this.urls.solutionAviation[21] : ""}`,
           subTitle: "材料应用",
           content: "波音、空客原厂认证， 安全环保"
         },
         {
-          url: require("../../assets/images/solution/solution_10.png"),
+          url: `${this.urls ? this.urls.solutionAviation[22] : ""}`,
           subTitle: "喷绘方式",
           content: "照片效果逼真生动"
         },
         {
-          url: require("../../assets/images/solution/solution_11.png"),
+          url: `${this.urls ? this.urls.solutionAviation[23] : ""}`,
           subTitle: "安装快捷",
           content:
             "安装一个完整机身画面仅需2-3天 不影响飞机周旋律大幅度提升飞机在航时间"
         },
         {
-          url: require("../../assets/images/solution/solution_12.png"),
+          url: `${this.urls ? this.urls.solutionAviation[24] : ""}`,
           subTitle: "场地要求",
           content: "无需专用场地 相对无尘即可完成"
         }
       ],
       process: [
         {
-          url: require("../../assets/images/solution/solution_13.png"),
+          url: `${this.urls ? this.urls.solutionAviation[25] : ""}`,
           text: "飞机进棚进行清洁与准备"
         },
         {
-          url: require("../../assets/images/solution/solution_14.png"),
+          url: `${this.urls ? this.urls.solutionAviation[26] : ""}`,
           text: "脱漆"
         },
         {
-          url: require("../../assets/images/solution/solution_15.png"),
+          url: `${this.urls ? this.urls.solutionAviation[27] : ""}`,
           text: "调漆"
         },
         {
-          url: require("../../assets/images/solution/solution_16.png"),
+          url: `${this.urls ? this.urls.solutionAviation[28] : ""}`,
           text: "上底漆"
         },
         {
-          url: require("../../assets/images/solution/solution_17.png"),
+          url: `${this.urls ? this.urls.solutionAviation[29] : ""}`,
           text: "贴膜准备遮喷"
         },
         {
-          url: require("../../assets/images/solution/solution_18.png"),
+          url: `${this.urls ? this.urls.solutionAviation[30] : ""}`,
           text: "遮喷"
         }
       ],
@@ -377,7 +363,7 @@ export default {
       ],
       supports: [
         {
-          url: require("../../assets/images/solution/solution_19.png"),
+          url: `${this.urls ? this.urls.solutionAviation[31] : ""}`,
           text: ""
         },
         {
@@ -387,41 +373,41 @@ export default {
            风力等考验，制作要求不仅要贴得牢、不褪色，而且还要保证揭下来不留胶，使用的材料必须通过飞机制造厂认证(波音和空客等)"
         },
         {
-          url: require("../../assets/images/solution/solution_20.png"),
+          url: `${this.urls ? this.urls.solutionAviation[32] : ""}`,
           text: ""
         }
       ],
       credentials: [
         {
-          url: require("../../assets/images/solution/solution_21.png")
+          url: `${this.urls ? this.urls.solutionAviation[33] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_22.png")
+          url: `${this.urls ? this.urls.solutionAviation[34] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_23.png")
+          url: `${this.urls ? this.urls.solutionAviation[35] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_24.png")
+          url: `${this.urls ? this.urls.solutionAviation[36] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_25.png")
+          url: `${this.urls ? this.urls.solutionAviation[37] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_26.png")
+          url: `${this.urls ? this.urls.solutionAviation[38] : ""}`
         },
         {
-          url: require("../../assets/images/solution/solution_27.png")
+          url: `${this.urls ? this.urls.solutionAviation[39] : ""}`
         }
       ],
       authentications: [
         {
           text: "材料认证",
-          url: require("../../assets/images/solution/solution_29.png")
+          url: `${this.urls ? this.urls.solutionAviation[41] : ""}`
         },
         {
           text: "材料原厂供货证明",
-          url: require("../../assets/images/solution/solution_30.png")
+          url: `${this.urls ? this.urls.solutionAviation[42] : ""}`
         }
       ]
     };

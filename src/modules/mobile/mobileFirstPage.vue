@@ -1,20 +1,20 @@
 <template>
   <main class="firstPage" scroll>
     <section class="section_1">
-      <img class="coverImg" src="../../assets/images/firstPage_1.jpg" />
+      <img class="coverImg" :src="imgUrls[0]" />
     </section>
     <section class="section_2">
       <!-- 关于我们 -->
       <div class="companyInfo_name">
-        <img src="../../assets/images/companyInfo/info_name.png" />
+        <img :src="imgUrls[1]" />
         <span class="title-span">关于我们</span>
       </div>
       <div class="companyInfo_background">
-        <img src="../../assets/images/companyInfo/info_background.png" />
+        <img :src="imgUrls[2]" />
       </div>
       <div class="companyInfo">
-        <img class="about_1" src="../../assets/images/about_1.jpg" />
-        <img class="about_2" src="../../assets/images/about_2.jpg" />
+        <img class="about_1" :src="imgUrls[3]" />
+        <img class="about_2" :src="imgUrls[4]" />
         <div class="infoDetail">
           <div class="title">“科技、灵感，一切皆可创新”</div>
           <div class="content">
@@ -29,10 +29,10 @@
       <!-- 行业解决方案 -->
       <div class="solution_name">
         <span class="title-span">行业解决方案</span>
-        <img src="../../assets/images/solution/solution_name.png" />
+        <img :src="imgUrls[5]" />
       </div>
       <div class="solution_background">
-        <img src="../../assets/images/solution/solution_background.png" />
+        <img :src="imgUrls[6]" />
       </div>
       <div class="solution">
         <div v-for="(item, index) in transport" :key="item.key">
@@ -45,11 +45,7 @@
             @click="isActive('activeForSolution', index)"
           >
             <div>
-              <img
-                :src="
-                  require(`../../assets/images/transport/trans_${item.key}.png`)
-                "
-              />
+              <img :src="imgUrls[index + 7]" />
             </div>
           </div>
           <div class="transDetail">
@@ -60,7 +56,7 @@
       </div>
       <!-- 研发中心 -->
       <div class="center_name">
-        <img src="../../assets/images/RDCenter/RDCenter_name.png" />
+        <img :src="imgUrls[14]" />
       </div>
     </section>
     <section class="section_3">
@@ -70,7 +66,7 @@
           <button class="btn-primary">更多详情</button>
         </div>
         <div class="detail">
-          <img src="../../assets/images/RDCenter.jpg" />
+          <img :src="imgUrls[15]" />
           <div class="content">
             <div>
               大昆仑通过与沃尔玛中国、顺丰集团、深圳地铁、东航、南航、海航、3M等各大公司的业务合作及促进，
@@ -89,7 +85,7 @@
     <section class="section_4">
       <!-- 成功案例 -->
       <div class="successWork_name">
-        <img src="../../assets/images/successWork/successWork_name.png" />
+        <img :src="imgUrls[16]" />
         <span class="title-span">成功案例</span>
       </div>
       <div class="successWork">
@@ -112,7 +108,7 @@
         </div>
         <div class="carousel">
           <div class="contents">
-            <img src="../../assets/images/works_1.jpg" />
+            <img :src="imgUrls[17]" />
           </div>
           <div class="carouselFooter">
             <Switch-button type="pre" />
@@ -127,12 +123,12 @@
       </div>
       <!-- 媒体品牌设计 -->
       <div class="mediaAndDesign_name">
-        <img src="../../assets/images/mediaAndDesign/mediaAndDesign_name.png" />
+        <img :src="imgUrls[18]" />
         <span class="title-span">媒体、品牌设计</span>
       </div>
       <div class="mediaAndDesign">
         <div class="designs">
-          <img src="../../assets/images/design/design_1.jpg" />
+          <img :src="imgUrls[19]" />
           <div class="designName">
             <div>品牌视觉包装解决方案</div>
             <div>商业广告宣传设计</div>
@@ -154,30 +150,30 @@
       <!-- 新闻中心 -->
       <div class="news_name">
         <span class="title-span">新闻公布中心</span>
-        <img src="../../assets/images/news/news_name.png" />
+        <img :src="imgUrls[20]" />
       </div>
       <div class="news_background">
-        <img src="../../assets/images/news/news_background.png" />
+        <img :src="imgUrls[21]" />
       </div>
       <div class="news">
         <div class="left">
           <div class="small">
-            <img src="../../assets/images/news/news_1.jpg" />
-            <img src="../../assets/images/news/news_2.jpg" />
-            <img src="../../assets/images/news/news_3.jpg" />
+            <img :src="imgUrls[22]" />
+            <img :src="imgUrls[23]" />
+            <img :src="imgUrls[24]" />
           </div>
           <div class="big">
-            <img src="../../assets/images/news/news_4.jpg" />
-            <img src="../../assets/images/news/news_5.jpg" />
+            <img :src="imgUrls[25]" />
+            <img :src="imgUrls[26]" />
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/news/news_6.jpg" />
+          <img :src="imgUrls[27]" />
         </div>
       </div>
       <!-- 合作伙伴 -->
       <div class="partner_name">
-        <img src="../../assets/images/partner/partner_name.png" />
+        <img :src="imgUrls[28]" />
         <span class="title-span">合作伙伴</span>
       </div>
       <div class="partner">
@@ -186,42 +182,18 @@
           <Switch-button type="pre" />
           <div class="logos">
             <div class="logoRow">
-              <img
-                :style="[logosSize[0]]"
-                src="../../assets/images/logos/logos_1.jpg"
-              />
-              <img
-                :style="[logosSize[1]]"
-                src="../../assets/images/logos/logos_2.jpg"
-              />
+              <img :style="[logosSize[0]]" :src="logoUrls[0]" />
+              <img :style="[logosSize[1]]" :src="logoUrls[1]" />
             </div>
             <div class="logoRow">
-              <img
-                :style="[logosSize[2]]"
-                src="../../assets/images/logos/logos_3.jpg"
-              />
-              <img
-                :style="[logosSize[3]]"
-                src="../../assets/images/logos/logos_4.jpg"
-              />
-              <img
-                :style="[logosSize[4]]"
-                src="../../assets/images/logos/logos_5.jpg"
-              />
+              <img :style="[logosSize[2]]" :src="logoUrls[2]" />
+              <img :style="[logosSize[3]]" :src="logoUrls[3]" />
+              <img :style="[logosSize[4]]" :src="logoUrls[4]" />
             </div>
             <div class="logoRow">
-              <img
-                :style="[logosSize[5]]"
-                src="../../assets/images/logos/logos_6.jpg"
-              />
-              <img
-                :style="[logosSize[6]]"
-                src="../../assets/images/logos/logos_7.jpg"
-              />
-              <img
-                :style="[logosSize[7]]"
-                src="../../assets/images/logos/logos_8.jpg"
-              />
+              <img :style="[logosSize[5]]" :src="logoUrls[5]" />
+              <img :style="[logosSize[6]]" :src="logoUrls[6]" />
+              <img :style="[logosSize[7]]" :src="logoUrls[7]" />
             </div>
           </div>
           <Switch-button type="next" />
@@ -229,12 +201,12 @@
       </div>
       <!-- 联系我们 -->
       <div class="contact_name">
-        <img src="../../assets/images/contact/contact_name.png" />
+        <img :src="imgUrls[29]" />
         <span class="title-span">联系我们</span>
       </div>
       <div class="contact">
         <div class="map">
-          <img src="../../assets/images/map.jpg" />
+          <img :src="imgUrls[30]" />
         </div>
         <div class="contactForm">
           <div class="detail">
@@ -272,26 +244,8 @@
         </div>
       </div>
     </section>
-    <section class="section_5">
-      <img class="coverImg" src="../../assets/images/firstPage_4.jpg" />
-      <div class="companyInfo">
-        <div>
-          <div>深圳市大昆仑数码有限公司</div>
-          <div>深圳市龙岗区坂田街道布龙路227号格泰隆·智谷C栋4楼</div>
-        </div>
-        <div>
-          <div>0755-8322 6566</div>
-          <div>13509662539 / 13322991093</div>
-        </div>
-        <div>
-          <div>szdkl@foxmail.com</div>
-          <div>www.smdkl.cn</div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
-
 <script>
 import store from "../../store/warehouse";
 import SwitchButton from "../../components/switchButton";
@@ -299,7 +253,7 @@ import SwitchButton from "../../components/switchButton";
 export default {
   name: "FirstPage",
   props: {
-    radio: String
+    urls: Object
   },
   data() {
     return {
@@ -310,7 +264,9 @@ export default {
       logosSize: store.logosSize,
       coverWidth: document.body.clientWidth,
       coverHeight: document.body.clientWidth * 0.6,
-      RDcenterHeight: document.body.clientWidth * 0.387
+      RDcenterHeight: document.body.clientWidth * 0.387,
+      imgUrls: this.urls ? this.urls.home : [],
+      logoUrls: this.urls ? this.urls.homeLogos : []
     };
   },
   methods: {

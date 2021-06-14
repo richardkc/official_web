@@ -1,7 +1,7 @@
 <template>
   <div class="supermarket">
     <section class="banner">
-      <img src="../../assets/images/supermarket/supermarket-1.png" />
+      <img :src="imgUrls[0]" />
     </section>
     <section class="solution">
       <div class="solutionInside">
@@ -20,7 +20,7 @@
     </section>
     <section class="framework">
       <div class="cover">
-        <img src="../../assets/images/supermarket/supermarket-2.png" />
+        <img :src="imgUrls[1]" />
       </div>
       <div class="frameWorkInside">
         <div class="left">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/supermarket/supermarket-3.png" />
+          <img :src="imgUrls[2]" />
         </div>
       </div>
     </section>
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="right">
-          <img src="../../assets/images/supermarket/supermarket-4.png" />
+          <img :src="imgUrls[3]" />
         </div>
       </div>
     </section>
@@ -86,8 +86,12 @@
 
 <script>
 export default {
+  props: {
+    urls: Object
+  },
   data() {
     return {
+      imgUrls: this.urls ? this.urls.solutionSupermarket : [],
       history: [
         {
           text:
@@ -144,19 +148,19 @@ export default {
       servers: [
         {
           text: "沃尔玛",
-          url: require("../../assets/images/supermarket/supermarket-5.png")
+          url: this.urls ? this.urls.solutionSupermarket[4] : ""
         },
         {
           text: "山姆",
-          url: require("../../assets/images/supermarket/supermarket-6.png")
+          url: this.urls ? this.urls.solutionSupermarket[5] : ""
         },
         {
           text: "安利",
-          url: require("../../assets/images/supermarket/supermarket-7.png")
+          url: this.urls ? this.urls.solutionSupermarket[6] : ""
         },
         {
           text: "宝能科技",
-          url: require("../../assets/images/supermarket/supermarket-8.png")
+          url: this.urls ? this.urls.solutionSupermarket[7] : ""
         }
       ]
     };
