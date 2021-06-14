@@ -147,7 +147,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         },
         headless: false,
         // 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
-        renderAfterDocumentEvent: "render-event"
+        renderAfterDocumentEvent: "render-event",
+        renderAfterTime: 5000
       })
     })
     // new PrerenderSPAPlugin({
