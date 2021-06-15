@@ -1,5 +1,5 @@
 <template>
-  <section class="successfulFleet">
+  <main class="successfulFleet">
     <div class="banner">
       <img :src="imgUrls[0]" />
     </div>
@@ -30,7 +30,7 @@
         <Switch-button type="next" />
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script>

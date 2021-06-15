@@ -65,6 +65,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: "index.html",
+      favicon: "./public/favicon.ico",
       inject: true,
       minify: {
         removeComments: true,
@@ -126,6 +127,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // 对应自己的路由文件，比如index有参数，就需要写成 /index/param1。
       routes: [
         "/",
+        "/home",
         "/aviation",
         "/logistics",
         "/railTransit",
@@ -137,7 +139,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         "/successfulFleet",
         "/successfulRailTransit",
         "/successfulSteamShip",
-        "/successfulSupermarket"
+        "/successfulSupermarket",
+        "/RDCenter"
       ],
 
       // 这个很重要，如果没有配置这段，也不会进行预编译

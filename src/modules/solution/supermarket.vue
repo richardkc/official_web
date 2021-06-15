@@ -1,5 +1,5 @@
 <template>
-  <div class="supermarket">
+  <main class="supermarket">
     <section class="banner">
       <img :src="imgUrls[0]" />
     </section>
@@ -81,7 +81,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

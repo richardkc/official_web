@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <main class="profile">
     <section class="carousel">
       <el-carousel
         height="32rem"
@@ -227,7 +227,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

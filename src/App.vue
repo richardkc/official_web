@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showMain">
+  <div :key="this.renderKey">
     <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
     <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab>
     <router-view :isPC="isPC" :urls="urls"></router-view>
@@ -49,28 +49,49 @@ function format(arr, key) {
   return arr;
 }
 
+const urls = {
+  footer: [],
+  logo: [],
+  homeLogos: [],
+  home: [],
+  aviation: [],
+  logistics: [],
+  railTransit: [],
+  building: [],
+  steamShip: [],
+  supermarket: [],
+  successfulCase: [],
+  successfulPlane: [],
+  successfulFleet: [],
+  successfulRailTransit: [],
+  successfulSteamShip: [],
+  successfulSupermarket: [],
+  RDCenter: []
+};
+
 export default {
   name: "App",
   created() {
-    this.showMain = false;
-    this.$axios.get("/api/images").then(res => {
-      if (res && res.data && res.data.length > 0) {
-        const item = res.data[0];
+    this.$axios
+      .get("/api/images")
+      .then(res => {
+        if (res && res.data && res.data.length > 0) {
+          const item = res.data[0];
 
-        if (typeof item === "object") {
-          for (const [key, value] of Object.entries(item)) {
-            if (value && typeof value === "object" && value.length > 0) {
-              this.urls = this.urls || {};
-              this.urls[key] = format(value, key);
-              this.showMain = true;
-              setTimeout(() => {
-                console.log(this.urls);
-              }, 1000);
+          if (typeof item === "object") {
+            for (const [key, value] of Object.entries(item)) {
+              if (value && typeof value === "object" && value.length > 0) {
+                this.urls = this.urls || {};
+                this.urls[key] = format(value, key);
+                this.renderKey = 2;
+              }
             }
           }
         }
-      }
-    });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   },
   data() {
     return {
@@ -78,8 +99,8 @@ export default {
         tabs: store.tabs
       },
       isPC: methods.isPC(),
-      showMain: false,
-      urls: {}
+      urls,
+      renderKey: 1
     };
   },
   components: {

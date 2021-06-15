@@ -1,5 +1,5 @@
 <template>
-  <section class="successfulRailTransit">
+  <main class="successfulRailTransit">
     <div class="banner">
       <img :src="imgUrls[0]" />
     </div>
@@ -29,7 +29,7 @@
         <Switch-button type="next" />
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="logistics">
+  <main class="logistics">
     <section class="programmes">
       <img :src="imgUrls[0]" />
     </section>
@@ -102,7 +102,7 @@
         <img :src="imgUrls[6]" />
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

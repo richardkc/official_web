@@ -1,5 +1,5 @@
 <template>
-  <div class="building">
+  <main class="building">
     <section class="banner">
       <img :src="imgUrls[0]" />
     </section>
@@ -152,7 +152,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

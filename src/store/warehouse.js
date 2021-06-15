@@ -1,27 +1,27 @@
 const tabs = [
   {
     name: "关于大昆仑",
-    router: "/",
+    router: "",
     key: 1,
     children: [
       {
         name: "公司简介",
-        router: "/",
+        router: "/home",
         key: "1-1"
       },
       {
         name: "企业文化",
-        router: "/",
+        router: "/home",
         key: "1-2"
       },
       {
         name: "发展历程",
-        router: "/",
+        router: "/home",
         key: "1-3"
       },
       {
         name: "荣誉资质",
-        router: "/",
+        router: "/home",
         key: "1-4"
       }
     ]

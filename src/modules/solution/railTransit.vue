@@ -1,5 +1,5 @@
 <template>
-  <div class="railTransit">
+  <main class="railTransit">
     <section class="backgrounds">
       <img :src="imgUrls[0]" />
       <img :src="imgUrls[1]" />
@@ -251,7 +251,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="steamShip">
+  <main class="steamShip">
     <section class="banner">
       <img :src="imgUrls[0]" />
     </section>
@@ -218,7 +218,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>

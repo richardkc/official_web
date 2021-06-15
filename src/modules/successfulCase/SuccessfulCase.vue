@@ -1,5 +1,5 @@
 <template>
-  <section class="successfulCase">
+  <main class="successfulCase">
     <img :src="imgUrls[0]" />
     <div class="contentWrap">
       <div class="left">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script>

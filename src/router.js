@@ -13,12 +13,18 @@ import SuccessfulPlane from "@/modules/successfulCase/successfulPlane";
 import SuccessfulRailTransit from "@/modules/successfulCase/successfulRailTransit";
 import SuccessfulSteamShip from "@/modules/successfulCase/successfulSteamShip";
 import SuccessfulSupermarket from "@/modules/successfulCase/successfulSupermarket";
+import RDCenter from "@/modules/RDCenter/RDCenter";
 
 Vue.use(Router);
 
 const routes = [
   {
     path: "/",
+    name: "first",
+    redirect: "/home"
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home
   },
@@ -81,6 +87,11 @@ const routes = [
     path: "/successfulSupermarket",
     name: "SuccessfulSupermarket",
     component: SuccessfulSupermarket
+  },
+  {
+    path: "/RDCenter",
+    name: "RDCenter",
+    component: RDCenter
   }
 ];
 
