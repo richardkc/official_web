@@ -111,6 +111,9 @@ export default {
 
   .example {
     margin-left: 3%;
+    border-radius: 10%;
+    max-width: 17%;
+    overflow: hidden;
   }
 }
 </style>

@@ -12,7 +12,7 @@ Vue.prototype.$axios = axios;
 Vue.use(ElementUI);
 
 Vue.use(VueLazyLoad, {
-  preLoad: 1,
+  preLoad: 1.3,
   error: "",
   loading: "",
   attempt: 2
