@@ -1,8 +1,8 @@
 <template>
   <main class="railTransit">
     <section class="backgrounds">
-      <img :src="imgUrls[0]" />
-      <img :src="imgUrls[1]" />
+      <img v-lazy="imgUrls[0]" />
+      <img v-lazy="imgUrls[1]" />
       <div class="exteriorWrap">
         <div class="exterior">
           <div class="title">车辆外饰</div>
@@ -56,11 +56,11 @@
         </div>
         <div class="images">
           <div class="left">
-            <img :src="imgUrls[2]" />
+            <img v-lazy="imgUrls[2]" />
           </div>
           <div class="right">
-            <img :src="imgUrls[3]" />
-            <img :src="imgUrls[4]" />
+            <img v-lazy="imgUrls[3]" />
+            <img v-lazy="imgUrls[4]" />
           </div>
         </div>
         <div class="series">
@@ -101,12 +101,12 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[5]" />
+          <img v-lazy="imgUrls[5]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img :src="imgUrls[6]" />
+          <img v-lazy="imgUrls[6]" />
         </div>
         <div class="right">
           <div class="subTitle">相关产品系列</div>
@@ -135,7 +135,7 @@
               <div class="subTitle">GROUND</div>
             </div>
             <div class="image">
-              <img :src="imgUrls[7]" />
+              <img v-lazy="imgUrls[7]" />
             </div>
           </div>
           <div class="leftContent">
@@ -155,12 +155,12 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[8]" />
+          <img v-lazy="imgUrls[8]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img :src="imgUrls[9]" />
+          <img v-lazy="imgUrls[9]" />
         </div>
         <div class="right">
           <div class="subTitle">
@@ -200,7 +200,7 @@
         提供更高的光泽度及易清洁性能等。
       </div>
       <div class="image">
-        <img :src="imgUrls[10]" />
+        <img v-lazy="imgUrls[10]" />
       </div>
       <div class="content">
         贴膜的主要结构由上到下依次为透明保护膜层、PVC贴膜层、背胶层、衬纸层。
@@ -214,7 +214,7 @@
         传统喷漆工艺与贴膜工艺的对比
       </div>
       <div class="image">
-        <img :src="imgUrls[11]" />
+        <img v-lazy="imgUrls[11]" />
       </div>
       <div class="subTitle use">
         环保贴膜解决方案在地铁车辆车体翻新的应用
@@ -227,7 +227,7 @@
         >
           <div class="index">{{ index + 1 }}</div>
           <div class="image">
-            <img :src="item.url" />
+            <img v-lazy="item.url" />
           </div>
         </div>
       </div>

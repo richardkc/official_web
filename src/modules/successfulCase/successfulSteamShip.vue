@@ -1,14 +1,14 @@
 <template>
   <main class="successfulSteamShip">
     <div class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </div>
     <div class="details">
       <div class="contentWrap">
         <div class="subTitle">广东英辉船厂</div>
       </div>
       <div class="imageWrap">
-        <img :src="imgUrls[1]" />
+        <img v-lazy="imgUrls[1]" />
       </div>
       <div class="carousel">
         <Switch-button type="pre" />
@@ -17,7 +17,7 @@
           :key="index"
           class="carouselItem"
         >
-          <img :src="item.url" style="width: 100%; height: 100%;" />
+          <img v-lazy="item.url" style="width: 100%; height: 100%;" />
           <span :class="{ covered: index > 0 }">{{ item.text }}</span>
         </div>
         <Switch-button type="next" />

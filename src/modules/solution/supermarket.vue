@@ -1,7 +1,7 @@
 <template>
   <main class="supermarket">
     <section class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </section>
     <section class="solution">
       <div class="solutionInside">
@@ -20,7 +20,7 @@
     </section>
     <section class="framework">
       <div class="cover">
-        <img :src="imgUrls[1]" />
+        <img v-lazy="imgUrls[1]" />
       </div>
       <div class="frameWorkInside">
         <div class="left">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[2]" />
+          <img v-lazy="imgUrls[2]" />
         </div>
       </div>
     </section>
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[3]" />
+          <img v-lazy="imgUrls[3]" />
         </div>
       </div>
     </section>
@@ -77,7 +77,7 @@
       <div class="examples">
         <div class="example" v-for="(item, index) in servers" :key="index">
           <div class="content">{{ item.text }}</div>
-          <img :src="item.url" />
+          <img v-lazy="item.url" />
         </div>
       </div>
     </section>

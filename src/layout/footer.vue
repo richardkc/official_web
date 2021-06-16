@@ -1,6 +1,6 @@
 <template>
   <section class="footer">
-    <img class="coverImg" :src="imgUrls[0]" />
+    <img class="coverImg" v-lazy="imgUrls[0]" />
     <div class="companyInfo">
       <div>
         <div>深圳市大昆仑数码有限公司</div>

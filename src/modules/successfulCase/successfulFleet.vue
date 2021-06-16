@@ -1,11 +1,11 @@
 <template>
   <main class="successfulFleet">
     <div class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
       <div class="example" v-for="(item, index) in examples" :key="index">
-        <img :src="item.url" />
+        <img v-lazy="item.url" />
         <span :class="{ covered: index > 0 }">{{ item.text }}</span>
       </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="content">营运车辆 新能源车 冷运车</div>
       </div>
       <div class="imageWrap">
-        <img :src="imgUrls[7]" />
+        <img v-lazy="imgUrls[7]" />
       </div>
       <div class="carousel">
         <Switch-button type="pre" />
@@ -24,7 +24,7 @@
           :key="index"
           class="carouselItem"
         >
-          <img :src="item.url" style="width: 100%; height: 100%;" />
+          <img v-lazy="item.url" style="width: 100%; height: 100%;" />
           <span :class="{ covered: index > 0 }">{{ item.text }}</span>
         </div>
         <Switch-button type="next" />

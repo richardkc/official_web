@@ -1,6 +1,6 @@
 <template>
   <main class="successfulCase">
-    <img :src="imgUrls[0]" />
+    <img v-lazy="imgUrls[0]" />
     <div class="contentWrap">
       <div class="left">
         <div class="subTitle">ABOUT US</div>
@@ -14,7 +14,7 @@
       <div class="right">
         <div class="examples">
           <div class="example" v-for="(item, index) in examples" :key="index">
-            <img :src="item.url" />
+            <img v-lazy="item.url" />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <main class="RDCenter">
     <section class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </section>
     <section class="introduction">
       <div class="titles">
@@ -10,12 +10,12 @@
           <div class="subTitle">研发情况介绍</div>
         </div>
         <div class="right">
-          <img :src="logoUrls[0]" />
+          <img v-lazy="logoUrls[0]" />
         </div>
       </div>
       <div class="subTitleLg">2018年与3M、深圳中车成立贴膜技术研发中心</div>
       <div class="imageWrap">
-        <img :src="imgUrls[1]" />
+        <img v-lazy="imgUrls[1]" />
       </div>
       <div class="content">
         大昆仑通过与沃尔玛中国、顺丰集团、深圳地铁、东航、南航、海航、3M等各大公司的业务合作及促进，
@@ -50,7 +50,7 @@
     </section>
     <section class="application">
       <div class="cover">
-        <img :src="imgUrls[2]" />
+        <img v-lazy="imgUrls[2]" />
       </div>
       <div class="applicationInner">
         <div class="examples">

@@ -1,7 +1,7 @@
 <template>
   <main class="building">
     <section class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </section>
     <section class="solution">
       <div class="top">
@@ -24,12 +24,12 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[1]" />
+          <img v-lazy="imgUrls[1]" />
         </div>
       </div>
       <div class="bottom">
         <div class="left">
-          <img :src="imgUrls[2]" />
+          <img v-lazy="imgUrls[2]" />
         </div>
         <div class="right">
           <div class="subTitle">贴膜的应用优势</div>
@@ -45,12 +45,12 @@
         </div>
       </div>
       <div class="imageWrap">
-        <img :src="imgUrls[3]" />
+        <img v-lazy="imgUrls[3]" />
       </div>
     </section>
     <section class="application">
       <div class="top">
-        <img :src="imgUrls[4]" />
+        <img v-lazy="imgUrls[4]" />
       </div>
       <div class="bottom">
         <div class="left">
@@ -69,13 +69,13 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[5]" />
+          <img v-lazy="imgUrls[5]" />
         </div>
       </div>
     </section>
     <section class="advantage">
       <div class="itemWrap" v-for="(item, index) in advantages" :key="index">
-        <img :src="item.url" />
+        <img v-lazy="item.url" />
         <div class="subTitle">{{ item.title }}</div>
         <div class="text">{{ item.text }}</div>
       </div>
@@ -94,17 +94,17 @@
         <div class="left">
           <div class="itemWrap">
             <div class="text">Smooth Stone</div>
-            <img :src="imgUrls[10]" />
+            <img v-lazy="imgUrls[10]" />
           </div>
           <div class="itemWrap">
             <div class="text">Textile</div>
-            <img :src="imgUrls[11]" />
+            <img v-lazy="imgUrls[11]" />
           </div>
         </div>
         <div class="right">
           <div class="itemWrap">
             <div class="text">Fine Wood</div>
-            <img :src="imgUrls[12]" />
+            <img v-lazy="imgUrls[12]" />
           </div>
         </div>
       </div>
@@ -118,12 +118,12 @@
             </div>
           </div>
           <div class="imgWrap">
-            <img :src="imgUrls[13]" />
+            <img v-lazy="imgUrls[13]" />
             <div class="remarks">玻璃粘贴工作可在专门的建筑商店中进行</div>
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[14]" />
+          <img v-lazy="imgUrls[14]" />
           <div class="remarks">DG-1528</div>
         </div>
       </div>
@@ -136,7 +136,7 @@
               您可以从100多种类型的图案中进行选择，并根据自己的想法进行设计，以充分利用玻璃材料。
             </div>
           </div>
-          <img :src="imgUrls[15]" />
+          <img v-lazy="imgUrls[15]" />
         </div>
         <div class="right">
           <div>
@@ -148,7 +148,7 @@
               例如在发生以下情况时防止散射、破损。
             </div>
           </div>
-          <img :src="imgUrls[16]" />
+          <img v-lazy="imgUrls[16]" />
         </div>
       </div>
     </section>

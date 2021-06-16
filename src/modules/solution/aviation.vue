@@ -14,7 +14,7 @@
           :key="index"
           :name="item.name"
         >
-          <img :src="item.url" style="width: 100%; height: 100%;" />
+          <img v-lazy="item.url" style="width: 100%; height: 100%;" />
         </el-carousel-item>
       </el-carousel>
       <div class="carouselTab">
@@ -44,7 +44,7 @@
             v-for="(item, index) in aviationMap"
             :key="index"
           >
-            <img :src="item.url" />
+            <img v-lazy="item.url" />
             <span :class="{ cover: index > 0 }">{{ item.name }}</span>
           </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="flrstWrap">
           <div class="first">
             <span>航空标识</span>
-            <img :src="imgUrls[10]" />
+            <img v-lazy="imgUrls[10]" />
           </div>
         </div>
         <div class="bottom">
@@ -74,7 +74,10 @@
             <div v-for="item in transport" :key="item.key">
               <div class="imgWrap">
                 <div>
-                  <img style="width: 50px;height: 50px;" :src="imgUrls[item]" />
+                  <img
+                    style="width: 50px;height: 50px;"
+                    v-lazy="imgUrls[item]"
+                  />
                 </div>
               </div>
             </div>
@@ -88,7 +91,7 @@
         <div>Aircraft engineering</div>
         <div>positioning map and screen design</div>
       </div>
-      <img :src="imgUrls[17]" />
+      <img v-lazy="imgUrls[17]" />
     </section>
     <section class="progress">
       <div class="title">飞机贴膜作业流程</div>
@@ -96,7 +99,7 @@
       <div class="examples">
         <div class="example" v-for="(item, index) in workProcess" :key="index">
           <div class="count">{{ index + 1 }}</div>
-          <img :src="item.url" />
+          <img v-lazy="item.url" />
           <div class="text">{{ item.text }}</div>
         </div>
       </div>
@@ -113,7 +116,7 @@
         <div class="icons">
           <div class="icon" v-for="(item, index) in advantages" :key="index">
             <div class="imgWrap">
-              <img :src="item.url" />
+              <img v-lazy="item.url" />
             </div>
             <div class="text">
               <div class="subTitle">{{ item.subTitle }}</div>
@@ -132,7 +135,7 @@
       <div class="examples">
         <div class="example" v-for="(item, index) in process" :key="index">
           <div class="index">{{ index + 1 }}</div>
-          <img :src="item.url" />
+          <img v-lazy="item.url" />
           <div class="text">{{ item.text }}</div>
         </div>
       </div>
@@ -174,16 +177,16 @@
       <div class="content">
         <div class="contentItem" v-for="(item, index) in supports" :key="index">
           <div v-if="item.text">{{ item.text }}</div>
-          <img v-else-if="item.url" :src="item.url" />
+          <img v-else-if="item.url" v-lazy="item.url" />
         </div>
       </div>
       <div class="examples">
         <div class="left">
-          <img v-if="credentials[0]" :src="credentials[0].url" />
+          <img v-if="credentials[0]" v-lazy="credentials[0].url" />
         </div>
         <div class="right">
           <div class="image" v-for="(item, index) in credentials" :key="index">
-            <img v-if="index > 0" :src="item.url" />
+            <img v-if="index > 0" v-lazy="item.url" />
           </div>
         </div>
       </div>
@@ -213,7 +216,7 @@
           <div>飞机图形业务流程图-亚太地区</div>
         </div>
         <div class="imgWrap">
-          <img :src="imgUrls[40]" />
+          <img v-lazy="imgUrls[40]" />
         </div>
       </div>
       <div class="right">
@@ -223,7 +226,7 @@
           :key="index"
         >
           <span>{{ item.text }}</span>
-          <img :src="item.url" />
+          <img v-lazy="item.url" />
         </div>
       </div>
     </section>

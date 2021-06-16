@@ -1,7 +1,7 @@
 <template>
   <main class="steamShip">
     <section class="banner">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </section>
     <section class="introduction">
       <div class="title">
@@ -36,7 +36,7 @@
         同时可以配套使用相对应的保护膜，可以提供更高的光泽度及易清洁性能等。
       </div>
       <div class="imageWrap">
-        <img :src="imgUrls[1]" />
+        <img v-lazy="imgUrls[1]" />
       </div>
       <div class="content">
         贴膜的主要结构由上到下依次为透明保护膜层、PVC贴膜
@@ -48,11 +48,11 @@
         的收缩率，为施工于车身复杂表面提供了可能性。
       </div>
       <div class="imageWrap">
-        <img :src="imgUrls[2]" />
+        <img v-lazy="imgUrls[2]" />
       </div>
       <div class="compare">
         <div class="subTitle">传统喷漆工艺与贴膜工艺的对比</div>
-        <img :src="imgUrls[3]" />
+        <img v-lazy="imgUrls[3]" />
       </div>
     </section>
     <section class="advantage">
@@ -70,7 +70,7 @@
     <section class="characteristic">
       <div class="first">
         <div class="left">
-          <img :src="imgUrls[4]" />
+          <img v-lazy="imgUrls[4]" />
         </div>
         <div class="right">
           <div class="content">
@@ -121,7 +121,7 @@
             从打印贴膜到彩色贴膜、反光膜、保护膜，不论您需要包覆
             的船体面积有多大，都可以轻松实现。
           </div>
-          <img :src="imgUrls[5]" />
+          <img v-lazy="imgUrls[5]" />
         </div>
       </div>
       <div class="third">
@@ -137,14 +137,14 @@
             v-for="(item, index) in characteristicsThird"
             :key="index"
           >
-            <img :src="item.url" />
+            <img v-lazy="item.url" />
             <div class="remark">
               <div class="subTitle">{{ item.title }}</div>
               <div class="content">{{ item.text }}</div>
             </div>
           </div>
         </div>
-        <img :src="imgUrls[8]" />
+        <img v-lazy="imgUrls[8]" />
       </div>
       <div class="fourth">
         <div class="subTitle">任浪花飞溅，我自驰骋向前</div>
@@ -159,7 +159,7 @@
             v-for="(item, index) in characteristicsFourth"
             :key="index"
           >
-            <img :src="item.url" />
+            <img v-lazy="item.url" />
             <div class="subTitle">{{ item.title }}</div>
             <div class="content">{{ item.text }}</div>
           </div>
@@ -187,7 +187,7 @@
           </div>
         </div>
         <div class="right">
-          <img :src="imgUrls[13]" />
+          <img v-lazy="imgUrls[13]" />
         </div>
       </div>
       <div class="application">
@@ -198,11 +198,11 @@
           上述暴露因素会对保修期限造成影响。
         </div>
         <div class="imageWrap">
-          <img :src="imgUrls[14]" />
+          <img v-lazy="imgUrls[14]" />
         </div>
         <div class="spots">
           <div class="left">
-            <img :src="imgUrls[15]" />
+            <img v-lazy="imgUrls[15]" />
           </div>
           <div class="right">
             <div

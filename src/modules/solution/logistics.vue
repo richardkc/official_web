@@ -1,7 +1,7 @@
 <template>
   <main class="logistics">
     <section class="programmes">
-      <img :src="imgUrls[0]" />
+      <img v-lazy="imgUrls[0]" />
     </section>
     <section class="programme">
       <div class="details">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <img :src="imgUrls[1]" />
+      <img v-lazy="imgUrls[1]" />
       <div class="taleWrap">
         <el-table :data="characteristics" :style="{ width: '100%' }">
           <el-table-column
@@ -55,16 +55,16 @@
             为客户提供高品质、专业可靠的车队标识解决方案，深受国内众多客户的信赖。近年来，大昆仑已为国内众多物流巨头的车辆打造车身画面，
             创造品牌价值。
           </div>
-          <img :src="imgUrls[2]" />
+          <img v-lazy="imgUrls[2]" />
         </div>
         <div class="right">
-          <img :src="imgUrls[3]" />
+          <img v-lazy="imgUrls[3]" />
         </div>
       </div>
     </section>
     <section class="introduction">
       <div class="left">
-        <img :src="imgUrls[4]" />
+        <img v-lazy="imgUrls[4]" />
       </div>
       <div class="right">
         <div class="header">
@@ -96,10 +96,10 @@
           认证施工团队均经过3M专业培训和测试，服务可靠，客户放心
           施工团队均配有专业施工工具，施工速度快，减少车辆占用时间，有效提升运营效率；
         </div>
-        <img :src="imgUrls[5]" />
+        <img v-lazy="imgUrls[5]" />
       </div>
       <div class="right">
-        <img :src="imgUrls[6]" />
+        <img v-lazy="imgUrls[6]" />
       </div>
     </section>
   </main>
