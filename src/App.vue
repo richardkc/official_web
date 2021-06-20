@@ -92,6 +92,10 @@ export default {
       .catch(error => {
         console.error(error);
       });
+
+    window.addEventListener("beforeunload", function() {
+      window.scrollTo(0, 0);
+    });
   },
   data() {
     return {

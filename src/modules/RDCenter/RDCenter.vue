@@ -450,7 +450,7 @@ export default {
     left: 0;
     right: 0;
     width: 100%;
-    height: 30%;
+    height: 40%;
     background-color: rgba(203, 74, 64, 0.6);
     display: flex;
     flex-direction: column;
@@ -480,8 +480,8 @@ export default {
     background: linear-gradient(
       to bottom,
       white,
-      white 30%,
-      transparent 60%,
+      white 40%,
+      transparent 90%,
       transparent
     );
     padding: 4rem;
@@ -733,7 +733,7 @@ export default {
       justify-content: space-between;
 
       div {
-        border-radius: 1rem;
+        border-radius: 0.75rem;
         background-color: white;
         padding: 0.25rem;
       }
@@ -747,7 +747,7 @@ export default {
       }
 
       img {
-        border-radius: 1rem;
+        border-radius: 0.75rem;
         height: 100%;
       }
     }
