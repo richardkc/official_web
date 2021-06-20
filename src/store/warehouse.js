@@ -1,7 +1,7 @@
 const tabs = [
   {
     name: "关于大昆仑",
-    router: "",
+    router: "/home",
     key: 1,
     children: [
       {

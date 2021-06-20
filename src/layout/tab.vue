@@ -1,5 +1,5 @@
 <template>
-  <nav class="tabs">
+  <nav class="tabs" :class="{ tabsColor: [1].includes(this.routerKey) }">
     <img class="logo" src="../assets/images/logo.png" />
     <div class="navList">
       <ul>
@@ -100,8 +100,39 @@ export default {
   data() {
     return {
       selectedKey: "",
-      showList: false
+      showList: false,
+      routerKey: ""
     };
+  },
+  watch: {
+    //监听路由变化
+    $route(to, from) {
+      const router = to.path || "";
+      const tabs = this.tabInfo.tabs || [];
+
+      for (let i = 0; i < tabs.length; i += 1) {
+        const currentTab = tabs[i];
+
+        this.selectedKey = "";
+
+        if (currentTab.router === router) {
+          this.selectedKey = i;
+        }
+
+        if (currentTab.children && currentTab.children.length > 0) {
+          currentTab.children.forEach(item => {
+            if (item.router === router) {
+              this.selectedKey = i;
+            }
+          });
+        }
+
+        if (this.selectedKey) {
+          this.routerKey = this.selectedKey;
+          break;
+        }
+      }
+    }
   },
   mounted() {
     window.onresize = () => {
@@ -110,12 +141,12 @@ export default {
       })();
     };
 
-    this.scrollChange();
+    // this.scrollChange();
 
-    window.addEventListener("scroll", this.scrollChange, true);
+    // window.addEventListener("scroll", this.scrollChange, true);
   },
   unmounted() {
-    window.removeEventListener("scroll", this.scrollChanges, true);
+    // window.removeEventListener("scroll", this.scrollChange, true);
   },
   methods: {
     scrollChange() {
@@ -127,13 +158,13 @@ export default {
         return;
       }
 
-      tabHeightRange.forEach((item, index) => {
-        const heightPercent = (scrollTop * 100) / offsetHeight;
+      // tabHeightRange.forEach((item, index) => {
+      //   const heightPercent = (scrollTop * 100) / offsetHeight;
 
-        if (item.min < heightPercent && item.max > heightPercent) {
-          this.selectedKey = index;
-        }
-      });
+      //   if (item.min < heightPercent && item.max > heightPercent) {
+      //     this.selectedKey = index;
+      //   }
+      // });
     },
     handleNavClick(list, index) {
       this.showList =
@@ -160,6 +191,20 @@ export default {
 </script>
 
 <style scoped lang="less">
+@greyColor: rgb(128, 128, 128);
+
+.tabsColor {
+  color: @greyColor !important;
+
+  a {
+    color: @greyColor !important;
+  }
+
+  .login {
+    border-color: @greyColor !important;
+  }
+}
+
 .tabs {
   position: fixed;
   top: 0;
@@ -170,7 +215,7 @@ export default {
   display: flex;
   justify-content: space-between;
   z-index: 999;
-  color: rgb(128, 128, 128);
+  color: white;
 
   .listName {
     position: relative;
@@ -244,7 +289,7 @@ export default {
   }
 
   a {
-    color: rgb(128, 128, 128);
+    color: white;
     text-decoration: none;
   }
 

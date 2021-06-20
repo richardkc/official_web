@@ -1,6 +1,18 @@
 <template>
   <main class="successfulCase">
     <img v-lazy="imgUrls[0]" />
+    <div class="scrollBtns">
+      <img
+        src="../../assets/images/button/button_left.png"
+        @mousedown="scrollExamples('left')"
+        @mouseup="scrollExamples('stop')"
+      />
+      <img
+        src="../../assets/images/button/button_right.png"
+        @mousedown="scrollExamples('right')"
+        @mouseup="scrollExamples('stop')"
+      />
+    </div>
     <div class="contentWrap">
       <div class="left">
         <div class="subTitle">ABOUT US</div>
@@ -12,9 +24,23 @@
         </div>
       </div>
       <div class="right">
-        <div class="examples">
-          <div class="example" v-for="(item, index) in examples" :key="index">
-            <img v-lazy="item.url" />
+        <div class="examples" id="examples">
+          <div class="inner">
+            <div
+              class="example"
+              v-for="(item, index) in examples"
+              :key="index"
+              @click="
+                () => {
+                  selectIndex = index;
+                }
+              "
+            >
+              <img v-lazy="item.url" />
+              <div v-if="selectIndex === index">
+                <router-link :to="item.router">更多案例</router-link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,25 +55,50 @@ export default {
   },
   data() {
     return {
+      timer: null,
+      selectIndex: 0,
       imgUrls: this.urls ? this.urls.successfulCase : [],
       examples: [
         {
-          url: this.urls ? this.urls.successfulCase[1] : ""
+          url: this.urls ? this.urls.successfulCase[1] : "",
+          router: "/successfulPlane"
         },
         {
-          url: this.urls ? this.urls.successfulCase[2] : ""
+          url: this.urls ? this.urls.successfulCase[2] : "",
+          router: "/successfulRailTransit"
         },
         {
-          url: this.urls ? this.urls.successfulCase[3] : ""
+          url: this.urls ? this.urls.successfulCase[3] : "",
+          router: "/successfulFleet"
         },
         {
-          url: this.urls ? this.urls.successfulCase[4] : ""
+          url: this.urls ? this.urls.successfulCase[4] : "",
+          router: "/successfulSteamShip"
         },
         {
-          url: this.urls ? this.urls.successfulCase[5] : ""
+          url: this.urls ? this.urls.successfulCase[5] : "",
+          router: "/successfulSupermarket"
         }
       ]
     };
+  },
+  methods: {
+    scrollExamples: type => {
+      if (type === "stop") {
+        clearInterval(this.timer);
+        this.timer = null;
+
+        return;
+      }
+
+      this.timer = setInterval(() => {
+        if (type === "left") {
+          document.getElementById("examples").scrollLeft -= 10;
+        } else if (type === "right") {
+          document.getElementById("examples").scrollLeft += 10;
+        }
+      });
+    }
   }
 };
 </script>
@@ -66,13 +117,18 @@ export default {
 .title {
   font-size: 1.75rem;
   font-weight: @titleFontWeight;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .subTitle {
   font-size: 0.85rem;
   font-weight: @titleFontWeight;
   margin-bottom: 1rem;
+}
+
+.content {
+  font-size: 0.55rem;
+  line-height: 1rem;
 }
 
 .successfulCase {
@@ -85,9 +141,31 @@ export default {
     width: 100%;
   }
 
+  .scrollBtns {
+    position: absolute;
+    bottom: 44%;
+    right: 1.25rem;
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+      width: 2.5rem;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 0.5);
+        border-radius: 1.5rem;
+      }
+    }
+
+    img:first-child {
+      margin-right: 1rem;
+    }
+  }
+
   .contentWrap {
     position: absolute;
-    width: 90%;
+    width: 95%;
     left: 5%;
     bottom: 8%;
     display: flex;
@@ -104,16 +182,48 @@ export default {
   }
 
   .examples {
-    width: 150%;
-    display: flex;
-    justify-content: flex-start;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: 0;
+    margin-left: 3%;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    .inner {
+      width: 140%;
+      display: flex;
+      justify-content: flex-start;
+    }
   }
 
   .example {
-    margin-left: 3%;
+    margin-right: 3%;
     border-radius: 10%;
     max-width: 17%;
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    div {
+      position: absolute;
+      left: 10%;
+      bottom: 10%;
+      font-size: 0.55rem;
+      border: 1px solid white;
+      padding: 0.125rem 0.5rem;
+      border-radius: 1rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.5);
+      }
+    }
   }
 }
 </style>
