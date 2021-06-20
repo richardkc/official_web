@@ -180,4 +180,11 @@ button {
   height: 1.44rem;
   background-color: rgb(203, 74, 64);
 }
+
+.square {
+  width: 0.25rem;
+  height: 0.5rem;
+  background: white;
+  margin: 0.3rem 0.3rem 0.3rem 0;
+}
 </style>

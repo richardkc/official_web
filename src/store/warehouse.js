@@ -70,7 +70,7 @@ const tabs = [
   },
   {
     name: "研发中心",
-    router: "",
+    router: "/RDCenter",
     key: "3",
     children: []
   },
