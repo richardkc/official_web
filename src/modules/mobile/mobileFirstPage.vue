@@ -36,7 +36,8 @@
       </div>
       <div class="solution">
         <div v-for="(item, index) in transport" :key="item.key">
-          <div
+          <router-link
+            :to="item.router"
             class="imgWrap"
             :class="[
               `imgWrap_${item.key}`,
@@ -44,10 +45,8 @@
             ]"
             @click="isActive('activeForSolution', index)"
           >
-            <div>
-              <img v-lazy="imgUrls[index + 7]" />
-            </div>
-          </div>
+            <img v-lazy="imgUrls[index + 7]" />
+          </router-link>
           <div class="transDetail">
             <div class="transName">{{ item.name }}</div>
             <div>{{ item.English }}</div>
@@ -487,47 +486,13 @@ export default {
       width: 4.16rem;
       background-color: rgba(203, 74, 64);
       margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         background-color: #b3b3b3;
       }
-
-      div {
-        height: 1.92rem;
-        display: flex;
-        align-items: flex-end;
-      }
-    }
-
-    .imgWrap_1 {
-      padding: 1rem 1.12rem;
-    }
-
-    .imgWrap_2 {
-      padding: 0.8rem 1.12rem;
-    }
-
-    .imgWrap_3 {
-      padding: 0.64rem 1rem;
-    }
-
-    .imgWrap_4 {
-      padding: 0.72rem 1.12rem;
-    }
-
-    .imgWrap_5 {
-      padding: 0.8rem 1.12rem;
-    }
-
-    .imgWrap_6 {
-      padding: 0.88rem 1.12rem;
-    }
-
-    .imgWrap_7 {
-      padding: 0.68rem 1.12rem;
-    }
-    .active {
-      background-color: rgb(179, 179, 179);
     }
 
     img {

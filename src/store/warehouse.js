@@ -174,36 +174,43 @@ const transport = [
   {
     name: "航空标识",
     English: "Airline",
+    router: "/aviation",
     key: 1
   },
   {
     name: "物流车队",
     English: "Train",
+    router: "/logistics",
     key: 2
   },
   {
     name: "轨道交通",
     English: "Truck",
+    router: "/railTransit",
     key: 3
   },
   {
     name: "大型商超",
     English: "Supermarket",
+    router: "/supermarket",
     key: 4
   },
   {
     name: "船舶标识",
     English: "Ship",
+    router: "/steamShip",
     key: 5
   },
   {
     name: "建筑装饰",
     English: "Building",
+    router: "/building",
     key: 6
   },
   {
     name: "3M全系列贴膜特约经销商",
     English: "3m Film",
+    router: "",
     key: 7
   }
 ];
