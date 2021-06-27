@@ -4,9 +4,9 @@
       <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
-      <div class="example" v-for="(item, index) in examples" :key="index">
-        <img v-lazy="item.url" />
-        <span :class="{ covered: index > 0 }">{{ item.text }}</span>
+      <div class="example" v-for="(item, index) in planeUrls" :key="index">
+        <img v-lazy="planeUrls[index].url" />
+        <span :class="{ covered: index > 0 }">{{ planeUrls[index].text }}</span>
       </div>
     </div>
     <div class="details">
@@ -35,6 +35,7 @@
 
 <script>
 import SwitchButton from "../../components/switchButton";
+import store from "@/store/warehouse";
 
 export default {
   props: {
@@ -42,33 +43,9 @@ export default {
   },
   data() {
     return {
+      originPath: store.originPath,
       imgUrls: this.urls ? this.urls.successfulPlane : [],
-      examples: [
-        {
-          url: this.urls ? this.urls.successfulPlane[1] : "",
-          text: "南方航空"
-        },
-        {
-          url: this.urls ? this.urls.successfulPlane[2] : "",
-          text: "山东航空"
-        },
-        {
-          url: this.urls ? this.urls.successfulPlane[3] : "",
-          text: "华夏航空"
-        },
-        {
-          url: this.urls ? this.urls.successfulPlane[4] : "",
-          text: "海南航空"
-        },
-        {
-          url: this.urls ? this.urls.successfulPlane[5] : "",
-          text: "东方航空"
-        },
-        {
-          url: this.urls ? this.urls.successfulPlane[6] : "",
-          text: "江西航空"
-        }
-      ],
+      planeUrls: [],
       carouselMap: [
         {
           url: this.urls ? this.urls.successfulPlane[8] : ""
@@ -81,6 +58,13 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.planeUrls = store.formatPaths(res.data[0].successful_plane);
+      }
+    });
   },
   components: {
     "Switch-button": SwitchButton

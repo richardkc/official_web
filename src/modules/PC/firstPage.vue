@@ -45,7 +45,7 @@
             ]"
             @click="isActive('activeForSolution', index)"
           >
-            <img v-lazy="imgUrls[index + 7]" />
+            <img v-lazy="originPath + `/uploads/normal-${index + 1}.png`" />
           </router-link>
           <div class="transDetail">
             <div class="transName">{{ item.name }}</div>
@@ -97,10 +97,10 @@
                 <li
                   :class="activeForSuccessWork == index ? 'active' : ''"
                   @click="isActive('activeForSuccessWork', index)"
-                  v-for="(item, index) in works"
+                  v-for="(item, index) in footerContents.works"
                   :key="index"
                 >
-                  {{ item }}
+                  {{ item.text }}
                 </li>
               </ul>
             </div>
@@ -111,16 +111,24 @@
         </div>
         <div class="carousel">
           <div class="contents">
-            <img v-lazy="imgUrls[17]" />
+            <img v-lazy="footerContents.url" />
           </div>
           <div class="carouselFooter">
-            <Switch-button type="pre" />
-            <div class="footerContent">
-              <span>顺丰速运</span>
-              <span>跨越速运</span>
-              <span>德邦速运</span>
+            <div @click="footerContentChange(footerContents.index - 1)">
+              <Switch-button type="pre" />
             </div>
-            <Switch-button type="next" />
+            <div class="footerContent">
+              <span
+                v-for="(item, index) in footerContents.splited"
+                :key="index"
+                @click="footerContentIndexChange(index)"
+                :class="{ selected: footerContents.selected === index }"
+                >{{ item.text }}</span
+              >
+            </div>
+            <div @click="footerContentChange(footerContents.index + 1)">
+              <Switch-button type="next" />
+            </div>
           </div>
         </div>
       </div>
@@ -261,21 +269,92 @@ export default {
   },
   data() {
     return {
+      originPath: store.originPath,
       activeForSuccessWork: 0,
       activeForSolution: 0,
       transport: store.transport,
-      works: store.works,
       logosSize: store.logosSize,
       coverWidth: document.body.clientWidth,
       coverHeight: document.body.clientWidth * 0.6,
       RDcenterHeight: document.body.clientWidth * 0.387,
       imgUrls: this.urls ? this.urls.home : [],
-      logoUrls: this.urls ? this.urls.homeLogos : []
+      logoUrls: this.urls ? this.urls.homeLogos : [],
+      footerContents: {
+        index: 0,
+        splited: [],
+        all: [],
+        works: [
+          {
+            key: "successful_plane",
+            text: "航空飞机"
+          },
+          {
+            key: "successful_rail_transit",
+            text: "轨道交通"
+          },
+          {
+            key: "successful_fleet",
+            text: "物流车队"
+          },
+          {
+            key: "successful_supermarket",
+            text: "大型商超"
+          },
+          {
+            key: "successful_steam_ship",
+            text: "船舶标识"
+          }
+        ],
+        selected: 0,
+        url: ""
+      },
+      allSuccessfuls: []
     };
+  },
+  mounted() {
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.allSuccessfuls = store.formatAllPaths(res.data[0]);
+        this.setFooterContents("successful_plane");
+        console.log(this.allSuccessfuls, this.footerContents);
+      }
+    });
   },
   methods: {
     isActive(k, v) {
       this[k] = v;
+
+      if (k === "activeForSuccessWork") {
+        this.setFooterContents(this.footerContents.works[v].key);
+      }
+    },
+    setFooterContents(key) {
+      this.footerContents.all = this._.get(this.allSuccessfuls, key);
+      this.footerContents.splited = this.footerContents.all.slice(0, 3);
+      this.footerContents.url = this.footerContents.splited[
+        this.footerContents.selected
+      ].url;
+    },
+    footerContentChange(value) {
+      if (
+        value < 0 ||
+        value >= Math.ceil(this._.size(this.footerContents.all) / 3)
+      ) {
+        return;
+      }
+
+      this.footerContents.index = value;
+      this.footerContents.splited = this.footerContents.all.slice(
+        value * 3,
+        (value + 1) * 3
+      );
+      this.footerContentIndexChange(0);
+    },
+    footerContentIndexChange(value) {
+      this.footerContents.selected = value;
+      this.footerContents.url = this.footerContents.splited[
+        this.footerContents.selected
+      ].url;
     }
   },
   components: {
@@ -730,11 +809,14 @@ export default {
       height: 100%;
 
       .contents {
-        width: 100%;
-        padding: 20% 6% 0 8%;
+        display: flex;
+        justify-content: flex-end;
+        width: 90%;
+        height: 20rem;
+        padding-top: 20%;
 
         img {
-          width: 100%;
+          height: 100%;
         }
       }
     }
@@ -753,6 +835,11 @@ export default {
       display: flex;
       justify-content: space-around;
       color: rgb(102, 102, 102);
+
+      .selected {
+        color: black;
+        font-weight: 700;
+      }
     }
   }
 

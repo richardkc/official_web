@@ -4,9 +4,15 @@
       <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
-      <div class="example" v-for="(item, index) in examples" :key="index">
-        <img v-lazy="item.url" />
-        <span :class="{ covered: index > 0 }">{{ item.text }}</span>
+      <div
+        class="example"
+        v-for="(item, index) in surpermarketUrls"
+        :key="index"
+      >
+        <img v-lazy="surpermarketUrls[index].url" />
+        <span :class="{ covered: index > 0 }">{{
+          surpermarketUrls[index].text
+        }}</span>
       </div>
     </div>
     <div class="details">
@@ -34,6 +40,7 @@
 
 <script>
 import SwitchButton from "../../components/switchButton";
+import store from "@/store/warehouse";
 
 export default {
   props: {
@@ -42,6 +49,7 @@ export default {
   data() {
     return {
       imgUrls: this.urls ? this.urls.successfulSupermarket : [],
+      surpermarketUrls: [],
       examples: [
         {
           url: this.urls ? this.urls.successfulSupermarket[1] : "",
@@ -68,6 +76,15 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.surpermarketUrls = store.formatPaths(
+          res.data[0].successful_supermarket
+        );
+      }
+    });
   },
   components: {
     "Switch-button": SwitchButton

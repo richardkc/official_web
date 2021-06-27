@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 const tabs = [
   {
     name: "关于大昆仑",
@@ -215,8 +217,6 @@ const transport = [
   }
 ];
 
-const works = ["航空飞机", "轨道交通", "物流车队", "大型商超", "船舶标识"];
-
 const logosSize = [
   {
     width: "7.2rem"
@@ -246,10 +246,32 @@ const logosSize = [
 
 const originPath = "http://8.210.247.224:1337";
 
+const formatAllPaths = data => {
+  const arrs = [];
+
+  _.forEach(_.keys(data), key => {
+    arrs[key] = formatPaths(data[key]);
+  });
+
+  return arrs;
+};
+
+const formatPaths = data => {
+  return _.sortBy(_.isArray(data) ? data : [], (item, index) => {
+    item.url = originPath + item.url;
+    item.text = item.alternativeText;
+    item.index = index;
+
+    return item.name.match(/[0-9]+/)[0];
+  });
+};
+
 export default {
   tabs,
   transport,
-  works,
   logosSize,
-  originPath
+  originPath,
+
+  formatPaths,
+  formatAllPaths
 };

@@ -4,9 +4,15 @@
       <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
-      <div class="example" v-for="(item, index) in examples" :key="index">
-        <img v-lazy="item.url" />
-        <span :class="{ covered: index > 0 }">{{ item.text }}</span>
+      <div
+        class="example"
+        v-for="(item, index) in railTransitUrls"
+        :key="index"
+      >
+        <img v-lazy="railTransitUrls[index].url" />
+        <span :class="{ covered: index > 0 }">{{
+          railTransitUrls[index].text
+        }}</span>
       </div>
     </div>
     <div class="details">
@@ -34,6 +40,7 @@
 
 <script>
 import SwitchButton from "../../components/switchButton";
+import store from "@/store/warehouse";
 
 export default {
   props: {
@@ -42,24 +49,7 @@ export default {
   data() {
     return {
       imgUrls: this.urls ? this.urls.successfulRailTransit : [],
-      examples: [
-        {
-          url: this.urls ? this.urls.successfulRailTransit[1] : "",
-          text: "深圳地铁三号线"
-        },
-        {
-          url: this.urls ? this.urls.successfulRailTransit[2] : "",
-          text: "广佛地铁列车"
-        },
-        {
-          url: this.urls ? this.urls.successfulRailTransit[3] : "",
-          text: "广州黄埔有轨电车"
-        },
-        {
-          url: this.urls ? this.urls.successfulRailTransit[4] : "",
-          text: "云南文山有轨电车"
-        }
-      ],
+      railTransitUrls: [],
       carouselMap: [
         {
           url: this.urls ? this.urls.successfulRailTransit[6] : ""
@@ -72,6 +62,16 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.railTransitUrls = store.formatPaths(
+          res.data[0].successful_rail_transit
+        );
+        console.log("ffffffffff", this.railTransitUrls);
+      }
+    });
   },
   components: {
     "Switch-button": SwitchButton

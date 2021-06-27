@@ -84,7 +84,7 @@ export default {
       if (type === "left") {
         document.getElementById("examples").scrollLeft = 0;
       } else if (type === "right") {
-        document.getElementById("examples").scrollLeft = 10000;
+        document.getElementById("examples").scrollLeft = 99999;
       }
     }
   }

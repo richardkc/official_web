@@ -4,9 +4,9 @@
       <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
-      <div class="example" v-for="(item, index) in examples" :key="index">
-        <img v-lazy="item.url" />
-        <span :class="{ covered: index > 0 }">{{ item.text }}</span>
+      <div class="example" v-for="(item, index) in fleetUrls" :key="index">
+        <img v-lazy="fleetUrls[index].url" />
+        <span :class="{ covered: index > 0 }">{{ fleetUrls[index].text }}</span>
       </div>
     </div>
     <div class="details">
@@ -35,6 +35,7 @@
 
 <script>
 import SwitchButton from "../../components/switchButton";
+import store from "@/store/warehouse";
 
 export default {
   props: {
@@ -43,20 +44,7 @@ export default {
   data() {
     return {
       imgUrls: this.urls ? this.urls.successfulFleet : [],
-      examples: [
-        {
-          url: this.urls ? this.urls.successfulFleet[1] : "",
-          text: "顺丰速运"
-        },
-        {
-          url: this.urls ? this.urls.successfulFleet[2] : "",
-          text: "跨越速运"
-        },
-        {
-          url: this.urls ? this.urls.successfulFleet[3] : "",
-          text: "德邦快递"
-        }
-      ],
+      fleetUrls: [],
       carouselMap: [
         {
           url: this.urls ? this.urls.successfulFleet[5] : ""
@@ -69,6 +57,13 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.fleetUrls = store.formatPaths(res.data[0].successful_fleet);
+      }
+    });
   },
   components: {
     "Switch-button": SwitchButton
