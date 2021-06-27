@@ -95,12 +95,12 @@ export default {
   color: @redColor;
   font-size: @fontSizeLg;
   font-weight: @titleFontWeight;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .subTitle {
   font-size: @fontSizeML;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
 }
 
 .successfulSupermarket {

@@ -6,9 +6,7 @@
         <li
           v-for="(list, listIndex) in tabInfo.tabs"
           :key="list.key"
-          :style="{
-            cursor: list.children.length > 0 ? 'pointer' : 'default'
-          }"
+          style="cursor: pointer;"
           @click="
             () => {
               handleNavClick(list, listIndex);
@@ -19,10 +17,7 @@
             class="listName"
             :class="{ selectedTab: selectedKey === listIndex }"
           >
-            <router-link v-if="list.router" :to="list.router">{{
-              list.name
-            }}</router-link>
-            <span v-if="!list.router">{{ list.name }}</span>
+            <span>{{ list.name }}</span>
           </div>
           <ul
             class="menuList"
@@ -107,7 +102,30 @@ export default {
   watch: {
     //监听路由变化
     $route(to, from) {
+      console.log("laila");
       const router = to.path || "";
+
+      this.changeRouter(router);
+    }
+  },
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        this.RDcenterHeight = document.body.clientWidth * 0.387;
+      })();
+    };
+
+    // this.scrollChange();
+
+    // window.addEventListener("scroll", this.scrollChange, true);
+    this.changeRouter(window.location.pathname);
+  },
+  unmounted() {
+    // window.removeEventListener("scroll", this.scrollChange, true);
+  },
+  methods: {
+    changeRouter(router) {
+      console.log("yyyyyyyyyyyyyy");
       const tabs = this.tabInfo.tabs || [];
 
       for (let i = 0; i < tabs.length; i += 1) {
@@ -127,28 +145,12 @@ export default {
           });
         }
 
-        if (this.selectedKey) {
+        if (this.selectedKey || this.selectedKey === 0) {
           this.routerKey = this.selectedKey;
           break;
         }
       }
-    }
-  },
-  mounted() {
-    window.onresize = () => {
-      return (() => {
-        this.RDcenterHeight = document.body.clientWidth * 0.387;
-      })();
-    };
-
-    // this.scrollChange();
-
-    // window.addEventListener("scroll", this.scrollChange, true);
-  },
-  unmounted() {
-    // window.removeEventListener("scroll", this.scrollChange, true);
-  },
-  methods: {
+    },
     scrollChange() {
       const scrollTop = document.documentElement.scrollTop;
       const offsetHeight = document.documentElement.offsetHeight;
@@ -170,6 +172,12 @@ export default {
       this.showList =
         this.selectedKey === index && this.showList ? false : true;
       this.selectedKey = index;
+      console.log("pppppppppppppppppp", this.$router);
+
+      if (this.routerKey !== index && list.router) {
+        this.$router.push({ path: list.router });
+        this.showList = false;
+      }
 
       // disableSelected = true;
       // $(document.documentElement).animate(
@@ -192,6 +200,7 @@ export default {
 
 <style scoped lang="less">
 @greyColor: rgb(128, 128, 128);
+@redColor: rgb(235, 74, 64);
 
 .tabsColor {
   color: @greyColor !important;
@@ -216,6 +225,7 @@ export default {
   justify-content: space-between;
   z-index: 999;
   color: white;
+  user-select: none;
 
   .listName {
     position: relative;
@@ -247,7 +257,7 @@ export default {
   }
 
   .selectedTab::before {
-    background-color: rgb(235, 74, 64);
+    background-color: @redColor;
   }
 
   .cover {
@@ -332,6 +342,12 @@ export default {
 
     li {
       margin-bottom: 0.32rem;
+
+      &:hover {
+        a {
+          color: @redColor !important;
+        }
+      }
     }
   }
 }

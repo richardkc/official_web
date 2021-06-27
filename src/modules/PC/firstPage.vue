@@ -62,7 +62,9 @@
       <div class="RDCenter" :style="{ height: RDcenterHeight + 'px' }">
         <div class="title" id="pageSize">
           <div class="name">研发中心</div>
-          <button class="btn-primary">更多详情</button>
+          <button class="btn-primary">
+            <router-link to="/RDCenter">更多案例</router-link>
+          </button>
         </div>
         <div class="detail">
           <img v-lazy="imgUrls[15]" />
@@ -103,7 +105,9 @@
               </ul>
             </div>
           </div>
-          <button class="btn-primary">更多案例</button>
+          <button class="btn-primary">
+            <router-link to="/successfulCase">更多案例</router-link>
+          </button>
         </div>
         <div class="carousel">
           <div class="contents">

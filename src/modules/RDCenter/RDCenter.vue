@@ -371,7 +371,7 @@ export default {
 
 .subTitle {
   font-size: @fontSizeML;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
   margin-bottom: 2rem;
 }
 

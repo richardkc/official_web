@@ -363,12 +363,12 @@ export default {
   color: @redColor;
   font-size: @fontSizeLg;
   font-weight: @titleFontWeight;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .subTitle {
   font-size: @fontSizeML;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
   margin-bottom: 2rem;
 }
 
@@ -608,18 +608,19 @@ export default {
 }
 
 .series {
-  width: 77%;
-  margin: 0 3% 6rem 20%;
+  width: 60%;
+  margin: 0 20% 6rem;
 
   .titles {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 2rem;
 
     & > .subTitle {
       font-weight: normal !important;
       margin-top: 0.5rem;
+      margin-left: 4rem;
     }
   }
 
@@ -659,7 +660,6 @@ export default {
     & > .content {
       margin-bottom: 1rem;
       font-size: @fontSizeML;
-      font-weight: @titleFontWeight;
     }
 
     .imageWrap {

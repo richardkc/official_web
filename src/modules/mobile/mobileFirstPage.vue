@@ -103,7 +103,9 @@
               </ul>
             </div>
           </div>
-          <button class="btn-primary">更多案例</button>
+          <button class="btn-primary">
+            <router-link to="/RDCenter">更多案例</router-link>
+          </button>
         </div>
         <div class="carousel">
           <div class="contents">

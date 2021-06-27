@@ -41,7 +41,7 @@ function format(arr, key) {
 
   arr = arr.map(item => {
     // item.url = window.location.origin + item.url;
-    item.url = "http://8.210.247.224:1337" + item.url;
+    item.url = store.originPath + item.url;
 
     return item.url;
   });
@@ -54,12 +54,12 @@ const urls = {
   logo: [],
   homeLogos: [],
   home: [],
-  aviation: [],
-  logistics: [],
-  railTransit: [],
-  building: [],
-  steamShip: [],
-  supermarket: [],
+  solutionAviation: [],
+  solutionLogistics: [],
+  solutionRaiTransit: [],
+  solutionBuilding: [],
+  solutionSteamShip: [],
+  solutionSupermarket: [],
   successfulCase: [],
   successfulPlane: [],
   successfulFleet: [],
@@ -93,6 +93,10 @@ export default {
         console.error(error);
       });
 
+    this.$axios.get("/api/exhibitions").then(res => {
+      console.log("res", res);
+    });
+
     window.addEventListener("beforeunload", function() {
       window.scrollTo(0, 0);
     });
@@ -114,7 +118,7 @@ export default {
   },
   methods: {
     documentScroll(isScroll) {
-      console.log("isScroll?", isScroll);
+      // console.log("isScroll?", isScroll);
     }
   },
   mounted() {
@@ -131,7 +135,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 * {
   margin: 0;
   padding: 0;
@@ -168,6 +172,10 @@ button {
   background-color: transparent;
 }
 
+a {
+  text-decoration: none;
+}
+
 #app {
   width: 100%;
   min-height: 100vh;
@@ -183,6 +191,10 @@ button {
   border-radius: 0.72rem;
   height: 1.44rem;
   background-color: rgb(203, 74, 64);
+
+  a {
+    color: white;
+  }
 }
 
 .square {

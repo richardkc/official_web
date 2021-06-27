@@ -497,12 +497,12 @@ export default {
   color: @redColor;
   font-size: @fontSizeLg;
   font-weight: @titleFontWeight;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .subTitle {
   font-size: @fontSizeML;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
   margin-bottom: 2rem;
 }
 
@@ -564,7 +564,7 @@ export default {
     .subTitle {
       color: black;
       margin-bottom: 1rem;
-      font-weight: @titleFontWeight;
+      font-weight: @subTitleFontWeight;
     }
 
     .content {
@@ -787,6 +787,9 @@ export default {
   }
 
   .leftContent {
+    white-space: nowrap;
+    width: 150%;
+
     .subTitle {
       color: black;
       margin-bottom: 1.5rem;
@@ -802,7 +805,7 @@ export default {
   }
 
   .top {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
     .left {
       width: 70%;

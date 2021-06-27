@@ -54,14 +54,25 @@
         </div>
       </div>
       <div class="right">
-        <div class="flrstWrap">
-          <div class="first">
-            <span>航空标识</span>
-            <img v-lazy="imgUrls[10]" />
+        <div
+          class="firstWrap"
+          @mouseover="iconFocused(true)"
+          @mouseleave="iconFocused(false)"
+        >
+          <div :class="{ first: this.iconFocus }">
+            <span v-show="this.iconFocus">{{ this.iconDetail }}</span>
+            <img
+              v-show="!this.iconFocus"
+              v-lazy="`${originPath}/uploads/circle-1.png`"
+            />
+            <img
+              v-show="this.iconFocus"
+              v-lazy="`${originPath}/uploads/normal-1.png`"
+            />
           </div>
         </div>
         <div class="bottom">
-          <div class="details">
+          <div class="details" :class="{ showDetails: this.iconFocus }">
             <span>飞机制图解决方案创意梦想与梦境</span>
             <span>飞机工程定位图和画面设计</span>
             <span>飞机贴膜作业流程</span>
@@ -74,10 +85,7 @@
             <div v-for="item in transport" :key="item.key">
               <div class="imgWrap">
                 <div>
-                  <img
-                    style="width: 50px;height: 50px;"
-                    v-lazy="imgUrls[item]"
-                  />
+                  <img v-lazy="`${originPath}/uploads/circle-${item}.png`" />
                 </div>
               </div>
             </div>
@@ -234,6 +242,8 @@
 </template>
 
 <script>
+import store from "@/store/warehouse";
+
 export default {
   name: "Aviation",
   props: {
@@ -242,7 +252,10 @@ export default {
   data() {
     return {
       imgUrls: this.urls ? this.urls.solutionAviation : [],
+      originPath: store.originPath,
       currentCarouselIndex: 0,
+      iconFocus: false,
+      iconDetail: "",
       carouselMap: [
         {
           name: "profile_1",
@@ -293,7 +306,7 @@ export default {
           url: `${this.urls ? this.urls.solutionAviation[9] : ""}`
         }
       ],
-      transport: [11, 12, 13, 14, 15, 16],
+      transport: [2, 3, 4, 5, 6, 7],
       workProcess: [
         {
           text: "在相对无尘的环境，把画面摊开",
@@ -415,9 +428,24 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.$axios.get("/api/solution-exhibitions").then(res => {
+      console.log("res", res);
+      if (res.data.length > 0) {
+        this.iconUrls = res.data[0].aviation_icons;
+      }
+    });
+  },
   methods: {
     carouselIndexChange(index) {
       this.currentCarouselIndex = index;
+    },
+    iconFocused(value) {
+      this.iconFocus = value;
+
+      setTimeout(() => {
+        this.iconDetail = value ? "航空标识" : "";
+      }, 400);
     }
   }
 };
@@ -515,12 +543,12 @@ export default {
       color: @redColor;
       font-size: @fontSizeLg;
       font-weight: @titleFontWeight;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .subTitle {
       font-size: @fontSizeML;
-      font-weight: @titleFontWeight;
+      font-weight: @subTitleFontWeight;
       margin-bottom: 2rem;
     }
 
@@ -594,21 +622,39 @@ export default {
     width: 35%;
     height: 100%;
 
-    .flrstWrap {
+    img {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    .firstWrap {
       width: 100%;
       display: flex;
       justify-content: flex-end;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        transition: all 0.5s;
+        border-radius: 1.25rem;
+        width: 2.1rem;
+
+        span {
+          display: inline-block;
+          margin-right: 0.6rem;
+        }
+      }
     }
 
     .first {
-      width: 6rem;
+      width: 6rem !important;
       height: 2rem;
       font-size: 0.55rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: @redColor;
-      border-radius: 1.25rem;
       color: white;
       padding: 0 @fontSizeMd 0 (2 * @fontSizeMd);
 
@@ -625,15 +671,22 @@ export default {
     }
 
     .details {
+      opacity: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       margin-right: @fontSizeMd;
       color: @contentFontColor;
+      transition: all 0.5s;
 
       & > span {
         margin-bottom: @fontSizeMd;
+        white-space: nowrap;
       }
+    }
+
+    .showDetails {
+      opacity: 1;
     }
 
     .icons {
@@ -655,13 +708,13 @@ export default {
     color: @redColor;
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     padding-left: 5rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
+    font-weight: @subTitleFontWeight;
     margin-bottom: 2rem;
     margin-left: 5rem;
   }
@@ -682,13 +735,13 @@ export default {
     color: @redColor;
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     padding-left: 4rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
+    font-weight: @subTitleFontWeight;
     margin-bottom: 2rem;
     margin-left: 4rem;
   }
@@ -749,12 +802,12 @@ export default {
     color: @redColor;
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
+    font-weight: @subTitleFontWeight;
     margin-bottom: 2rem;
 
     .sm {
@@ -790,7 +843,7 @@ export default {
 
     .text {
       text-align: center;
-      width: 7rem;
+      width: 7.2rem;
       margin: 0 auto;
       margin-top: 2rem;
 
@@ -812,13 +865,13 @@ export default {
     color: @redColor;
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-left: 4rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
+    font-weight: @subTitleFontWeight;
     margin-bottom: 2rem;
     margin-left: 4rem;
   }
@@ -892,13 +945,13 @@ export default {
     color: @redColor;
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-left: 4rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
+    font-weight: @subTitleFontWeight;
     margin-bottom: 2rem;
     margin-left: 4rem;
   }
@@ -985,19 +1038,19 @@ export default {
     width: 60%;
     position: relative;
     color: white;
-    padding: 4rem 4rem 4rem 0;
+    padding: 4rem 0;
   }
 
   .title {
     font-size: @fontSizeLg;
     font-weight: @titleFontWeight;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .subTitle {
     font-size: @fontSizeML;
-    font-weight: @titleFontWeight;
-    margin-bottom: 4rem;
+    font-weight: @subTitleFontWeight;
+    margin-bottom: 2rem;
   }
 
   .content {

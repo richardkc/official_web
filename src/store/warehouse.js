@@ -244,9 +244,12 @@ const logosSize = [
   }
 ];
 
+const originPath = "http://8.210.247.224:1337";
+
 export default {
   tabs,
   transport,
   works,
-  logosSize
+  logosSize,
+  originPath
 };

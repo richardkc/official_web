@@ -244,12 +244,12 @@ export default {
   color: @redColor;
   font-size: @fontSizeLg;
   font-weight: @titleFontWeight;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .subTitle {
   font-size: @fontSizeML;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
   margin-bottom: 2rem;
 }
 

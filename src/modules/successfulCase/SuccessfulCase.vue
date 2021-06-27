@@ -5,12 +5,10 @@
       <img
         src="../../assets/images/button/button_left.png"
         @mousedown="scrollExamples('left')"
-        @mouseup="scrollExamples('stop')"
       />
       <img
         src="../../assets/images/button/button_right.png"
         @mousedown="scrollExamples('right')"
-        @mouseup="scrollExamples('stop')"
       />
     </div>
     <div class="contentWrap">
@@ -55,7 +53,6 @@ export default {
   },
   data() {
     return {
-      timer: null,
       selectIndex: 0,
       imgUrls: this.urls ? this.urls.successfulCase : [],
       examples: [
@@ -84,20 +81,11 @@ export default {
   },
   methods: {
     scrollExamples: type => {
-      if (type === "stop") {
-        clearInterval(this.timer);
-        this.timer = null;
-
-        return;
+      if (type === "left") {
+        document.getElementById("examples").scrollLeft = 0;
+      } else if (type === "right") {
+        document.getElementById("examples").scrollLeft = 10000;
       }
-
-      this.timer = setInterval(() => {
-        if (type === "left") {
-          document.getElementById("examples").scrollLeft -= 10;
-        } else if (type === "right") {
-          document.getElementById("examples").scrollLeft += 10;
-        }
-      });
     }
   }
 };
@@ -122,7 +110,7 @@ export default {
 
 .subTitle {
   font-size: 0.85rem;
-  font-weight: @titleFontWeight;
+  font-weight: @subTitleFontWeight;
   margin-bottom: 1rem;
 }
 
