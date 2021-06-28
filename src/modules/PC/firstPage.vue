@@ -232,23 +232,39 @@
               <div class="formItem">
                 <div>
                   <label>名字</label>
-                  <input placeholder="Name" />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    v-model="formData.name"
+                  />
                 </div>
                 <div>
                   <label>手机</label>
-                  <input placeholder="Phone" />
+                  <input
+                    type="text"
+                    placeholder="Phone"
+                    v-model="formData.phone"
+                  />
                 </div>
               </div>
               <div class="formItem">
                 <label>邮箱</label>
-                <input placeholder="E-Mail" />
+                <input
+                  type="text"
+                  placeholder="E-Mail"
+                  v-model="formData.email"
+                />
               </div>
               <div class="formItem">
                 <label>地址</label>
-                <input placeholder="Address" />
+                <input
+                  type="text"
+                  placeholder="Address"
+                  v-model="formData.address"
+                />
               </div>
               <div class="submit">
-                <button class="btn-primary">提交表格</button>
+                <button class="btn-primary" @click="submit()">提交表格</button>
               </div>
             </div>
           </div>
@@ -279,6 +295,12 @@ export default {
       RDcenterHeight: document.body.clientWidth * 0.387,
       imgUrls: this.urls ? this.urls.home : [],
       logoUrls: this.urls ? this.urls.homeLogos : [],
+      formData: {
+        name: "",
+        phone: "",
+        email: "",
+        address: ""
+      },
       footerContents: {
         index: 0,
         splited: [],
@@ -321,6 +343,30 @@ export default {
     });
   },
   methods: {
+    submit() {
+      console.log("ggggggggg", this.formData);
+      this.$axios
+        .post(
+          "/api/contact-information",
+          {
+            ...this.formData,
+            published_at: new Date(),
+            created_by: "PC",
+            updated_by: "PC"
+          },
+          {
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json"
+            }
+          }
+        )
+        .then(res => {
+          if (res.data.length > 0) {
+            this.planeUrls = store.formatPaths(res.data[0].successful_plane);
+          }
+        });
+    },
     isActive(k, v) {
       this[k] = v;
 

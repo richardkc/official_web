@@ -191,6 +191,7 @@ a {
   border-radius: 0.72rem;
   height: 1.44rem;
   background-color: rgb(203, 74, 64);
+  cursor: pointer;
 
   a {
     color: white;
