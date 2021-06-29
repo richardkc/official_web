@@ -347,7 +347,7 @@ export default {
       console.log("ggggggggg", this.formData);
       this.$axios
         .post(
-          "/api/contact-information",
+          "/api/contact-informations",
           {
             ...this.formData,
             published_at: new Date(),
