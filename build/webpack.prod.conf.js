@@ -154,17 +154,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         renderAfterTime: 5000
       })
     })
-    // new PrerenderSPAPlugin({
-    //   staticDir: path.join(__dirname, "dist"),
-    //   routes: ["/"],
-    //   renderer: new Renderer({
-    //     inject: {
-    //       foo: "bar"
-    //     },
-    //     headless: false,
-    //     renderAfterDocumentEvent: "render-event"
-    //   })
-    // })
   ]
 });
 

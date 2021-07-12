@@ -49,8 +49,6 @@
 </template>
 
 <script>
-// import $ from "jquery";
-
 const tabHeightRange = [
   {
     min: 6,
@@ -106,7 +104,8 @@ export default {
       const router = to.path || "";
 
       this.changeRouter(router);
-    }
+    },
+    $route: "beforeRouterChange"
   },
   mounted() {
     window.onresize = () => {
@@ -117,15 +116,25 @@ export default {
 
     // this.scrollChange();
 
-    // window.addEventListener("scroll", this.scrollChange, true);
+    window.addEventListener("scroll", this.scrollChange, true);
     this.changeRouter(window.location.pathname);
+    // document.addEventListener("click", () => {
+    //   console.log("aaaaaaaaaaaaaaaaaaa");
+    //   setTimeout(() => {
+    //     if (this.showList) {
+    //       this.showList = false;
+    //     }
+    //   });
+    // });
   },
   unmounted() {
-    // window.removeEventListener("scroll", this.scrollChange, true);
+    window.removeEventListener("scroll", this.scrollChange, true);
   },
   methods: {
+    beforeRouterChange() {
+      this.showList = false;
+    },
     changeRouter(router) {
-      console.log("yyyyyyyyyyyyyy");
       const tabs = this.tabInfo.tabs || [];
 
       for (let i = 0; i < tabs.length; i += 1) {
@@ -156,9 +165,9 @@ export default {
       const offsetHeight = document.documentElement.offsetHeight;
       this.showList = false;
 
-      if (disableSelected) {
-        return;
-      }
+      // if (disableSelected) {
+      //   return;
+      // }
 
       // tabHeightRange.forEach((item, index) => {
       //   const heightPercent = (scrollTop * 100) / offsetHeight;

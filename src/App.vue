@@ -1,7 +1,12 @@
 <template>
-  <div :key="this.renderKey">
-    <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
-    <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab>
+  <div
+    class="app"
+    :key="this.renderKey"
+    :style="{ 'min-width': isPC ? '0' : '1080px' }"
+  >
+    <!-- <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab> -->
+    <!-- <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab> -->
+    <Tab :tabInfo="tabInfo"></Tab>
     <router-view :isPC="isPC" :urls="urls"></router-view>
     <Footer :urls="urls"></Footer>
   </div>
@@ -119,10 +124,34 @@ export default {
   methods: {
     documentScroll(isScroll) {
       // console.log("isScroll?", isScroll);
+    },
+    getDivice() {
+      const userAgentInfo = navigator.userAgent;
+      const Agents = [
+        "Android",
+        "iPhone",
+        "SymbianOS",
+        "Windows Phone",
+        "iPad",
+        "iPod"
+      ];
+      let flag = true;
+
+      for (let v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+          flag = false;
+          break;
+        }
+      }
+
+      this.isPC = flag;
+      this.isPC = false;
     }
   },
   mounted() {
     document.dispatchEvent(new Event("render-event"));
+
+    this.getDivice();
 
     methods.fontSizeChange();
     window.addEventListener("resize", methods.fontSizeChange, false);
@@ -157,6 +186,8 @@ body {
   font-size: 0.5rem;
   cursor: default;
   font-family: "PingFangMedium";
+  -webkit-text-size-adjust: none;
+  max-width: 9999px;
 }
 
 ul,
