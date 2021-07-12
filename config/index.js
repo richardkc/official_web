@@ -36,9 +36,10 @@ module.exports = {
       "/api": {
         target: "http://8.210.247.224:1337",
         secure: false,
+        logLevel:'debug',
         changeOrigin: false,
         pathRewrite: {
-          "^/api": "/"
+          "^/api/": "/"
         }
       }
     }
