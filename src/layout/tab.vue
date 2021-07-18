@@ -89,8 +89,7 @@ export default {
       const router = to.path || "";
 
       this.changeRouter(router);
-    },
-    $route: "beforeRouterChange"
+    }
   },
   mounted() {
     window.onresize = () => {
@@ -100,19 +99,8 @@ export default {
     };
 
     this.changeRouter(window.location.pathname);
-    // document.addEventListener("click", () => {
-    //   console.log("aaaaaaaaaaaaaaaaaaa");
-    //   setTimeout(() => {
-    //     if (this.showList) {
-    //       this.showList = false;
-    //     }
-    //   });
-    // });
   },
   methods: {
-    beforeRouterChange() {
-      this.showList = false;
-    },
     changeRouter(router) {
       const tabs = this.tabInfo.tabs || [];
 
@@ -142,8 +130,6 @@ export default {
       }
     },
     scrollChange() {
-      const scrollTop = document.documentElement.scrollTop;
-      const offsetHeight = document.documentElement.offsetHeight;
       this.showList = false;
 
       if (disableSelected) {
@@ -151,13 +137,16 @@ export default {
       }
     },
     handleNavClick(list, index) {
-      if (this.routerKey !== index && list.router) {
+      const locationRouter = location.pathname;
+
+      if (list.router && list.router !== locationRouter) {
         this.$router.push({ path: list.router });
+        this.changeRouter(list.router);
 
         return;
       }
 
-      hoverKeyChange(index);
+      this.hoverKeyChange(index);
     },
     hoverKeyChange(index) {
       this.selectedKey = this._.isNumber(index) ? index : "";

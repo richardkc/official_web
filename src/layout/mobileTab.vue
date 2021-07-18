@@ -82,8 +82,7 @@ export default {
       const router = to.path || "";
 
       this.changeRouter(router);
-    },
-    $route: "beforeRouterChange"
+    }
   },
   mounted() {
     window.onresize = () => {
@@ -103,10 +102,6 @@ export default {
   methods: {
     handleNav() {
       this.listVisible = !this.listVisible;
-    },
-    beforeRouterChange() {
-      this.listVisible = false;
-      this.showList = false;
     },
     changeRouter(router) {
       const tabs = this.tabInfo.tabs || [];

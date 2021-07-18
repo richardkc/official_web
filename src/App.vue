@@ -1,6 +1,6 @@
 <template>
   <div
-    :key="renderKey"
+    :key="String(renderKey)"
     v-if="renderKey"
     :style="{ 'min-width': isPC ? '0' : '1080px' }"
     style="display：none"
