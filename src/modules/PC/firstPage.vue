@@ -338,13 +338,11 @@ export default {
       if (res.data.length > 0) {
         this.allSuccessfuls = store.formatAllPaths(res.data[0]);
         this.setFooterContents("successful_plane");
-        console.log(this.allSuccessfuls, this.footerContents);
       }
     });
   },
   methods: {
     submit() {
-      console.log("ggggggggg", this.formData);
       this.$axios
         .post(
           "/api/contact-informations",
@@ -525,7 +523,6 @@ export default {
 
   .content {
     width: 100%;
-    font-weight: bold;
   }
 
   .more {

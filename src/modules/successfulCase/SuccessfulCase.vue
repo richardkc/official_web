@@ -24,21 +24,25 @@
       <div class="right">
         <div class="examples" id="examples">
           <div class="inner">
-            <div
+            <router-link
               class="example"
               v-for="(item, index) in examples"
               :key="index"
-              @click="
-                () => {
-                  selectIndex = index;
-                }
-              "
+              :to="item.router"
             >
-              <img v-lazy="item.url" />
-              <div v-if="selectIndex === index">
-                <router-link :to="item.router">更多案例</router-link>
+              <div
+                @mouseover="
+                  () => {
+                    selectIndex = index;
+                  }
+                "
+              >
+                <img v-lazy="item.url" />
+                <div v-if="selectIndex === index">
+                  <span>更多案例</span>
+                </div>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -191,25 +195,27 @@ export default {
     border-radius: 10%;
     max-width: 17%;
     overflow: hidden;
-    position: relative;
-    cursor: pointer;
+    > div {
+      position: relative;
+      cursor: pointer;
 
-    div {
-      position: absolute;
-      left: 10%;
-      bottom: 10%;
-      font-size: 0.55rem;
-      border: 1px solid white;
-      padding: 0.125rem 0.5rem;
-      border-radius: 1rem;
+      > div {
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+        font-size: 0.55rem;
+        border: 1px solid white;
+        padding: 0.125rem 0.5rem;
+        border-radius: 1rem;
 
-      a {
-        text-decoration: none;
-        color: white;
-      }
+        span {
+          text-decoration: none;
+          color: white;
+        }
 
-      &:hover {
-        box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.5);
+        &:hover {
+          box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.5);
+        }
       }
     }
   }

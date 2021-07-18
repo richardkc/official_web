@@ -1,7 +1,7 @@
 <template>
   <div>
-    <First-page v-if="isPC" :urls="urls"></First-page>
-    <Mobile-first-page v-else-if="!isPC" :urls="urls"></Mobile-first-page>
+    <First-page :key="isPC" :urls="urls"></First-page>
+    <!-- <Mobsile-first-page v-else-if="!isPC" :urls="urls"></Mobsile-first-page> -->
   </div>
 </template>
 

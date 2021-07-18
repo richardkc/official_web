@@ -430,7 +430,6 @@ export default {
   },
   mounted() {
     this.$axios.get("/api/solution-exhibitions").then(res => {
-      console.log("res", res);
       if (res.data.length > 0) {
         this.iconUrls = res.data[0].aviation_icons;
       }

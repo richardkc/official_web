@@ -1,7 +1,14 @@
 <template>
   <nav class="tabs" :class="{ tabsColor: [1].includes(this.routerKey) }">
     <img class="logo" src="../assets/images/logo.png" />
-    <div class="navList">
+    <div
+      class="navList"
+      @mouseleave="
+        () => {
+          selectedKey = originKey;
+        }
+      "
+    >
       <ul>
         <li
           v-for="(list, listIndex) in tabInfo.tabs"
@@ -12,6 +19,16 @@
               handleNavClick(list, listIndex);
             }
           "
+          @mouseover="
+            () => {
+              hoverKeyChange(listIndex);
+            }
+          "
+          @mouseleave="
+            () => {
+              hoverKeyChange('');
+            }
+          "
         >
           <div
             class="listName"
@@ -19,25 +36,27 @@
           >
             <span>{{ list.name }}</span>
           </div>
-          <ul
-            class="menuList"
-            :style="{
-              display:
-                selectedKey === listIndex &&
-                showList &&
-                list.children &&
-                list.children.length > 0
-                  ? 'flex'
-                  : 'none'
-            }"
-          >
-            <li v-for="item in list.children" :key="item.key">
-              <router-link v-if="item.router" :to="item.router">{{
-                item.name
-              }}</router-link>
-              <span v-if="!item.router">{{ item.name }}</span>
-            </li>
-          </ul>
+          <div class="menuList">
+            <div class="emptyBar"></div>
+            <ul
+              :style="{
+                display:
+                  selectedKey === listIndex &&
+                  showList &&
+                  list.children &&
+                  list.children.length > 0
+                    ? 'flex'
+                    : 'none'
+              }"
+            >
+              <li v-for="item in list.children" :key="item.key">
+                <router-link v-if="item.router" :to="item.router">{{
+                  item.name
+                }}</router-link>
+                <span v-if="!item.router">{{ item.name }}</span>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <div class="tool">
@@ -49,42 +68,6 @@
 </template>
 
 <script>
-// import $ from "jquery";
-
-const tabHeightRange = [
-  {
-    min: 6,
-    max: 20
-  },
-  {
-    min: 20,
-    max: 32
-  },
-  {
-    min: 32,
-    max: 41
-  },
-  {
-    min: 41,
-    max: 53
-  },
-  {
-    min: 53,
-    max: 65
-  },
-  {
-    min: 65,
-    max: 77
-  },
-  {
-    min: 77,
-    max: 84
-  },
-  {
-    min: 84,
-    max: 100
-  }
-];
 let disableSelected = false;
 
 export default {
@@ -96,13 +79,13 @@ export default {
     return {
       selectedKey: "",
       showList: false,
-      routerKey: ""
+      routerKey: "",
+      hoverKey: ""
     };
   },
   watch: {
     //监听路由变化
     $route(to, from) {
-      console.log("laila");
       const router = to.path || "";
 
       this.changeRouter(router);
@@ -115,17 +98,10 @@ export default {
       })();
     };
 
-    // this.scrollChange();
-
-    // window.addEventListener("scroll", this.scrollChange, true);
     this.changeRouter(window.location.pathname);
-  },
-  unmounted() {
-    // window.removeEventListener("scroll", this.scrollChange, true);
   },
   methods: {
     changeRouter(router) {
-      console.log("yyyyyyyyyyyyyy");
       const tabs = this.tabInfo.tabs || [];
 
       for (let i = 0; i < tabs.length; i += 1) {
@@ -135,12 +111,14 @@ export default {
 
         if (currentTab.router === router) {
           this.selectedKey = i;
+          this.originKey = i;
         }
 
         if (currentTab.children && currentTab.children.length > 0) {
           currentTab.children.forEach(item => {
             if (item.router === router) {
               this.selectedKey = i;
+              this.originKey = i;
             }
           });
         }
@@ -159,40 +137,19 @@ export default {
       if (disableSelected) {
         return;
       }
-
-      // tabHeightRange.forEach((item, index) => {
-      //   const heightPercent = (scrollTop * 100) / offsetHeight;
-
-      //   if (item.min < heightPercent && item.max > heightPercent) {
-      //     this.selectedKey = index;
-      //   }
-      // });
     },
     handleNavClick(list, index) {
-      this.showList =
-        this.selectedKey === index && this.showList ? false : true;
-      this.selectedKey = index;
-      console.log("pppppppppppppppppp", this.$router);
-
       if (this.routerKey !== index && list.router) {
         this.$router.push({ path: list.router });
-        this.showList = false;
+
+        return;
       }
 
-      // disableSelected = true;
-      // $(document.documentElement).animate(
-      // 	{
-      // 		scrollTop:
-      // 			(document.documentElement.offsetHeight *
-      // 				(tabHeightRange[index].min + 5)) /
-      // 			100,
-      // 	},
-      // 	500
-      // );
-
-      // setTimeout(() => {
-      // 	disableSelected = false;
-      // }, 500);
+      hoverKeyChange(index);
+    },
+    hoverKeyChange(index) {
+      this.selectedKey = this._.isNumber(index) ? index : "";
+      this.showList = this._.isNumber(index) ? true : false;
     }
   }
 };
@@ -204,10 +161,6 @@ export default {
 
 .tabsColor {
   color: @greyColor !important;
-
-  a {
-    color: @greyColor !important;
-  }
 
   .login {
     border-color: @greyColor !important;
@@ -299,7 +252,7 @@ export default {
   }
 
   a {
-    color: white;
+    color: @greyColor;
     text-decoration: none;
   }
 
@@ -330,15 +283,27 @@ export default {
     background-color: white;
   }
 
+  .emptyBar {
+    width: 100%;
+    height: 0.2rem;
+  }
+
   .menuList {
-    display: flex;
-    flex-direction: column;
     position: absolute;
     top: 0.8rem;
     left: 50%;
     transform: translate(-50%, 0);
-    padding: 0.32rem 0.64rem;
-    text-align: center;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: white;
+      border-radius: 0.2rem;
+      padding: 0.32rem 0.72rem 0.12rem;
+      text-align: center;
+      box-shadow: 0 0.1rem 0.25rem 0.1rem rgba(0, 0, 0, 0.15);
+    }
 
     li {
       margin-bottom: 0.32rem;

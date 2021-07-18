@@ -69,7 +69,6 @@ export default {
         this.railTransitUrls = store.formatPaths(
           res.data[0].successful_rail_transit
         );
-        console.log("ffffffffff", this.railTransitUrls);
       }
     });
   },

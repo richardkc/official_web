@@ -1,7 +1,15 @@
 <template>
-  <div :key="this.renderKey">
-    <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab>
-    <Tab v-else-if="isPC" :tabInfo="tabInfo"></Tab>
+  <div
+    :key="renderKey"
+    v-if="renderKey"
+    :style="{ 'min-width': isPC ? '0' : '1080px' }"
+    style="display：none"
+    ref="vueApp"
+    id="app"
+    data-server-rendered="true"
+  >
+    <!-- <Mobile-tab v-if="!isPC" :tabInfo="tabInfo"></Mobile-tab> -->
+    <Tab :key="isPC" :tabInfo="tabInfo"></Tab>
     <router-view :isPC="isPC" :urls="urls"></router-view>
     <Footer :urls="urls"></Footer>
   </div>
@@ -71,7 +79,29 @@ const urls = {
 
 export default {
   name: "App",
+  data() {
+    return {
+      tabInfo: {
+        tabs: store.tabs
+      },
+      isPC: methods.isPC(),
+      urls,
+      renderKey: 0
+    };
+  },
+  components: {
+    Tab: Tab,
+    MobileTab: MobileTab,
+    Footer: Footer
+  },
   created() {
+    this.renderKey += 1;
+  },
+  mounted() {
+    document.dispatchEvent(new Event("render-event"));
+    this.urls = {};
+    this.$refs.vueApp.style.display = "block";
+
     this.$axios
       .get("/api/images")
       .then(res => {
@@ -81,9 +111,8 @@ export default {
           if (typeof item === "object") {
             for (const [key, value] of Object.entries(item)) {
               if (value && typeof value === "object" && value.length > 0) {
-                this.urls = this.urls || {};
                 this.urls[key] = format(value, key);
-                this.renderKey = 2;
+                this.renderKey += 1;
               }
             }
           }
@@ -93,37 +122,9 @@ export default {
         console.error(error);
       });
 
-    this.$axios.get("/api/exhibitions").then(res => {
-      console.log("res", res);
-    });
-
     window.addEventListener("beforeunload", function() {
       window.scrollTo(0, 0);
     });
-  },
-  data() {
-    return {
-      tabInfo: {
-        tabs: store.tabs
-      },
-      isPC: methods.isPC(),
-      urls,
-      renderKey: 1
-    };
-  },
-  components: {
-    Tab: Tab,
-    MobileTab: MobileTab,
-    Footer: Footer
-  },
-  methods: {
-    documentScroll(isScroll) {
-      // console.log("isScroll?", isScroll);
-    }
-  },
-  mounted() {
-    document.dispatchEvent(new Event("render-event"));
-
     methods.fontSizeChange();
     window.addEventListener("resize", methods.fontSizeChange, false);
     window.addEventListener("orientationchange", methods.fontSizeChange, false);

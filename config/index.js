@@ -8,7 +8,7 @@ module.exports = {
   dev: {
     // Paths
     assetsSubDirectory: "static",
-    assetsPublicPath: "/",
+    assetsPublicPath: "/dist",
     proxyTable: {},
 
     // Various Dev Server settings
@@ -36,7 +36,7 @@ module.exports = {
       "/api": {
         target: "http://8.210.247.224:1337",
         secure: false,
-        logLevel:'debug',
+        logLevel: "debug",
         changeOrigin: false,
         pathRewrite: {
           "^/api/": "/"
