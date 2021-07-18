@@ -46,7 +46,10 @@
             }"
           >
             <li v-for="item in list.children" :key="item.key">
-              {{ item.name }}
+              <router-link v-if="item.router" :to="item.router">{{
+                item.name
+              }}</router-link>
+              <span v-if="!item.router">{{ item.name }}</span>
             </li>
           </ul>
         </li>
@@ -69,7 +72,8 @@ export default {
     return {
       selectedKey: "",
       showList: false,
-      routerKey: ""
+      routerKey: "",
+      listVisible: false
     };
   },
   watch: {
@@ -78,7 +82,8 @@ export default {
       const router = to.path || "";
 
       this.changeRouter(router);
-    }
+    },
+    $route: "beforeRouterChange"
   },
   mounted() {
     window.onresize = () => {
@@ -89,13 +94,20 @@ export default {
 
     // this.scrollChange();
 
-    // window.addEventListener("scroll", this.scrollChange, true);
+    window.addEventListener("scroll", this.scrollChange, true);
     this.changeRouter(window.location.pathname);
   },
   unmounted() {
-    // window.removeEventListener("scroll", this.scrollChange, true);
+    window.removeEventListener("scroll", this.scrollChange, true);
   },
   methods: {
+    handleNav() {
+      this.listVisible = !this.listVisible;
+    },
+    beforeRouterChange() {
+      this.listVisible = false;
+      this.showList = false;
+    },
     changeRouter(router) {
       const tabs = this.tabInfo.tabs || [];
 
@@ -126,10 +138,11 @@ export default {
       const scrollTop = document.documentElement.scrollTop;
       const offsetHeight = document.documentElement.offsetHeight;
       this.showList = false;
+      this.listVisible = false;
 
-      if (disableSelected) {
-        return;
-      }
+      // if (disableSelected) {
+      //   return;
+      // }
 
       // tabHeightRange.forEach((item, index) => {
       //   const heightPercent = (scrollTop * 100) / offsetHeight;
@@ -147,7 +160,10 @@ export default {
       if (this.routerKey !== index && list.router) {
         this.$router.push({ path: list.router });
         this.showList = false;
+
+        return;
       }
+      console.log("aaaaaaaaaaaaaaaaaa");
 
       // disableSelected = true;
       // $(document.documentElement).animate(
@@ -169,6 +185,11 @@ export default {
 </script>
 
 <style scoped lang="less">
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .tabs {
   position: fixed;
   top: 0;

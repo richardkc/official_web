@@ -158,6 +158,8 @@ body {
   font-size: 0.5rem;
   cursor: default;
   font-family: "PingFangMedium";
+  -webkit-text-size-adjust: none;
+  max-width: 9999px;
 }
 
 ul,

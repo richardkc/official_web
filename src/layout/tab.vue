@@ -89,7 +89,8 @@ export default {
       const router = to.path || "";
 
       this.changeRouter(router);
-    }
+    },
+    $route: "beforeRouterChange"
   },
   mounted() {
     window.onresize = () => {
@@ -99,8 +100,19 @@ export default {
     };
 
     this.changeRouter(window.location.pathname);
+    // document.addEventListener("click", () => {
+    //   console.log("aaaaaaaaaaaaaaaaaaa");
+    //   setTimeout(() => {
+    //     if (this.showList) {
+    //       this.showList = false;
+    //     }
+    //   });
+    // });
   },
   methods: {
+    beforeRouterChange() {
+      this.showList = false;
+    },
     changeRouter(router) {
       const tabs = this.tabInfo.tabs || [];
 
