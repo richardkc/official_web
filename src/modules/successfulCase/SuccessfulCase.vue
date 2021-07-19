@@ -171,6 +171,7 @@ export default {
 
   .right {
     width: 80%;
+    overflow: hidden;
   }
 
   .examples {

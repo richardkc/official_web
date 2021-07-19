@@ -245,6 +245,7 @@ const logosSize = [
 ];
 
 const originPath = "http://8.210.247.224:1337";
+// const originPath = location.origin;
 
 const formatAllPaths = data => {
   const arrs = [];

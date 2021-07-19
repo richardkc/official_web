@@ -50,9 +50,17 @@
               }"
             >
               <li v-for="item in list.children" :key="item.key">
-                <router-link v-if="item.router" :to="item.router">{{
-                  item.name
-                }}</router-link>
+                <router-link
+                  v-if="item.router"
+                  :to="item.router"
+                  @click.native="
+                    e => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }
+                  "
+                  >{{ item.name }}</router-link
+                >
                 <span v-if="!item.router">{{ item.name }}</span>
               </li>
             </ul>

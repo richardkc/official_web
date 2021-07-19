@@ -1,9 +1,10 @@
 import Vue from "vue";
 import router from "./router";
-import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+// import { Carousel } from "element-ui";
+import element from "./element/index";
 import VueLazyLoad from "vue-lazyload";
 import _ from "lodash";
-import "element-ui/lib/theme-chalk/index.css";
 import App from "./App.vue";
 import axios from "axios";
 
@@ -11,7 +12,8 @@ axios.defaults.withCredentials = true;
 
 Vue.prototype.$axios = axios;
 Vue.prototype._ = _;
-Vue.use(ElementUI);
+// Vue.component(Carousel.name, Carousel);
+Vue.use(element);
 
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,
