@@ -7,7 +7,7 @@
 
 <script>
 import FirstPage from "./PC/firstPage";
-import MobileFirstPage from "./mobile/mobileFirstPage";
+// import MobileFirstPage from "./mobile/mobileFirstPage";
 
 export default {
   name: "Home",
@@ -16,8 +16,8 @@ export default {
     urls: Object
   },
   components: {
-    FirstPage,
-    MobileFirstPage
+    FirstPage
+    // MobileFirstPage
   }
 };
 </script>

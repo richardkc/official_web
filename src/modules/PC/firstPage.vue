@@ -217,7 +217,7 @@
       </div>
       <div class="contact">
         <div class="map">
-          <img v-lazy="imgUrls[30]" />
+          <iframe frameborder="0" scrolling="no" :src="iframeUrl"></iframe>
         </div>
         <div class="contactForm">
           <div class="detail">
@@ -295,6 +295,7 @@ export default {
       RDcenterHeight: document.body.clientWidth * 0.387,
       imgUrls: this.urls ? this.urls.home : [],
       logoUrls: this.urls ? this.urls.homeLogos : [],
+      iframeUrl: "../../../static/map.html",
       formData: {
         name: "",
         phone: "",
@@ -1054,7 +1055,7 @@ export default {
       width: 45%;
       height: 100%;
 
-      img {
+      iframe {
         width: 17.2rem;
         height: 14rem;
       }
