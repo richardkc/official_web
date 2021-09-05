@@ -374,7 +374,6 @@ export default {
 
 img {
   display: flex;
-  height: 100%;
 }
 
 .title {

@@ -138,7 +138,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         "/successfulRailTransit",
         "/successfulSteamShip",
         "/successfulSupermarket",
-        "/RDCenter"
+        "/RDCenter",
+        "planeMedia"
       ],
 
       // 这个很重要，如果没有配置这段，也不会进行预编译
