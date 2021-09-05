@@ -518,14 +518,14 @@ img {
 
     &::before {
       top: 0;
-      border: 2px dashed transparent;
+      border: 3px dashed transparent;
       border-right-color: @redColor;
       border-bottom-color: @redColor;
     }
 
     &::after {
       top: 50%;
-      border: 2px dashed transparent;
+      border: 3px dashed transparent;
       border-left-color: @redColor;
     }
 
@@ -598,14 +598,14 @@ img {
 
     &::before {
       top: 0;
-      border: 2px dashed transparent;
+      border: 3px dashed transparent;
       border-left-color: @redColor;
       border-bottom-color: @redColor;
     }
 
     &::after {
       top: 50%;
-      border: 2px dashed transparent;
+      border: 3px dashed transparent;
       border-right-color: @redColor;
     }
 
@@ -953,7 +953,7 @@ img {
 
   .left {
     width: 30%;
-    border-left: 2px dashed @redColor;
+    border-left: 3px dashed @redColor;
     padding: 3rem 0;
   }
 
