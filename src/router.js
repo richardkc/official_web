@@ -14,6 +14,7 @@ import SuccessfulRailTransit from "@/modules/successfulCase/successfulRailTransi
 import SuccessfulSteamShip from "@/modules/successfulCase/successfulSteamShip";
 import SuccessfulSupermarket from "@/modules/successfulCase/successfulSupermarket";
 import RDCenter from "@/modules/RDCenter/RDCenter";
+import PlaneMedia from "@/modules/mediaDesign/planeMedia";
 
 Vue.use(Router);
 
@@ -92,6 +93,11 @@ const routes = [
     path: "/RDCenter",
     name: "RDCenter",
     component: RDCenter
+  },
+  {
+    path: "/planeMedia",
+    name: "PlaneMedia",
+    component: PlaneMedia
   }
 ];
 

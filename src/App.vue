@@ -17,6 +17,7 @@
 
 <script>
 import Tab from "@/layout/tab";
+import tabs from "./store/tabs";
 import MobileTab from "./layout/mobileTab";
 import store from "@/store/warehouse";
 import methods from "@/utils/basic";
@@ -82,7 +83,7 @@ export default {
   data() {
     return {
       tabInfo: {
-        tabs: store.tabs
+        tabs
       },
       isPC: methods.isPC(),
       urls,
