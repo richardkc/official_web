@@ -158,7 +158,6 @@ export default {
 
         return;
       }
-      console.log("aaaaaaaaaaaaaaaaaa");
 
       // disableSelected = true;
       // $(document.documentElement).animate(

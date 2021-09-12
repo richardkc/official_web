@@ -4,23 +4,31 @@
       <el-carousel
         height="32rem"
         direction="vertical"
-        @change="carouselIndexChange"
         :interval="10000"
         :autoplay="true"
         :loop="true"
       >
         <el-carousel-item
-          v-for="(item, index) in carouselMap"
+          v-for="(item, index) in carouselMap[carouselKey]"
           :key="index"
-          :name="item.name"
         >
-          <img v-lazy="item.url" style="width: 100%; height: 100%;" />
+          <img v-lazy="carouselUrls[item]" style="width: 100%; height: 100%;" />
         </el-carousel-item>
       </el-carousel>
       <div class="carouselTab">
-        <div class="tabItem" v-for="(item, index) in carouselTabs" :key="index">
-          <span :class="{ active: currentCarouselIndex === index }">{{
-            item
+        <div
+          class="tabItem"
+          :class="{ selectedTab: carouselKey === item.key }"
+          v-for="(item, index) in carouselTabs"
+          :key="index"
+          @mouseover="
+            () => {
+              carouselKey = item.key;
+            }
+          "
+        >
+          <span :class="{ active: carouselKey === item.key }">{{
+            item.name
           }}</span>
         </div>
       </div>
@@ -48,7 +56,7 @@
             <span :class="{ cover: index > 0 }">{{ item.name }}</span>
           </div>
         </div>
-        <div class="more">
+        <div class="more" @click="() => routerChange('successfulPlane')">
           更多成功案例
           <div>+</div>
         </div>
@@ -253,32 +261,33 @@ export default {
     return {
       imgUrls: this.urls ? this.urls.solutionAviation : [],
       originPath: store.originPath,
-      currentCarouselIndex: 0,
       iconFocus: false,
       iconDetail: "",
-      carouselMap: [
-        {
-          name: "profile_1",
-          url: `${this.urls ? this.urls.solutionAviation[0] : ""}`
-        },
-        {
-          name: "profile_2",
-          url: `${this.urls ? this.urls.solutionAviation[1] : ""}`
-        },
-        {
-          name: "profile_3",
-          url: `${this.urls ? this.urls.solutionAviation[2] : ""}`
-        },
-        {
-          name: "profile_4",
-          url: `${this.urls ? this.urls.solutionAviation[3] : ""}`
-        }
-      ],
+      carouselKey: "fuselage",
+      carouselUrls: [],
+      carouselMap: {
+        fuselage: [0, 1, 2, 3],
+        engineRoom: [4],
+        airport: [5, 6],
+        vehicle: [7]
+      },
       carouselTabs: [
-        "航空飞机机身",
-        "航空飞机机舱",
-        "航空机场",
-        "航空公司车辆"
+        {
+          key: "fuselage",
+          name: "航空飞机机身"
+        },
+        {
+          key: "engineRoom",
+          name: "航空飞机机舱"
+        },
+        {
+          key: "airport",
+          name: "航空机场"
+        },
+        {
+          key: "vehicle",
+          name: "航空公司车辆"
+        }
       ],
       aviationMap: [
         {
@@ -434,17 +443,26 @@ export default {
         this.iconUrls = res.data[0].aviation_icons;
       }
     });
+    this.$axios.get("/api/exhibitions").then(res => {
+      if (res.data.length > 0) {
+        this.carouselUrls =
+          this._.map(
+            store.formatPaths(this._.get(res, "data[0].solution_aviation")),
+            item => item.url
+          ) || [];
+      }
+    });
   },
   methods: {
-    carouselIndexChange(index) {
-      this.currentCarouselIndex = index;
-    },
     iconFocused(value) {
       this.iconFocus = value;
 
       setTimeout(() => {
         this.iconDetail = value ? "航空标识" : "";
       }, 400);
+    },
+    routerChange(router) {
+      this.$router.push({ path: router });
     }
   }
 };
@@ -477,28 +495,16 @@ export default {
   /deep/ .el-carousel__indicators {
     position: absolute;
     top: 50%;
-    right: 0;
-    transform: translate(0, -50%);
-    height: 65%;
-    width: calc(1rem + 6px);
-    z-index: 200;
-
-    .el-carousel__indicator {
-      padding: 0;
-      height: 25%;
-      width: 100%;
-      padding-left: 1rem;
-    }
-
-    .is-active > .el-carousel__button {
-      background: rgb(153, 153, 153);
-    }
+    left: 1rem;
+    width: 0.2rem;
+    transform: translateY(-50%);
 
     .el-carousel__button {
-      width: 100%;
-      height: 100%;
-      background: rgb(204, 204, 204);
-      opacity: 1;
+      width: 0.4rem;
+      height: 0.4rem;
+      background-color: white;
+      border-radius: 0.2rem;
+      margin: 0.75rem 0;
     }
   }
 }
@@ -508,7 +514,7 @@ export default {
   right: 6px;
   top: 50%;
   transform: translate(0, -50%);
-  height: 65%;
+  height: 75%;
   width: 1rem;
   background-color: rgb(153, 153, 153);
   z-index: 199;
@@ -517,13 +523,31 @@ export default {
     color: white;
   }
 
-  & > div {
+  .tabItem {
     writing-mode: vertical-rl;
     height: 25%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 100%;
+      background-color: rgb(204, 204, 204);
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  }
+
+  .selectedTab {
+    &::after {
+      background-color: rgb(153, 153, 153);
+    }
   }
 }
 

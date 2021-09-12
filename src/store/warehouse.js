@@ -95,11 +95,22 @@ const formatPaths = data => {
   });
 };
 
+const formatPathsWithoutSort = data => {
+  return _.map(_.isArray(data) ? data : [], (item, index) => {
+    item.url = originPath + item.url;
+    item.text = item.alternativeText;
+    item.index = index;
+
+    return item;
+  });
+};
+
 export default {
   transport,
   logosSize,
   originPath,
 
   formatPaths,
-  formatAllPaths
+  formatAllPaths,
+  formatPathsWithoutSort
 };

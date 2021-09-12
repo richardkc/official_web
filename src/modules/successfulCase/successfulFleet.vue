@@ -4,37 +4,36 @@
       <img v-lazy="imgUrls[0]" />
     </div>
     <div class="examples">
-      <div class="example" v-for="(item, index) in fleetUrls" :key="index">
+      <div
+        class="example"
+        v-for="(item, index) in fleetUrls"
+        :key="index"
+        @click="() => changeExamples(index)"
+      >
         <img v-lazy="fleetUrls[index].url" />
-        <span :class="{ covered: index > 0 }">{{ fleetUrls[index].text }}</span>
+        <span :class="{ covered: index !== currentIndex }">{{
+          fleetUrls[index].text
+        }}</span>
       </div>
     </div>
     <div class="details">
       <div class="contentWrap">
-        <div class="subTitle">深圳地铁三号线</div>
-        <div class="content">营运车辆 新能源车 冷运车</div>
-      </div>
-      <div class="imageWrap">
-        <img v-lazy="imgUrls[7]" />
+        <div class="subTitle">{{ carouselMap[currentIndex].name }}</div>
+        <div class="content">{{ carouselMap[currentIndex].details }}</div>
       </div>
       <div class="carousel">
-        <Switch-button type="pre" />
-        <div
-          v-for="(item, index) in carouselMap"
-          :key="index"
-          class="carouselItem"
-        >
-          <img v-lazy="item.url" style="width: 100%; height: 100%;" />
-          <span :class="{ covered: index > 0 }">{{ item.text }}</span>
-        </div>
-        <Switch-button type="next" />
+        <Banner
+          :key="currentIndex"
+          v-if="carouselMap[currentIndex].images"
+          :images="carouselMap[currentIndex].images"
+        ></Banner>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import SwitchButton from "../../components/switchButton";
+import Banner from "../../components/banner";
 import store from "@/store/warehouse";
 
 export default {
@@ -45,15 +44,17 @@ export default {
     return {
       imgUrls: this.urls ? this.urls.successfulFleet : [],
       fleetUrls: [],
+      currentIndex: "0",
       carouselMap: [
         {
-          url: this.urls ? this.urls.successfulFleet[5] : ""
+          name: "顺丰速运",
+          details: "营运车辆 新能源车 冷运车"
         },
         {
-          url: this.urls ? this.urls.successfulFleet[6] : ""
+          name: "跨越速运"
         },
         {
-          url: this.urls ? this.urls.successfulFleet[7] : ""
+          name: "德邦快递"
         }
       ]
     };
@@ -64,9 +65,25 @@ export default {
         this.fleetUrls = store.formatPaths(res.data[0].successful_fleet);
       }
     });
+
+    this.$axios.get("/api/successful-fleets").then(res => {
+      if (this._.size(res.data) > 0) {
+        this._.forEach(res.data, (item, index) => {
+          this.carouselMap[index].images = store.formatPathsWithoutSort(
+            item.images
+          );
+        });
+        this.currentIndex = 0;
+      }
+    });
   },
   components: {
-    "Switch-button": SwitchButton
+    Banner
+  },
+  methods: {
+    changeExamples(index) {
+      this.currentIndex = index;
+    }
   }
 };
 </script>
@@ -160,54 +177,9 @@ export default {
       margin: 0 1rem 0 0.5rem;
     }
   }
-
-  .imageWrap {
-    width: 100%;
-    margin-bottom: 1.5rem;
-  }
 }
 
 .carousel {
-  width: 60%;
-  margin: 0 20%;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-
-  .switchButton {
-    box-shadow: none;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 1.2rem;
-
-    /deep/ img {
-      width: 100%;
-    }
-  }
-
-  .switchButtonLeft {
-    position: absolute;
-    left: -5%;
-  }
-
-  .switchButtonRight {
-    position: absolute;
-    left: 105%;
-  }
-
-  .carouselItem {
-    width: 30%;
-    position: relative;
-  }
-
-  .covered {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(153, 153, 153, 0.75);
-  }
+  width: 100%;
 }
 </style>
