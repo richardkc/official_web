@@ -12,7 +12,12 @@
           v-for="(item, index) in carouselMap[carouselKey]"
           :key="index"
         >
-          <img v-lazy="carouselUrls[item]" style="width: 100%; height: 100%;" />
+          <div :style="{ 'padding-top': `${carouselTop[item]}%` }">
+            <img
+              v-lazy="carouselUrls[item]"
+              style="width: 100%; height: 100%;"
+            />
+          </div>
         </el-carousel-item>
       </el-carousel>
       <div class="carouselTab">
@@ -277,6 +282,7 @@ export default {
         airport: [5, 6],
         vehicle: [7]
       },
+      carouselTop: [1, 0.3, 0, 1.2, 2, 0.8, 0.8, 2.2],
       hoveredIcon: {
         name: "航空标识",
         key: "aviation",
