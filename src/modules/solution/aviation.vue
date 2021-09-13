@@ -1,26 +1,31 @@
 <template>
   <main class="profile">
-    <section class="carousel">
+    <section
+      class="carousel"
+      v-for="carouselItem in ['fuselage', 'engineRoom', 'airport', 'vehicle']"
+      :key="carouselItem"
+      v-show="carouselItem === carouselKey"
+    >
       <el-carousel
         height="32rem"
         direction="vertical"
         :interval="10000"
         :autoplay="true"
         :loop="true"
+        v-if="carouselItem === carouselKey"
       >
         <el-carousel-item
-          v-for="(item, index) in carouselMap[carouselKey]"
+          v-for="(item, index) in carouselMap[carouselItem]"
           :key="index"
         >
-          <div :style="{ 'padding-top': `${carouselTop[item]}%` }">
-            <img
-              v-lazy="carouselUrls[item]"
-              style="width: 100%; height: 100%;"
-            />
-          </div>
+          <img
+            v-lazy="carouselUrls[item]"
+            :style="{ 'margin-top': `${carouselTop[item]}%` }"
+            style="width: 100%; height: 100%;"
+          />
         </el-carousel-item>
       </el-carousel>
-      <div class="carouselTab">
+      <div class="carouselTab" v-show="carouselItem === carouselKey">
         <div
           class="tabItem"
           :class="{ selectedTab: carouselKey === item.key }"
@@ -282,7 +287,7 @@ export default {
         airport: [5, 6],
         vehicle: [7]
       },
-      carouselTop: [1, 0.3, 0, 1.2, 2, 0.8, 0.8, 2.2],
+      carouselTop: [0.8, 0, -0.2, 1.2, 1.8, 0.4, 0.4, 2.2],
       hoveredIcon: {
         name: "航空标识",
         key: "aviation",
