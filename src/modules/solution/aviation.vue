@@ -62,38 +62,44 @@
         </div>
       </div>
       <div class="right">
-        <div
-          class="firstWrap"
-          @mouseover="iconFocused(true)"
-          @mouseleave="iconFocused(false)"
-        >
-          <div :class="{ first: this.iconFocus }">
-            <span v-show="this.iconFocus">{{ this.iconDetail }}</span>
-            <img
-              v-show="!this.iconFocus"
-              v-lazy="`${originPath}/uploads/circle-1.png`"
-            />
-            <img
-              v-show="this.iconFocus"
-              v-lazy="`${originPath}/uploads/normal-1.png`"
-            />
-          </div>
-        </div>
         <div class="bottom">
-          <div class="details" :class="{ showDetails: this.iconFocus }">
-            <span>飞机制图解决方案创意梦想与梦境</span>
-            <span>飞机工程定位图和画面设计</span>
-            <span>飞机贴膜作业流程</span>
-            <span>飞机数码贴膜的优势</span>
-            <span>传统喷漆的制作流程</span>
-            <span>技术支持</span>
-            <span>政策法规的支持</span>
-          </div>
           <div class="icons">
-            <div v-for="item in transport" :key="item.key">
+            <div
+              class="iconWrap"
+              v-for="item in transport"
+              :key="item.key"
+              @mouseover="() => iconFocused(item.key)"
+              @mouseleave="() => iconFocused('')"
+            >
               <div class="imgWrap">
-                <div>
-                  <img v-lazy="`${originPath}/uploads/circle-${item}.png`" />
+                <div
+                  :key="item.key"
+                  :class="{ hovered: hoveredIcon.key === item.key }"
+                >
+                  <div
+                    class="details"
+                    :class="{ showDetails: hoveredIcon.key === item.key }"
+                  >
+                    <span
+                      class="detailContent"
+                      v-for="(item, index) in hoveredIcon.details"
+                      :key="index"
+                      >{{ item }}</span
+                    >
+                  </div>
+                  <span
+                    class="detailName"
+                    v-show="hoveredIcon.key === item.key"
+                    >{{ hoveredIcon.name }}</span
+                  >
+                  <img
+                    v-show="hoveredIcon.key !== item.key"
+                    v-lazy="`${originPath}/uploads/circle-${item.index}.png`"
+                  />
+                  <img
+                    v-show="hoveredIcon.key === item.key"
+                    v-lazy="`${originPath}/uploads/normal-${item.index}.png`"
+                  />
                 </div>
               </div>
             </div>
@@ -271,6 +277,80 @@ export default {
         airport: [5, 6],
         vehicle: [7]
       },
+      hoveredIcon: {
+        name: "航空标识",
+        key: "aviation",
+        details: [
+          "飞机制图解决方案创意梦想与梦境",
+          "飞机工程定位图和画面设计",
+          "飞机贴膜作业流程",
+          "飞机数码贴膜的优势",
+          "传统喷漆的制作流程",
+          "技术支持",
+          "政策法规的支持"
+        ]
+      },
+      iconsInfo: [
+        {
+          name: "航空标识",
+          key: "aviation",
+          details: [
+            "飞机制图解决方案创意梦想与梦境",
+            "飞机工程定位图和画面设计",
+            "飞机贴膜作业流程",
+            "飞机数码贴膜的优势",
+            "传统喷漆的制作流程",
+            "技术支持",
+            "政策法规的支持"
+          ]
+        },
+        {
+          name: "物流车队标识",
+          key: "logistics",
+          details: [
+            "物流车队标识及贴膜工艺解决方案",
+            "车队标识贴膜解决方案的优势"
+          ]
+        },
+        {
+          name: "轨道交通标识",
+          key: "railTransit",
+          details: [
+            "车辆外饰",
+            "车窗",
+            "地面",
+            "3M贴膜产品应用概述",
+            "使用贴膜替代传统喷漆的优势"
+          ]
+        },
+        {
+          name: "大型商超标识",
+          key: "supermarket",
+          details: ["商超标识解决方案", "服务架构", "服务流程", "服务案例"]
+        },
+        {
+          name: "船舶标识",
+          key: "steamShip",
+          details: [
+            "3M 贴膜产品简介",
+            "使用贴膜替代传统喷漆的优势",
+            "3M 安全防滑贴产品系列"
+          ]
+        },
+        {
+          name: "建筑装饰标识",
+          key: "building",
+          details: [
+            "3M 装饰建筑贴膜解决方案",
+            "建筑装饰贴膜的行业应用",
+            "材料分类"
+          ]
+        },
+        {
+          name: "3M全系列贴膜标识",
+          key: "3M"
+        }
+      ],
       carouselTabs: [
         {
           key: "fuselage",
@@ -315,7 +395,36 @@ export default {
           url: `${this.urls ? this.urls.solutionAviation[9] : ""}`
         }
       ],
-      transport: [2, 3, 4, 5, 6, 7],
+      transport: [
+        {
+          key: "aviation",
+          index: 1
+        },
+        {
+          key: "logistics",
+          index: 2
+        },
+        {
+          key: "railTransit",
+          index: 3
+        },
+        {
+          key: "supermarket",
+          index: 4
+        },
+        {
+          key: "steamShip",
+          index: 5
+        },
+        {
+          key: "building",
+          index: 6
+        },
+        {
+          key: "3M",
+          index: 7
+        }
+      ],
       workProcess: [
         {
           text: "在相对无尘的环境，把画面摊开",
@@ -455,11 +564,13 @@ export default {
   },
   methods: {
     iconFocused(value) {
-      this.iconFocus = value;
+      if (!value) {
+        this.hoveredIcon = {};
 
-      setTimeout(() => {
-        this.iconDetail = value ? "航空标识" : "";
-      }, 400);
+        return;
+      }
+
+      this.hoveredIcon = this._.find(this.iconsInfo, { key: value }) || {};
     },
     routerChange(router) {
       this.$router.push({ path: router });
@@ -489,7 +600,7 @@ export default {
 
 .carousel {
   width: 90%;
-  margin: 2rem 5% 0;
+  margin: 4rem 5% 0;
   position: relative;
 
   /deep/ .el-carousel__indicators {
@@ -650,32 +761,36 @@ export default {
       width: 2rem;
     }
 
-    .firstWrap {
-      width: 100%;
+    .bottom {
       display: flex;
       justify-content: flex-end;
+      margin-top: @fontSizeMd;
 
-      & > div {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        transition: all 0.5s;
-        border-radius: 1.25rem;
-        width: 2.1rem;
-
-        span {
-          display: inline-block;
-          margin-right: 0.6rem;
+      .imgWrap {
+        > div {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          transition: width 0.3s;
+          pointer-events: none;
         }
       }
     }
 
-    .first {
-      width: 6rem !important;
-      height: 2rem;
-      font-size: 0.55rem;
+    .detailName {
+      white-space: nowrap;
+      display: inline-block;
+      margin-right: 0.75rem;
+    }
+
+    .hovered {
+      min-width: 6rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between !important;
+      position: relative; //
+      height: 2rem;
+      border-radius: 1rem;
+      font-size: 0.55rem;
       align-items: center;
       background-color: @redColor;
       color: white;
@@ -683,24 +798,29 @@ export default {
 
       img {
         width: 1.25rem;
-        height: 1.1rem;
+        max-height: 1.1rem;
+        height: auto !important;
+      }
+
+      .showDetails {
+        position: absolute;
+        top: 2.5rem;
+        right: 2rem;
+
+        span {
+          background-color: white;
+        }
       }
     }
 
-    .bottom {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: @fontSizeMd;
-    }
-
     .details {
+      position: absolute;
       opacity: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       margin-right: @fontSizeMd;
       color: @contentFontColor;
-      transition: all 0.5s;
 
       & > span {
         margin-bottom: @fontSizeMd;
