@@ -80,6 +80,7 @@
               :key="item.key"
               @mouseover="() => iconFocused(item.key)"
               @mouseleave="() => iconFocused('')"
+              @click="() => routerChange(item.key)"
             >
               <div class="imgWrap">
                 <div
@@ -584,6 +585,10 @@ export default {
       this.hoveredIcon = this._.find(this.iconsInfo, { key: value }) || {};
     },
     routerChange(router) {
+      if (this._.includes(["3M"], router)) {
+        return;
+      }
+
       this.$router.push({ path: router });
     }
   }
