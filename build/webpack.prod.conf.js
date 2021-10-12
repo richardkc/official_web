@@ -126,6 +126,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       routes: [
         "/",
         "/home",
+        "/introduction",
         "/aviation",
         "/logistics",
         "/railTransit",

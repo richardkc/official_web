@@ -24,9 +24,12 @@ const isPC = () => {
 const fontSizeChange = () => {
   const documentWidth = document.documentElement.clientWidth;
   const viewport = document.getElementById("viewport");
+  const fontSize = (
+    12 * ((!flag && documentWidth < 1270 ? 1270 : documentWidth) / 640) || 0
+  ).toFixed(2);
 
-  document.documentElement.style.fontSize =
-    12 * ((!flag && documentWidth < 1270 ? 1270 : documentWidth) / 640) + "px";
+  document.documentElement.style.fontSize = fontSize + "px";
+  window.fontSize = Number(fontSize);
 
   if (!flag && viewport) {
     viewport.content = `width=device-width,initial-scale=${viewport / 1270}`;

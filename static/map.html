@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>深圳市大昆仑数码有限公司</title>
+<title>
+    深圳市大昆仑数码科技有限公司
+</title>
 <!--引用百度地图API-->
 <style type="text/css">
     html,body{margin:0;padding:0;}
@@ -55,7 +57,7 @@
     }
     
     //标注点数组
-    var markerArr = [{title:"深圳市大昆仑数码有限公司",content:"我的备注",point:"114.146432|22.672915",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:`<div>深圳市龙岗区平湖街道<br>新木社区新围仔乐新路51号67栋</div>`,content:"深圳市大昆仑数码科技有限公司",point:"114.146432|22.672915",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){
@@ -71,9 +73,9 @@
 			marker.setLabel(label);
             map.addOverlay(marker);
             label.setStyle({
-                        borderColor:"#808080",
-                        color:"#333",
-                        cursor:"pointer"
+                borderColor:"#808080",
+                color:"#333",
+                cursor:"pointer"
             });
 			
 			(function(){

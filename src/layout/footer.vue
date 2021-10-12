@@ -3,7 +3,7 @@
     <img class="coverImg" v-lazy="imgUrls[0]" />
     <div class="companyInfo">
       <div>
-        <div>深圳市大昆仑数码有限公司</div>
+        <div>深圳市大昆仑数码科技有限公司</div>
         <div>深圳市龙岗区平湖街道新木社区新围仔乐新路51号67栋</div>
       </div>
       <div>

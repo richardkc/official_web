@@ -6,22 +6,22 @@ export default [
     children: [
       {
         name: "公司简介",
-        router: "/home",
+        router: "/introduction",
         key: "1-1"
       },
       {
         name: "企业文化",
-        router: "/home",
+        router: "/introduction",
         key: "1-2"
       },
       {
         name: "发展历程",
-        router: "/home",
+        router: "/introduction",
         key: "1-3"
       },
       {
         name: "荣誉资质",
-        router: "/home",
+        router: "/introduction",
         key: "1-4"
       }
     ]
