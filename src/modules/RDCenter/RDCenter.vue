@@ -388,6 +388,8 @@ export default {
 
 .banner {
   width: 100%;
+  max-height: 17rem;
+  overflow: hidden;
 
   img {
     width: 100%;

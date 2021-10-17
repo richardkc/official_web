@@ -107,19 +107,19 @@ export default [
     key: "5",
     children: [
       {
+        name: "航空媒体资源广告投放洽谈",
+        router: "/planeMedia",
+        key: "5-3"
+      },
+      {
         name: "品牌视觉包装解决方案",
-        router: "/",
+        router: "/planeMedia",
         key: "5-1"
       },
       {
         name: "商业广告宣传设计",
-        router: "/",
-        key: "5-2"
-      },
-      {
-        name: "航空媒体资源广告投放洽谈",
         router: "/planeMedia",
-        key: "5-3"
+        key: "5-2"
       }
     ]
   },

@@ -634,6 +634,10 @@ export default {
       margin: 0.75rem 0;
     }
   }
+
+  /deep/ .el-carousel__item {
+    padding-bottom: 1rem;
+  }
 }
 
 .carouselTab {

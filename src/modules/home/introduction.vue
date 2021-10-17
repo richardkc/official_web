@@ -157,6 +157,7 @@
         <div class="honorsWrap">
           <div class="honors">
             <el-carousel
+              height="14rem"
               :interval="10000"
               :autoplay="true"
               :loop="true"

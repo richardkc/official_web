@@ -190,24 +190,9 @@
       <div class="partner">
         <button class="btn-primary">更多伙伴</button>
         <div class="partners">
-          <Switch-button type="pre" />
           <div class="logos">
-            <div class="logoRow">
-              <img :style="[logosSize[0]]" v-lazy="logoUrls[0]" />
-              <img :style="[logosSize[1]]" v-lazy="logoUrls[1]" />
-            </div>
-            <div class="logoRow">
-              <img :style="[logosSize[2]]" v-lazy="logoUrls[2]" />
-              <img :style="[logosSize[3]]" v-lazy="logoUrls[3]" />
-              <img :style="[logosSize[4]]" v-lazy="logoUrls[4]" />
-            </div>
-            <div class="logoRow">
-              <img :style="[logosSize[5]]" v-lazy="logoUrls[5]" />
-              <img :style="[logosSize[6]]" v-lazy="logoUrls[6]" />
-              <img :style="[logosSize[7]]" v-lazy="logoUrls[7]" />
-            </div>
+            <img v-lazy="imgUrls[30]" />
           </div>
-          <Switch-button type="next" />
         </div>
       </div>
       <!-- 联系我们 -->
@@ -1018,27 +1003,15 @@ export default {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-
-      .switchButton {
-        margin-top: 2.25rem;
-      }
-
-      img {
-        display: block;
-        width: 6.6rem;
-      }
+      width: 60%;
     }
 
     .logos {
-      margin: 0.64rem;
-    }
+      width: 100%;
 
-    .logoRow {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 2.6rem;
-      margin-top: 2.6rem;
+      img {
+        width: 100%;
+      }
     }
   }
 
