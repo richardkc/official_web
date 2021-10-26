@@ -274,7 +274,6 @@ export default {
       activeForSuccessWork: 0,
       activeForSolution: 0,
       transport: store.transport,
-      logosSize: store.logosSize,
       coverWidth: document.body.clientWidth,
       coverHeight: document.body.clientWidth * 0.6,
       RDcenterHeight: document.body.clientWidth * 0.387,

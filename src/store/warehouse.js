@@ -45,33 +45,6 @@ const transport = [
   }
 ];
 
-const logosSize = [
-  {
-    width: "7.2rem"
-  },
-  {
-    width: "12.8rem"
-  },
-  {
-    width: "6.4rem"
-  },
-  {
-    width: "6.4rem"
-  },
-  {
-    width: "6.4rem"
-  },
-  {
-    width: "3.6rem"
-  },
-  {
-    width: "6.4rem"
-  },
-  {
-    width: "6.4rem"
-  }
-];
-
 // const originPath = "http://8.210.247.224:1337";
 const originPath = location.origin;
 
@@ -107,7 +80,6 @@ const formatPathsWithoutSort = data => {
 
 export default {
   transport,
-  logosSize,
   originPath,
 
   formatPaths,

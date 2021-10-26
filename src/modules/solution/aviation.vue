@@ -10,7 +10,6 @@
         height="32rem"
         direction="vertical"
         :interval="10000"
-        :autoplay="true"
         :loop="true"
         v-if="carouselItem === carouselKey"
       >
@@ -20,8 +19,11 @@
         >
           <img
             v-lazy="carouselUrls[item]"
-            :style="{ 'margin-top': `${carouselTop[item]}%` }"
-            style="width: 100%; height: 100%;"
+            :style="{
+              'margin-top': `${carouselTop[item]}%`,
+              height: `${carouselHeight[item]}%`
+            }"
+            style="width: 100%;"
           />
         </el-carousel-item>
       </el-carousel>
@@ -68,7 +70,7 @@
         </div>
         <div class="more" @click="() => routerChange('successfulPlane')">
           更多成功案例
-          <div>+</div>
+          <div></div>
         </div>
       </div>
       <div class="right">
@@ -153,7 +155,13 @@
             </div>
             <div class="text">
               <div class="subTitle">{{ item.subTitle }}</div>
-              <div class="content">{{ item.content }}</div>
+              <div
+                class="content"
+                v-for="(content, contentIndex) in item.content"
+                :key="contentIndex"
+              >
+                {{ content }}
+              </div>
             </div>
           </div>
         </div>
@@ -288,7 +296,8 @@ export default {
         airport: [5, 6],
         vehicle: [7]
       },
-      carouselTop: [0.8, 0, -0.2, 1.2, 1.8, 0.4, 0.4, 2.2],
+      carouselTop: [0.7, -0.2, -0.4, 0.9, 1.7, 0.3, 1.8, 2],
+      carouselHeight: [100.5, 100.5, 100.4, 100.4, 100.4, 100.5, 102.9, 100.6],
       hoveredIcon: {
         name: "航空标识",
         key: "aviation",
@@ -455,23 +464,26 @@ export default {
         {
           url: `${this.urls ? this.urls.solutionAviation[21] : ""}`,
           subTitle: "材料应用",
-          content: "波音、空客原厂认证， 安全环保"
+          content: ["波音、空客原厂认证", "安全环保"]
         },
         {
           url: `${this.urls ? this.urls.solutionAviation[22] : ""}`,
           subTitle: "喷绘方式",
-          content: "照片效果逼真生动"
+          content: ["照片效果逼真生动"]
         },
         {
           url: `${this.urls ? this.urls.solutionAviation[23] : ""}`,
           subTitle: "安装快捷",
-          content:
-            "安装一个完整机身画面仅需2-3天 不影响飞机周旋律大幅度提升飞机在航时间"
+          content: [
+            "安装一个完整机身画面仅需2-3天",
+            "不影响飞机周旋律",
+            "大幅度提升飞机在航时间"
+          ]
         },
         {
           url: `${this.urls ? this.urls.solutionAviation[24] : ""}`,
           subTitle: "场地要求",
-          content: "无需专用场地 相对无尘即可完成"
+          content: ["无需专用场地", "相对无尘即可完成"]
         }
       ],
       process: [
@@ -643,9 +655,9 @@ export default {
 .carouselTab {
   position: absolute;
   right: 6px;
-  top: 50%;
+  top: 49%;
   transform: translate(0, -50%);
-  height: 75%;
+  height: 74%;
   width: 1rem;
   background-color: rgb(153, 153, 153);
   z-index: 199;
@@ -765,6 +777,18 @@ export default {
         justify-content: center;
         align-items: flex-end;
         cursor: pointer;
+        position: relative;
+
+        &::after {
+          content: "+";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 0.26rem;
+          line-height: 0.26rem;
+        }
       }
     }
   }
@@ -1006,13 +1030,17 @@ export default {
 
     .text {
       text-align: center;
-      width: 7.2rem;
+      min-width: 7.2rem;
       margin: 0 auto;
       margin-top: 2rem;
 
       .subTitle {
         margin-bottom: 0.25rem;
       }
+    }
+
+    .content {
+      white-space: nowrap;
     }
   }
 }
@@ -1062,6 +1090,9 @@ export default {
       margin-top: 0.5rem;
       color: black;
       font-weight: @titleFontWeight;
+      font-size: 0.55rem;
+      padding-left: 0.25rem;
+      white-space: nowrap;
     }
   }
 
