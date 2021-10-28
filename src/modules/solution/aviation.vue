@@ -17,14 +17,7 @@
           v-for="(item, index) in carouselMap[carouselItem]"
           :key="index"
         >
-          <img
-            v-lazy="carouselUrls[item]"
-            :style="{
-              'margin-top': `${carouselTop[item]}%`,
-              height: `${carouselHeight[item]}%`
-            }"
-            style="width: 100%;"
-          />
+          <img v-lazy="carouselUrls[item]" style="width: 100%;" />
         </el-carousel-item>
       </el-carousel>
       <div class="carouselTab" v-show="carouselItem === carouselKey">
@@ -646,18 +639,14 @@ export default {
       margin: 0.75rem 0;
     }
   }
-
-  /deep/ .el-carousel__item {
-    padding-bottom: 1rem;
-  }
 }
 
 .carouselTab {
   position: absolute;
   right: 6px;
-  top: 49%;
+  top: 47.2%;
   transform: translate(0, -50%);
-  height: 74%;
+  height: 70.8%;
   width: 1rem;
   background-color: rgb(153, 153, 153);
   z-index: 199;
