@@ -63,7 +63,7 @@
         </div>
         <div class="more" @click="() => routerChange('successfulPlane')">
           更多成功案例
-          <div></div>
+          <i class="el-icon-circle-plus-outline"></i>
         </div>
       </div>
       <div class="right">
@@ -751,33 +751,15 @@ export default {
     }
 
     .more {
-      line-height: @fontSizeMd;
       display: flex;
       justify-content: flex-start;
+      align-items: center;
 
-      & > div {
+      & > i {
         margin-left: 0.2rem;
-        width: @fontSizeMd;
-        height: @fontSizeMd;
-        display: flex;
+        font-size: 0.675rem;
         color: @redColor;
-        border: 1px solid @redColor;
-        border-radius: 0.5rem;
-        justify-content: center;
-        align-items: flex-end;
         cursor: pointer;
-        position: relative;
-
-        &::after {
-          content: "+";
-          display: block;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 0.26rem;
-          line-height: 0.26rem;
-        }
       }
     }
   }
