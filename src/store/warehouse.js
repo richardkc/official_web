@@ -46,7 +46,7 @@ const transport = [
 ];
 
 // const originPath = "http://8.210.247.224:1337";
-const originPath = location.origin;
+const originPath = "http://szdkl.oss-cn-beijing.aliyuncs.com";
 
 const formatAllPaths = data => {
   const arrs = [];
