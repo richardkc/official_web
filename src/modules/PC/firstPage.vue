@@ -23,7 +23,9 @@
             通过提供全线设计、策划、制作和标示材料，与国内众多品牌企业建立了长效稳固的合作关系，在包括但不限于飞机、轨道交通、
             公交车身广告、大型商超装饰的应用上一直提供一流国际化水准的科技应用和服务系统。
           </div>
-          <button class="more">查看更多</button>
+          <button class="more" @click="() => routerChange('introduction')">
+            查看更多
+          </button>
         </div>
       </div>
       <!-- 行业解决方案 -->
@@ -35,7 +37,7 @@
         <img v-lazy="imgUrls[6]" />
       </div>
       <div class="solution">
-        <div v-for="(item, index) in transport" :key="item.key">
+        <div v-for="(item, index) in transport" :key="index">
           <router-link
             :to="item.router"
             class="imgWrap"
@@ -111,22 +113,35 @@
         </div>
         <div class="carousel">
           <div class="contents">
-            <img v-lazy="footerContents.url" />
+            <el-carousel
+              :interval="5000"
+              arrow="always"
+              :autoplay="false"
+              ref="carousel"
+              height="16rem"
+              @change="carouselChange"
+            >
+              <el-carousel-item
+                v-for="(item, index) in footerContents.all"
+                :key="index"
+              >
+                <img v-lazy="item.url" />
+              </el-carousel-item>
+            </el-carousel>
           </div>
           <div class="carouselFooter">
-            <div @click="footerContentChange(footerContents.index - 1)">
+            <div @click="footerIndexChange('prev')">
               <Switch-button type="pre" />
             </div>
             <div class="footerContent">
               <span
                 v-for="(item, index) in footerContents.splited"
                 :key="index"
-                @click="footerContentIndexChange(index)"
-                :class="{ selected: footerContents.selected === index }"
+                :class="{ selected: footerContents.selected === item.index }"
                 >{{ item.text }}</span
               >
             </div>
-            <div @click="footerContentChange(footerContents.index + 1)">
+            <div @click="footerIndexChange('next')">
               <Switch-button type="next" />
             </div>
           </div>
@@ -183,12 +198,11 @@
         </div>
       </div>
       <!-- 合作伙伴 -->
-      <div class="partner_name">
+      <div class="partner_name" ref="partner">
         <img v-lazy="imgUrls[28]" />
         <span class="title-span">合作伙伴</span>
       </div>
       <div class="partner">
-        <button class="btn-primary">更多伙伴</button>
         <div class="partners">
           <div class="logos">
             <img v-lazy="imgUrls[30]" />
@@ -196,7 +210,7 @@
         </div>
       </div>
       <!-- 联系我们 -->
-      <div class="contact_name">
+      <div class="contact_name" ref="concat">
         <img v-lazy="imgUrls[29]" />
         <span class="title-span">联系我们</span>
       </div>
@@ -249,7 +263,12 @@
                 />
               </div>
               <div class="submit">
-                <button class="btn-primary" @click="submit()">提交表格</button>
+                <el-button
+                  class="btn-primary"
+                  @click="submit()"
+                  :loading="loading"
+                  >提交表格</el-button
+                >
               </div>
             </div>
           </div>
@@ -270,6 +289,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       originPath: store.originPath,
       activeForSuccessWork: 0,
       activeForSolution: 0,
@@ -287,9 +307,9 @@ export default {
         address: ""
       },
       footerContents: {
-        index: 0,
-        splited: [],
         all: [],
+        splited: [],
+        selected: 0,
         works: [
           {
             key: "successful_plane",
@@ -311,9 +331,7 @@ export default {
             key: "successful_steam_ship",
             text: "船舶标识"
           }
-        ],
-        selected: 0,
-        url: ""
+        ]
       },
       allSuccessfuls: []
     };
@@ -325,30 +343,108 @@ export default {
         this.setFooterContents("successful_plane");
       }
     });
+
+    const queryParams = this.getQueryParams();
+    const position = this._.get(queryParams, "position");
+    const ref = this._.get(this.$refs, position);
+
+    ref && ref.scrollIntoView();
   },
   methods: {
+    routerChange(path) {
+      this.$router.push(path);
+    },
+    getQueryParams() {
+      const url = document.location.search || "";
+      const arr1 = url.split("?");
+      const obj = {};
+
+      if (arr1.length > 1) {
+        const arr2 = arr1[1].split("&");
+        for (let i = 0; i < arr2.length; i++) {
+          const curArr = arr2[i].split("=");
+          obj[curArr[0]] = decodeURIComponent(curArr[1]);
+        }
+      }
+
+      return obj;
+    },
     submit() {
+      if (
+        !this.formData.name ||
+        !this.formData.phone ||
+        !this.formData.address ||
+        !this.formData.email
+      ) {
+        this.$message &&
+          this.$message({
+            message: "请您补全完整信息",
+            type: "warning"
+          });
+
+        return;
+      }
+
+      this.loading = true;
+
       this.$axios
-        .post(
-          "/api/contact-informations",
-          {
-            ...this.formData,
-            published_at: new Date(),
-            created_by: "PC",
-            updated_by: "PC"
-          },
-          {
-            headers: {
-              accept: "application/json",
-              "content-type": "application/x-www-form-urlencoded"
+        .post("/api/contact-informations", {
+          ...this.formData,
+          time: this.formatDate("yyyy-MM-dd hh:mm:ss")
+        })
+        .then(
+          res => {
+            this.loading = false;
+            this.formData = {};
+
+            if (res.data.length > 0) {
+              this.planeUrls = store.formatPaths(res.data[0].successful_plane);
             }
+
+            this.$message &&
+              this.$message({
+                message: "提交成功",
+                type: "success"
+              });
+          },
+          () => {
+            this.loading = false;
+
+            this.$message &&
+              this.$message({
+                message: "提交异常，请刷新页面重新提交",
+                type: "error"
+              });
           }
-        )
-        .then(res => {
-          if (res.data.length > 0) {
-            this.planeUrls = store.formatPaths(res.data[0].successful_plane);
-          }
-        });
+        );
+    },
+    formatDate(fmt) {
+      const o = {
+        "M+": new Date().getMonth() + 1, //月份
+        "d+": new Date().getDate(), //日
+        "h+": new Date().getHours(), //小时
+        "m+": new Date().getMinutes(), //分
+        "s+": new Date().getSeconds(), //秒
+        "q+": Math.floor((new Date().getMonth() + 3) / 3), //季度
+        S: new Date().getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(
+          RegExp.$1,
+          (new Date().getFullYear() + "").substr(4 - RegExp.$1.length)
+        );
+      }
+      for (const k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+          fmt = fmt.replace(
+            RegExp.$1,
+            RegExp.$1.length == 1
+              ? o[k]
+              : ("00" + o[k]).substr(("" + o[k]).length)
+          );
+        }
+      }
+      return fmt;
     },
     isActive(k, v) {
       this[k] = v;
@@ -358,32 +454,36 @@ export default {
       }
     },
     setFooterContents(key) {
-      this.footerContents.all = this._.get(this.allSuccessfuls, key);
+      this.footerContents.all = this._.chain(this.allSuccessfuls)
+        .get(key)
+        .map((item, index) => ({ ...item, index }))
+        .value();
       this.footerContents.splited = this.footerContents.all.slice(0, 3);
-      this.footerContents.url = this.footerContents.splited[
-        this.footerContents.selected
-      ].url;
+      this.footerContents.selected = 0;
     },
-    footerContentChange(value) {
-      if (
-        value < 0 ||
-        value >= Math.ceil(this._.size(this.footerContents.all) / 3)
-      ) {
+    footerIndexChange(type) {
+      if (this._.get(this.$refs, "carousel")) {
+        this.$refs.carousel[type]();
+      }
+    },
+    carouselChange(currentIndex) {
+      if (currentIndex > 2) {
+        this.footerContents = {
+          ...this.footerContents,
+          selected: currentIndex,
+          splited: this.footerContents.all.slice(
+            currentIndex - 2,
+            currentIndex + 1
+          )
+        };
         return;
       }
 
-      this.footerContents.index = value;
-      this.footerContents.splited = this.footerContents.all.slice(
-        value * 3,
-        (value + 1) * 3
-      );
-      this.footerContentIndexChange(0);
-    },
-    footerContentIndexChange(value) {
-      this.footerContents.selected = value;
-      this.footerContents.url = this.footerContents.splited[
-        this.footerContents.selected
-      ].url;
+      this.footerContents = {
+        ...this.footerContents,
+        selected: currentIndex,
+        splited: this.footerContents.all.slice(0, 3)
+      };
     }
   },
   components: {
@@ -799,7 +899,7 @@ export default {
 
       ul {
         position: relative;
-        margin-left: calc(-0.325rem + 2px);
+        margin-left: calc(-0.325rem - 1px);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -828,6 +928,9 @@ export default {
         li {
           min-width: 4rem;
           margin-bottom: 0.64rem;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
         }
       }
     }
@@ -837,15 +940,20 @@ export default {
       height: 100%;
 
       .contents {
-        display: flex;
-        justify-content: flex-end;
-        width: 90%;
-        height: 20rem;
-        padding-top: 20%;
+        width: 23rem;
+        height: 14rem;
+        margin: 20% 0 0 13%;
 
         img {
-          height: 100%;
+          width: 100%;
         }
+      }
+    }
+
+    /deep/ .el-carousel {
+      .el-carousel__indicators,
+      .el-carousel__arrow {
+        display: none;
       }
     }
 
@@ -991,7 +1099,7 @@ export default {
   .partner {
     position: absolute;
     top: 72%;
-    left: 15%;
+    left: 45%;
     width: 75%;
     height: 10%;
     display: flex;

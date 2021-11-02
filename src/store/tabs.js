@@ -123,44 +123,39 @@ export default [
       }
     ]
   },
-  {
-    name: "新闻公告",
-    router: "",
-    key: "6",
-    children: [
-      {
-        name: "公司新闻举措",
-        router: "/",
-        key: "6-1"
-      },
-      {
-        name: "行业动态",
-        router: "/",
-        key: "6-2"
-      }
-    ]
-  },
+  // {
+  //   name: "新闻公告",
+  //   router: "",
+  //   key: "6",
+  //   children: [
+  //     {
+  //       name: "公司新闻举措",
+  //       router: "/",
+  //       key: "6-1"
+  //     },
+  //     {
+  //       name: "行业动态",
+  //       router: "/",
+  //       key: "6-2"
+  //     }
+  //   ]
+  // },
   {
     name: "合作伙伴",
-    router: "",
+    router: "/home",
     key: "7",
-    children: [
-      {
-        name: "合作商家",
-        router: "/",
-        key: "7-1"
-      },
-      {
-        name: "合作交流",
-        router: "/",
-        key: "7-2"
-      }
-    ]
+    query: {
+      position: "partner"
+    },
+    queryString: "?position=partner"
   },
   {
     name: "联系我们",
-    router: "",
+    router: "/home",
     key: "8",
-    children: []
+    query: {
+      position: "concat"
+    },
+    queryString: "?position=concat"
   }
 ];

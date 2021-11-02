@@ -50,16 +50,15 @@
               }"
             >
               <li v-for="item in list.children" :key="item.key">
-                <router-link
-                  v-if="item.router"
-                  :to="item.router"
-                  @click.native="
+                <a
+                  @click="
                     e => {
                       e.stopPropagation();
                       e.preventDefault();
+                      changeRoute(item);
                     }
                   "
-                  >{{ item.name }}</router-link
+                  >{{ item.name }}</a
                 >
                 <span v-if="!item.router">{{ item.name }}</span>
               </li>
@@ -148,10 +147,15 @@ export default {
       const locationRouter = location.pathname;
 
       if (list.router && list.router !== locationRouter) {
-        this.$router.push({ path: list.router });
+        this.$router.push({ path: list.router, query: list.query });
         this.changeRouter(list.router);
 
         return;
+      }
+
+      if (list.queryString) {
+        location.search = list.queryString;
+        this.$router.query = list.query;
       }
 
       this.hoverKeyChange(index);
@@ -159,6 +163,11 @@ export default {
     hoverKeyChange(index) {
       this.selectedKey = this._.isNumber(index) ? index : "";
       this.showList = this._.isNumber(index) ? true : false;
+    },
+    changeRoute(info) {
+      const { router, query } = info || {};
+
+      this.$router.push({ path: router, query });
     }
   }
 };

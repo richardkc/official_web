@@ -188,14 +188,16 @@ a {
   position: relative;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:hover {
   font-size: 0.6rem;
-  color: white;
+  color: white !important;
   width: 4.32rem;
   border-radius: 0.72rem;
   height: 1.44rem;
-  background-color: rgb(203, 74, 64);
+  background-color: rgb(203, 74, 64) !important;
   cursor: pointer;
+  border: none;
 
   a {
     color: white;
