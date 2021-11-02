@@ -116,7 +116,6 @@
             <el-carousel
               :interval="5000"
               arrow="always"
-              :autoplay="false"
               ref="carousel"
               height="16rem"
               @change="carouselChange"
