@@ -226,7 +226,7 @@
               If you want to know more about the company, please fill in the
               following information to facilitate contact with you
             </div>
-            <div class="form">
+            <form class="form" @submit.prevent="sendEmail">
               <div class="formItem">
                 <div>
                   <label>名字</label>
@@ -234,6 +234,7 @@
                     type="text"
                     placeholder="Name"
                     v-model="formData.name"
+                    name="name"
                   />
                 </div>
                 <div>
@@ -242,6 +243,7 @@
                     type="text"
                     placeholder="Phone"
                     v-model="formData.phone"
+                    name="phone"
                   />
                 </div>
               </div>
@@ -251,6 +253,7 @@
                   type="text"
                   placeholder="E-Mail"
                   v-model="formData.email"
+                  name="email"
                 />
               </div>
               <div class="formItem">
@@ -259,17 +262,13 @@
                   type="text"
                   placeholder="Address"
                   v-model="formData.address"
+                  name="adress"
                 />
               </div>
               <div class="submit">
-                <el-button
-                  class="btn-primary"
-                  @click="submit()"
-                  :loading="loading"
-                  >提交表格</el-button
-                >
+                <input type="submit" class="btn-primary" value="提交表格" />
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -278,6 +277,8 @@
 </template>
 
 <script>
+import emailjs from "emailjs-com";
+import apiKeys from "../../utils/apikeys";
 import store from "../../store/warehouse";
 import SwitchButton from "../../components/switchButton";
 
@@ -368,7 +369,7 @@ export default {
 
       return obj;
     },
-    submit() {
+    sendEmail(e) {
       if (
         !this.formData.name ||
         !this.formData.phone ||
@@ -385,6 +386,22 @@ export default {
       }
 
       this.loading = true;
+
+      emailjs
+        .sendForm(
+          apiKeys.SERVICE_ID,
+          apiKeys.TEMPLATE_ID,
+          e.target,
+          apiKeys.USER_ID
+        )
+        .then(
+          result => {
+            console.log(result.text);
+          },
+          error => {
+            console.log(error.text);
+          }
+        );
 
       this.$axios
         .post("/api/contact-informations", {
