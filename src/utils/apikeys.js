@@ -1,5 +1,5 @@
 export default {
-  SERVICE_ID: "service_42gb4ph",
-  USER_ID: "user_ai7y7aX6z552y3ye22vhi",
-  TEMPLATE_ID: "template_dph2435"
+  SERVICE_ID: "service_1xioamy",
+  USER_ID: "user_UYBAWV8jV3tS5xOc6aHpr",
+  TEMPLATE_ID: "template_f6294f3"
 };

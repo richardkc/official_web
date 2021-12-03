@@ -262,7 +262,7 @@
                   type="text"
                   placeholder="Address"
                   v-model="formData.address"
-                  name="adress"
+                  name="address"
                 />
               </div>
               <div class="submit">
