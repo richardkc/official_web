@@ -12,7 +12,7 @@
       </div>
       <div>
         <div>szdkl@foxmail.com</div>
-        <div>www.smdkl.cn</div>
+        <div>www.szdkl.cn</div>
       </div>
     </div>
   </section>

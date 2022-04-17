@@ -157,11 +157,11 @@ export default {
         {
           text: "安利",
           url: this.urls ? this.urls.solutionSupermarket[6] : ""
-        },
-        {
-          text: "宝能科技",
-          url: this.urls ? this.urls.solutionSupermarket[7] : ""
         }
+        // {
+        //   text: "宝能科技",
+        //   url: this.urls ? this.urls.solutionSupermarket[7] : ""
+        // }
       ]
     };
   }
